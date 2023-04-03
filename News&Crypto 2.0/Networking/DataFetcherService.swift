@@ -1,6 +1,5 @@
 import Foundation
 
-
 class DataFetcherService {
     
     private enum API {
@@ -20,7 +19,7 @@ class DataFetcherService {
         self.dataFetcher = dataFetcher
     }
     
-    func fetchNews(completion: @escaping (NewsModel?) -> Void) {
+    func fetchNews(completion: @escaping ([NewsModel]?) -> Void) {
         let urlNews = API.news + Endpoint.topStories + Endpoint.apiKey
         dataFetcher.fetchGenericData(urlString: urlNews, response: completion)
     }

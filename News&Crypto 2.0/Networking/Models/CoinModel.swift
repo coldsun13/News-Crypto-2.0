@@ -1,6 +1,7 @@
 import Foundation
 
 struct CoinModel: Identifiable, Decodable {
+
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
