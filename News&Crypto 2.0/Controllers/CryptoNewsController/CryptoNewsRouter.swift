@@ -1,48 +1,21 @@
+//
+//  CryptoNewsRouter.swift
+//  News&Crypto 2.0
+//
+//  Created by Игорь Тимофеев on 3.04.23.
+//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
 import UIKit
 
-@objc protocol CryptoNewsRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+protocol CryptoNewsRoutingLogic {
+
 }
 
-protocol CryptoNewsDataPassing
-{
-  var dataStore: CryptoNewsDataStore? { get }
-}
+class CryptoNewsRouter: NSObject, CryptoNewsRoutingLogic {
 
-class CryptoNewsRouter: NSObject, CryptoNewsRoutingLogic, CryptoNewsDataPassing
-{
   weak var viewController: CryptoNewsViewController?
-  var dataStore: CryptoNewsDataStore?
   
   // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: CryptoNewsViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: CryptoNewsDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
 }

@@ -1,18 +1,16 @@
 import UIKit
 
-protocol SettingsPresentationLogic
-{
+protocol SettingsPresentationLogic {
   func presentSomething(response: Settings.Something.Response)
+
 }
 
-class SettingsPresenter: SettingsPresentationLogic
-{
+class SettingsPresenter: SettingsPresentationLogic {
   weak var viewController: SettingsDisplayLogic?
   
   // MARK: Do something
   
-  func presentSomething(response: Settings.Something.Response)
-  {
+  func presentSomething(response: Settings.Something.Response) {
     let viewModel = Settings.Something.ViewModel()
     viewController?.displaySomething(viewModel: viewModel)
   }

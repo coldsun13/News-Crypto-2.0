@@ -14,6 +14,7 @@ enum Resources {
     enum Strings {
         enum TabBar {
             static func title(for tab: Tabs) -> String {
+    
                 switch tab {
                 case .cryptoNews:
                     return "Home"

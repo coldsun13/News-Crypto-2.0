@@ -5,7 +5,6 @@ enum Tabs: Int, CaseIterable {
     case wallet
     case info
     case settings
-    
 }
 
 final class TabBarController: UITabBarController {
