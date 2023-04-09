@@ -28,7 +28,6 @@ final class CryptoLineChartView: UIView {
     }
     
     // MARK: - API
-    
     func configure(viewModel: ViewModel) {
         var entries = [ChartDataEntry]()
         for (index, value) in viewModel.data.enumerated() {

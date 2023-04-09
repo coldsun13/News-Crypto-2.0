@@ -5,6 +5,8 @@ protocol CryptoCellViewModel {
     var name: String { get }
     var abbriviatedName: String { get }
     var changePrice: String { get }
+    var cryptolineChart: CryptoLineChartView.ViewModel { get }
+    var iconURLString: String { get }
 }
 
 final class CryptoCell: UITableViewCell {
@@ -17,7 +19,7 @@ final class CryptoCell: UITableViewCell {
     private let coinStackView = UIStackView()
     private let cryptoLineChartView = CryptoLineChartView()
     private let priceLabel = UILabel()
-    private let coinImageView = UIImageView()
+    private let coinImageView = WebImageView()
     private let coinNameLabel = UILabel()
     private let coinAbbriviatedNameLabel = UILabel()
     private let changePriceLabel = UILabel()
@@ -41,10 +43,12 @@ final class CryptoCell: UITableViewCell {
     }
     
     func set(viewModel: CryptoCellViewModel) {
+        coinImageView.set(imageURL: viewModel.iconURLString)
         priceLabel.text = viewModel.price
         coinNameLabel.text = viewModel.name
         coinAbbriviatedNameLabel.text = viewModel.abbriviatedName
         changePriceLabel.text = viewModel.changePrice
+        cryptoLineChartView.configure(viewModel: viewModel.cryptolineChart)
     }
 }
 
@@ -110,10 +114,5 @@ private extension CryptoCell {
         
         cryptoLineChartView.clipsToBounds = true
         cryptoLineChartView.isUserInteractionEnabled = false
-        
-        coinNameLabel.text = "Hello"
-        coinAbbriviatedNameLabel.text = "BTC/USD"
-        priceLabel.text = "23$"
-//        changePriceLabel.text = "5%"
     }
 }

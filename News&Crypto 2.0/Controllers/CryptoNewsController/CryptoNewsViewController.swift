@@ -4,7 +4,7 @@ protocol CryptoNewsDisplayLogic: AnyObject {
     func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData)
 }
 
-class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
+final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     
     var interactor: CryptoNewsBusinessLogic?
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
@@ -38,7 +38,6 @@ class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
         interactor.presenter      = presenter
         presenter.viewController  = viewController
         router.viewController     = viewController
-        
     }
     
     // MARK: Routing
@@ -68,10 +67,9 @@ class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData) {
         switch viewModel {
             
-        case .displayCoins(cryptoViewModel: let cryptoViewModel):
+        case .displayCoins(let cryptoViewModel):
             self.cryptoNewsViewModel = cryptoViewModel
             tableView.reloadData()
-            print("")
         }
     }
 }
@@ -86,10 +84,6 @@ extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCell.identifier, for: indexPath) as? CryptoCell else { return UITableViewCell() }
         let cellViewModel = cryptoNewsViewModel.cell[indexPath.row]
         cell.set(viewModel: cellViewModel)
-        print(cryptoNewsViewModel.cell)
-//        dataFetcher.getCoins { coin in
-//            print(coin)
-//        }
         return cell
     }
     

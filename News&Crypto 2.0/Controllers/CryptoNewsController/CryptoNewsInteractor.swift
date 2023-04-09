@@ -4,7 +4,7 @@ protocol CryptoNewsBusinessLogic {
   func makeRequest(request: CryptoNews.Model.Request.RequestType)
 }
 
-class CryptoNewsInteractor: CryptoNewsBusinessLogic {
+final class CryptoNewsInteractor: CryptoNewsBusinessLogic {
     
     var presenter: CryptoNewsPresentationLogic?
     var service: CryptoNewsService?

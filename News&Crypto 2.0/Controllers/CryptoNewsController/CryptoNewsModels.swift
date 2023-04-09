@@ -23,14 +23,12 @@ enum CryptoNews {
 
 struct CryptoNewsViewModel {
     struct Cell: CryptoCellViewModel {
-        
+        var iconURLString: String
         var price: String
-        
         var name: String
-        
         var abbriviatedName: String
-        
         var changePrice: String
+        var cryptolineChart: CryptoLineChartView.ViewModel
     }
     
     let cell: [Cell] 

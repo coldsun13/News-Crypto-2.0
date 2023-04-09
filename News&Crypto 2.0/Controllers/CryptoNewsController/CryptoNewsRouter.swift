@@ -12,7 +12,7 @@ protocol CryptoNewsRoutingLogic {
 
 }
 
-class CryptoNewsRouter: NSObject, CryptoNewsRoutingLogic {
+final class CryptoNewsRouter: NSObject, CryptoNewsRoutingLogic {
 
   weak var viewController: CryptoNewsViewController?
   

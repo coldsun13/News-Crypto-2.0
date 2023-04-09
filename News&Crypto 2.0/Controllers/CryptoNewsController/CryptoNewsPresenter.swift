@@ -4,7 +4,7 @@ protocol CryptoNewsPresentationLogic {
     func presentData(response: CryptoNews.Model.Response.ResponseType)
 }
 
-class CryptoNewsPresenter: CryptoNewsPresentationLogic {
+final class CryptoNewsPresenter: CryptoNewsPresentationLogic {
     
     weak var viewController: CryptoNewsDisplayLogic?
     
@@ -24,10 +24,16 @@ class CryptoNewsPresenter: CryptoNewsPresentationLogic {
     }
     
     private func cellViewModel(from coinModel: CoinModel) -> CryptoNewsViewModel.Cell {
-        return CryptoNewsViewModel.Cell(price: String(coinModel.currentPrice),
+        let changeColor = (coinModel.priceChangePercentage24H ?? 0.0 < 0)
+        return CryptoNewsViewModel.Cell(iconURLString: coinModel.image,
+                                        price: String(coinModel.currentPrice),
                                         name: coinModel.name,
                                         abbriviatedName: coinModel.symbol,
-                                        changePrice: String(coinModel.priceChange24H ?? 0.0))
+                                        changePrice: String(coinModel.priceChange24H ?? 0.0),
+                                        cryptolineChart: CryptoLineChartView.ViewModel.init(data: coinModel.sparklineIn7D?.price ?? [],
+                                                                                            showLegend: false,
+                                                                                            showAxis: false,
+                                                                                            fillColor: changeColor ? .systemRed : .systemGreen))
     }
     
 }
