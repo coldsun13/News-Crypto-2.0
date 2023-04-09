@@ -1,12 +1,21 @@
+//
+//  SettingsViewController.swift
+//  News&Crypto 2.0
+//
+//  Created by Игорь Тимофеев on 9.04.23.
+//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
 import UIKit
 
-protocol SettingsDisplayLogic: AnyObject {
-  func displaySomething(viewModel: Settings.Something.ViewModel)
+protocol SettingsDisplayLogic: class {
+  func displayData(viewModel: Settings.Model.ViewModel.ViewModelData)
 }
 
 class SettingsViewController: UIViewController, SettingsDisplayLogic {
+
   var interactor: SettingsBusinessLogic?
-  var router: (NSObjectProtocol & SettingsRoutingLogic & SettingsDataPassing)?
+  var router: (NSObjectProtocol & SettingsRoutingLogic)?
 
   // MARK: Object lifecycle
   
@@ -23,49 +32,29 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
   // MARK: Setup
   
   private func setup() {
-    let viewController = self
-    let interactor = SettingsInteractor()
-    let presenter = SettingsPresenter()
-    let router = SettingsRouter()
+    let viewController        = self
+    let interactor            = SettingsInteractor()
+    let presenter             = SettingsPresenter()
+    let router                = SettingsRouter()
     viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
+    viewController.router     = router
+    interactor.presenter      = presenter
+    presenter.viewController  = viewController
+    router.viewController     = viewController
   }
   
   // MARK: Routing
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
+
   
   // MARK: View lifecycle
   
-  override func viewDidLoad()
-  {
+  override func viewDidLoad() {
     super.viewDidLoad()
-    doSomething()
   }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Settings.Something.Request()
-    interactor?.doSomething(request: request)
+  func displayData(viewModel: Settings.Model.ViewModel.ViewModelData) {
+
   }
   
-  func displaySomething(viewModel: Settings.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
 }

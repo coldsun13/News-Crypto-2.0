@@ -1,29 +1,26 @@
+//
+//  SettingsInteractor.swift
+//  News&Crypto 2.0
+//
+//  Created by Игорь Тимофеев on 9.04.23.
+//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
 import UIKit
 
-protocol SettingsBusinessLogic
-{
-  func doSomething(request: Settings.Something.Request)
+protocol SettingsBusinessLogic {
+  func makeRequest(request: Settings.Model.Request.RequestType)
 }
 
-protocol SettingsDataStore
-{
-  //var name: String { get set }
-}
+class SettingsInteractor: SettingsBusinessLogic {
 
-class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore
-{
   var presenter: SettingsPresentationLogic?
-  var worker: SettingsWorker?
-  //var name: String = ""
+  var service: SettingsService?
   
-  // MARK: Do something
-  
-  func doSomething(request: Settings.Something.Request)
-  {
-    worker = SettingsWorker()
-    worker?.doSomeWork()
-    
-    let response = Settings.Something.Response()
-    presenter?.presentSomething(response: response)
+  func makeRequest(request: Settings.Model.Request.RequestType) {
+    if service == nil {
+      service = SettingsService()
+    }
   }
+  
 }

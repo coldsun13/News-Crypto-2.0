@@ -1,15 +1,21 @@
+//
+//  SettingsRouter.swift
+//  News&Crypto 2.0
+//
+//  Created by Игорь Тимофеев on 9.04.23.
+//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
 import UIKit
 
-@objc protocol SettingsRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+protocol SettingsRoutingLogic {
+
 }
 
-protocol SettingsDataPassing {
-  var dataStore: SettingsDataStore? { get }
-}
+class SettingsRouter: NSObject, SettingsRoutingLogic {
 
-class SettingsRouter: NSObject, SettingsRoutingLogic, SettingsDataPassing {
   weak var viewController: SettingsViewController?
-  var dataStore: SettingsDataStore?
-
+  
+  // MARK: Routing
+  
 }

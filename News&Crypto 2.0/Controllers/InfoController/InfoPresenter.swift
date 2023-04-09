@@ -1,19 +1,22 @@
+//
+//  InfoPresenter.swift
+//  News&Crypto 2.0
+//
+//  Created by Игорь Тимофеев on 9.04.23.
+//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
 import UIKit
 
-protocol InfoPresentationLogic
-{
-  func presentSomething(response: Info.Something.Response)
+protocol InfoPresentationLogic {
+  func presentData(response: Info.Model.Response.ResponseType)
 }
 
-class InfoPresenter: InfoPresentationLogic
-{
+class InfoPresenter: InfoPresentationLogic {
   weak var viewController: InfoDisplayLogic?
   
-  // MARK: Do something
+  func presentData(response: Info.Model.Response.ResponseType) {
   
-  func presentSomething(response: Info.Something.Response)
-  {
-    let viewModel = Info.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
   }
+  
 }

@@ -1,29 +1,26 @@
+//
+//  InfoInteractor.swift
+//  News&Crypto 2.0
+//
+//  Created by Игорь Тимофеев on 9.04.23.
+//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
 import UIKit
 
-protocol InfoBusinessLogic
-{
-  func doSomething(request: Info.Something.Request)
+protocol InfoBusinessLogic {
+  func makeRequest(request: Info.Model.Request.RequestType)
 }
 
-protocol InfoDataStore
-{
-  //var name: String { get set }
-}
+class InfoInteractor: InfoBusinessLogic {
 
-class InfoInteractor: InfoBusinessLogic, InfoDataStore
-{
   var presenter: InfoPresentationLogic?
-  var worker: InfoWorker?
-  //var name: String = ""
+  var service: InfoService?
   
-  // MARK: Do something
-  
-  func doSomething(request: Info.Something.Request)
-  {
-    worker = InfoWorker()
-    worker?.doSomeWork()
-    
-    let response = Info.Something.Response()
-    presenter?.presentSomething(response: response)
+  func makeRequest(request: Info.Model.Request.RequestType) {
+    if service == nil {
+      service = InfoService()
+    }
   }
+  
 }

@@ -1,29 +1,26 @@
+//
+//  WalletInteractor.swift
+//  News&Crypto 2.0
+//
+//  Created by Игорь Тимофеев on 9.04.23.
+//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
 import UIKit
 
-protocol WalletBusinessLogic
-{
-  func doSomething(request: Wallet.Something.Request)
+protocol WalletBusinessLogic {
+  func makeRequest(request: Wallet.Model.Request.RequestType)
 }
 
-protocol WalletDataStore
-{
-  //var name: String { get set }
-}
+class WalletInteractor: WalletBusinessLogic {
 
-class WalletInteractor: WalletBusinessLogic, WalletDataStore
-{
   var presenter: WalletPresentationLogic?
-  var worker: WalletWorker?
-  //var name: String = ""
+  var service: WalletService?
   
-  // MARK: Do something
-  
-  func doSomething(request: Wallet.Something.Request)
-  {
-    worker = WalletWorker()
-    worker?.doSomeWork()
-    
-    let response = Wallet.Something.Response()
-    presenter?.presentSomething(response: response)
+  func makeRequest(request: Wallet.Model.Request.RequestType) {
+    if service == nil {
+      service = WalletService()
+    }
   }
+  
 }
