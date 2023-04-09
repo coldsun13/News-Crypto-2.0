@@ -1,5 +1,12 @@
 import UIKit
 
+protocol CryptoCellViewModel {
+    var price: String { get }
+    var name: String { get }
+    var abbriviatedName: String { get }
+    var changePrice: String { get }
+}
+
 final class CryptoCell: UITableViewCell {
     
     static let identifier = "CryptoCell"
@@ -31,6 +38,13 @@ final class CryptoCell: UITableViewCell {
         coinImageView.layer.cornerRadius = coinImageView.frame.size.width / 2
         coinImageView.clipsToBounds = true
         coinImageView.contentMode = .scaleAspectFill
+    }
+    
+    func set(viewModel: CryptoCellViewModel) {
+        priceLabel.text = viewModel.price
+        coinNameLabel.text = viewModel.name
+        coinAbbriviatedNameLabel.text = viewModel.abbriviatedName
+        changePriceLabel.text = viewModel.changePrice
     }
 }
 
@@ -100,6 +114,6 @@ private extension CryptoCell {
         coinNameLabel.text = "Hello"
         coinAbbriviatedNameLabel.text = "BTC/USD"
         priceLabel.text = "23$"
-        changePriceLabel.text = "5%"
+//        changePriceLabel.text = "5%"
     }
 }

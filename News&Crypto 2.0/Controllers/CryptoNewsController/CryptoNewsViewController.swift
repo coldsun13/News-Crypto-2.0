@@ -11,6 +11,9 @@ class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     
     let tableView = UITableView()
     
+    private var cryptoNewsViewModel = CryptoNewsViewModel.init(cell: [])
+    var dataFetcher = DataFetcherService()
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -35,7 +38,7 @@ class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
         interactor.presenter      = presenter
         presenter.viewController  = viewController
         router.viewController     = viewController
-    
+        
     }
     
     // MARK: Routing
@@ -57,28 +60,36 @@ class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
         tableView.dataSource = self
         
         tableView.register(CryptoCell.self, forCellReuseIdentifier: CryptoCell.identifier)
+        
+        interactor?.makeRequest(request: CryptoNews.Model.Request.RequestType.getCoins)
+        print("viewDidLoad")
     }
     
     func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData) {
         switch viewModel {
             
-        case .some:
-            print("some")
-        case .displayCoins:
-            print("displayCoins")
+        case .displayCoins(cryptoViewModel: let cryptoViewModel):
+            self.cryptoNewsViewModel = cryptoViewModel
+            tableView.reloadData()
+            print("")
         }
     }
 }
-
 extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cryptoNewsViewModel.cell.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCell.identifier, for: indexPath) as? CryptoCell else { return UITableViewCell() }
+        let cellViewModel = cryptoNewsViewModel.cell[indexPath.row]
+        cell.set(viewModel: cellViewModel)
+        print(cryptoNewsViewModel.cell)
+//        dataFetcher.getCoins { coin in
+//            print(coin)
+//        }
         return cell
     }
     

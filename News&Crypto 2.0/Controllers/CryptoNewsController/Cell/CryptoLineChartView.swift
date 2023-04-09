@@ -2,9 +2,6 @@ import UIKit
 import Charts
 
 final class CryptoLineChartView: UIView {
-    // MARK: - Properties
-    
-    // MARK: Private
     
     private let chartView = LineChartView()
     
@@ -14,8 +11,6 @@ final class CryptoLineChartView: UIView {
         let showAxis: Bool
         let fillColor: UIColor
     }
-    
-    //MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,8 +22,6 @@ final class CryptoLineChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Lifecycle
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         chartView.frame = bounds
@@ -36,7 +29,7 @@ final class CryptoLineChartView: UIView {
     
     // MARK: - API
     
-    public func configure(viewModel: ViewModel) {
+    func configure(viewModel: ViewModel) {
         var entries = [ChartDataEntry]()
         for (index, value) in viewModel.data.enumerated() {
             entries.append(.init(x: Double(index), y: value))
@@ -61,16 +54,15 @@ final class CryptoLineChartView: UIView {
         let data = LineChartData(dataSet: dataSet)
         chartView.data = data
     }
+}
+
+private extension CryptoLineChartView {
     
-    // MARK: - Setups
-    
-    // MARK: Private
-    
-    private func addSubviews() {
+    func addSubviews() {
         addSubview(chartView)
     }
     
-    private func addSetups() {
+    func addSetups() {
         chartView.setScaleEnabled(true)
         chartView.xAxis.enabled = false
         chartView.leftAxis.enabled = false

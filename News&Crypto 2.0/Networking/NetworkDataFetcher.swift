@@ -25,6 +25,7 @@ class NetworkDataFetcher: DataFetcher {
     
     private func decodeJSON<T: Decodable>(type: T.Type, from: Data?) -> T? {
         let decoder = JSONDecoder()
+//        decoder.keyDecodingStrategy = .convertFromSnakeCase
         guard let data = from else { return nil }
         do {
             let decodeData = try decoder.decode(type.self, from: data)

@@ -19,12 +19,12 @@ class DataFetcherService {
         self.dataFetcher = dataFetcher
     }
     
-    func fetchNews(completion: @escaping ([NewsModel]?) -> Void) {
+    func getNews(completion: @escaping ([NewsModel]?) -> Void) {
         let urlNews = API.news + Endpoint.topStories + Endpoint.apiKey
         dataFetcher.fetchGenericData(urlString: urlNews, response: completion)
     }
     
-    func fetchCoins(completion: @escaping ([CoinModel]?) -> Void) {
+    func getCoins(completion: @escaping ([CoinModel]?) -> Void) {
         let urlCoins = API.coins
         dataFetcher.fetchGenericData(urlString: urlCoins, response: completion)
     }

@@ -1,5 +1,9 @@
 import Foundation
 
+struct CoinResponse: Decodable {
+    var items: [CoinModel]
+}
+
 struct CoinModel: Identifiable, Decodable {
 
     let id, symbol, name: String
