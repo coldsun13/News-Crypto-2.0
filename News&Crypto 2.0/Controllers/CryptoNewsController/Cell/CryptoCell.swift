@@ -15,7 +15,6 @@ final class CryptoCell: UITableViewCell {
     
     private let coinNameStackView = UIStackView()
     private let priceStackView = UIStackView()
-    
     private let coinStackView = UIStackView()
     private let cryptoLineChartView = CryptoLineChartView()
     private let priceLabel = UILabel()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol WalletDisplayLogic: class {
+protocol WalletDisplayLogic: AnyObject {
   func displayData(viewModel: Wallet.Model.ViewModel.ViewModelData)
 }
 
