@@ -8,11 +8,10 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     
     var interactor: CryptoNewsBusinessLogic?
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
-    
-    let tableView = UITableView()
+    var dataFetcher = DataFetcherService()
     
     private var cryptoNewsViewModel = CryptoNewsViewModel.init(cell: [])
-    var dataFetcher = DataFetcherService()
+    private let tableView = UITableView()
     
     // MARK: Object lifecycle
     
@@ -48,20 +47,8 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(CryptoCell.self, forCellReuseIdentifier: CryptoCell.identifier)
-        
+        configure()
         interactor?.makeRequest(request: CryptoNews.Model.Request.RequestType.getCoins)
-        print("viewDidLoad")
     }
     
     func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData) {
@@ -73,6 +60,24 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
         }
     }
 }
+
+private extension CryptoNewsViewController {
+    
+    func configure() {
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(CryptoCell.self, forCellReuseIdentifier: CryptoCell.identifier)
+    }
+}
+
 extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cryptoNewsViewModel.cell.count
@@ -86,8 +91,4 @@ extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.set(viewModel: cellViewModel)
         return cell
     }
-    
-    
-    
-    
 }
