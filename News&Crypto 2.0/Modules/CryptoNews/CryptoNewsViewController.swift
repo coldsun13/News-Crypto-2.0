@@ -1,4 +1,5 @@
 import UIKit
+import FloatingPanel
 
 protocol CryptoNewsDisplayLogic: AnyObject {
     func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData)
@@ -10,7 +11,8 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
     var dataFetcher = DataFetcherService()
     
-    private var cryptoNewsViewModel = CryptoNewsViewModel.init(cell: [])
+    private var cryptoNewsViewModel = CryptoViewModel(cell: [], coinViewModel: [])
+    private let panel = FloatingPanelController()
     private let tableView = UITableView()
     
     // MARK: Object lifecycle
@@ -70,25 +72,39 @@ private extension CryptoNewsViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.register(CryptoCell.self, forCellReuseIdentifier: CryptoCell.identifier)
+    }
+    
+    func setupFloatingPanel() {
+        let vc = NewsViewController()
+//        panel.surfaceView.backgroundColor = .theme.cellColor
+        panel.set(contentViewController: vc)
+        panel.surfaceView.appearance.cornerRadius = 20
+        panel.addPanel(toParent: self)
+        
     }
 }
 
 extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cryptoNewsViewModel.cell.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCell.identifier, for: indexPath) as? CryptoCell else { return UITableViewCell() }
-        let cellViewModel = cryptoNewsViewModel.cell[indexPath.row]
-        cell.set(viewModel: cellViewModel)
+        cell.selectionStyle = .none
+        cell.set(viewModel: cryptoNewsViewModel.cell[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let coinVC = CoinViewController()
+        let wallet = cryptoNewsViewModel.coinViewModel[indexPath.row]
+        coinVC.set(info: wallet)
+        present(UINavigationController(rootViewController: coinVC), animated: true)
     }
 }

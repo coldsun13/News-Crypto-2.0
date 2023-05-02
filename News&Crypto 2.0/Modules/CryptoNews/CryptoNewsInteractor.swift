@@ -19,7 +19,6 @@ final class CryptoNewsInteractor: CryptoNewsBusinessLogic {
         switch request {
   
         case .getCoins:
-            print("interactor")
             fetcher.getCoins { [weak self] coinResponse in
                 guard let coinResponse = coinResponse else { return }
                 self?.presenter?.presentData(response: CryptoNews.Model.Response.ResponseType.presentCoins(coins: coinResponse))

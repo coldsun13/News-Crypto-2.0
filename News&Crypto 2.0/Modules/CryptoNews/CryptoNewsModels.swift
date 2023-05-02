@@ -15,13 +15,14 @@ enum CryptoNews {
         }
         struct ViewModel {
             enum ViewModelData {
-                case displayCoins(cryptoViewModel: CryptoNewsViewModel)
+                case displayCoins(cryptoViewModel: CryptoViewModel)
             }
         }
     }
 }
 
-struct CryptoNewsViewModel {
+struct CryptoViewModel {
+    
     struct Cell: CryptoCellViewModel {
         var iconURLString: String
         var price: String
@@ -31,5 +32,22 @@ struct CryptoNewsViewModel {
         var cryptolineChart: CryptoLineChartView.ViewModel
     }
     
-    let cell: [Cell] 
+    let cell: [Cell]
+    
+    struct CoinViewModel: CoinControllerViewModel {
+
+        var marketCapChangePercentage24h: String
+        var cryptolineChart: CryptoLineChartView.ViewModel
+        var currentPrice: String
+        var priceChangePercantage24h: String
+        var marketCapitalization: String
+        var rank: String
+        var volume: String
+        var coinName: String
+    }
+    
+    let coinViewModel: [CoinViewModel]
 }
+
+
+
