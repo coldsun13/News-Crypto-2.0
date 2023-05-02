@@ -17,7 +17,7 @@ final class CryptoNewsPresenter: CryptoNewsPresentationLogic {
                 cellViewModel(from: coinItem)
             }
             let info = coins.map { coinItem in
-                coinControllerViewModel(from: coinItem)
+                coinViewModel(from: coinItem)
             }
             
             let cryptoViewModel = CryptoViewModel(cell: cells, coinViewModel: info)
@@ -39,7 +39,7 @@ final class CryptoNewsPresenter: CryptoNewsPresentationLogic {
                                                                                         fillColor: changeColor ? .systemRed : .systemGreen))
     }
     
-    private func coinControllerViewModel(from coinModel: CoinModel) -> CryptoViewModel.CoinViewModel {
+    private func coinViewModel(from coinModel: CoinModel) -> CryptoViewModel.CoinViewModel {
         let changeColor = (coinModel.priceChangePercentage24H ?? 0.0 < 0)
         return CryptoViewModel.CoinViewModel(marketCapChangePercentage24h: coinModel.marketCapChangePercentage24H?.asPercentString() ?? "0.0",
                                                   cryptolineChart: CryptoLineChartView.ViewModel.init(data: coinModel.sparklineIn7D?.price ?? [],
