@@ -34,9 +34,9 @@ class WalletPresenter: WalletPresentationLogic {
                                     price: String(coinModel.currentPrice),
                                     iconUrlString: coinModel.image,
                                     changePrice: String(coinModel.priceChange24H ?? 0),
-                                    cryptolineChart: CryptoLineChartView.ViewModel(data: coinModel.sparklineIn7D?.price ?? [],
-                                                                                   showLegend: false,
-                                                                                   showAxis: false,
+                                    cryptolineChart: CryptoLineChartView.ChartViewModel(data: coinModel.sparklineIn7D?.price ?? [],
+                                                                                   showLegend: true,
+                                                                                   showAxis: true,
                                                                                    fillColor: changeColor ? .systemRed : .systemGreen))
     }
 }

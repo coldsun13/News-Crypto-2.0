@@ -10,7 +10,8 @@ class WalletViewController: UIViewController, WalletDisplayLogic {
     var router: (NSObjectProtocol & WalletRoutingLogic)?
     
     private var walletViewModel = WalletViewModel(cell: [])
-    private let tableView = UITableView()
+    private let layout = CustomFlowLayout(width: 300, height: 400) 
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     
     // MARK: Object lifecycle
     
@@ -55,7 +56,7 @@ class WalletViewController: UIViewController, WalletDisplayLogic {
             
         case .displayCoins(walletViewModel: let walletViewModel):
             self.walletViewModel = walletViewModel
-            tableView.reloadData()
+            collectionView.reloadData()
         }
     }
 }
@@ -63,35 +64,32 @@ class WalletViewController: UIViewController, WalletDisplayLogic {
 private extension WalletViewController {
     
     func configure() {
-        
-        view.backgroundColor = .white
 
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        tableView.register(WalletCell.self, forCellReuseIdentifier: WalletCell.identifier)
-        tableView.rowHeight = 200
-        tableView.separatorStyle = .none
+        collectionView.register(WalletCell.self, forCellWithReuseIdentifier: WalletCell.identifier)
     }
 }
 
-extension WalletViewController: UITableViewDelegate, UITableViewDataSource {
+extension WalletViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return walletViewModel.cell.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WalletCell.identifier, for: indexPath) as? WalletCell else { return UITableViewCell() }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WalletCell.identifier, for: indexPath) as? WalletCell else { return UICollectionViewCell() }
         let cellViewModel = walletViewModel.cell[indexPath.row]
         cell.set(viewModel: cellViewModel)
         return cell
     }
+    
 }

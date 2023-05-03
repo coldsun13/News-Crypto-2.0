@@ -4,13 +4,13 @@ protocol WalletCellViewModel {
     var name: String { get }
     var price: String { get }
     var iconUrlString: String { get }
-    var cryptolineChart: CryptoLineChartView.ViewModel { get }
+    var cryptolineChart: CryptoLineChartView.ChartViewModel { get }
     var changePrice: String { get }
     var abbriviatedName: String { get }
     var changePriceImage: String { get }
 }
 
-final class WalletCell: UITableViewCell {
+final class WalletCell: UICollectionViewCell {
     
     static let identifier = "WalletCell"
     
@@ -25,9 +25,8 @@ final class WalletCell: UITableViewCell {
     private let coinImageView = WebImageView()
     private let cryptoLineChartView = CryptoLineChartView()
     
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         addSubviews()
         addConstraints()
         configure()
@@ -65,10 +64,10 @@ private extension WalletCell {
         
         addMaskForAllViews(mainView, mainStackView, priceLabel, changePriceStackView, cryptoLineChartView)
         
-        mainView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        mainView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        mainView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        mainView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        mainView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        mainView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        mainView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        mainView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
         mainStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 10).isActive = true
         mainStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15).isActive = true
@@ -86,7 +85,7 @@ private extension WalletCell {
 
         cryptoLineChartView.topAnchor.constraint(equalTo: changePriceStackView.bottomAnchor, constant: 5).isActive = true
         cryptoLineChartView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 5).isActive = true
-        cryptoLineChartView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.5).isActive = true
+        cryptoLineChartView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.8).isActive = true
 //        cryptoLineChartView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         cryptoLineChartView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -5).isActive = true
         

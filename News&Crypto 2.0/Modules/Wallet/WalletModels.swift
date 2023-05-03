@@ -30,7 +30,7 @@ struct WalletViewModel {
         var price: String
         var iconUrlString: String
         var changePrice: String
-        var cryptolineChart: CryptoLineChartView.ViewModel
+        var cryptolineChart: CryptoLineChartView.ChartViewModel
     }
     
     let cell: [Cell]
