@@ -32,25 +32,25 @@ final class CryptoNewsPresenter: CryptoNewsPresentationLogic {
                                     price: coinModel.currentPrice.asCurrencyWith6Decimals(),
                                     name: coinModel.name,
                                     abbriviatedName: coinModel.symbol.uppercased(),
-                                    changePrice: coinModel.priceChangePercentage24H?.asPercentString() ?? "0.0",
-                                    cryptolineChart: CryptoLineChartView.ViewModel.init(data: coinModel.sparklineIn7D?.price ?? [],
-                                                                                        showLegend: false,
-                                                                                        showAxis: false,
-                                                                                        fillColor: changeColor ? .systemRed : .systemGreen))
+                                    changePrice: String(coinModel.priceChangePercentage24H?.asNumberString() ?? "0.0"),
+                                    cryptolineChart: CryptoLineChartView.ChartViewModel.init(data: coinModel.sparklineIn7D?.price ?? [],
+                                                                                             showLegend: false,
+                                                                                             showAxis: false,
+                                                                                             fillColor: changeColor ? .systemRed : .systemGreen))
     }
     
     private func coinViewModel(from coinModel: CoinModel) -> CryptoViewModel.CoinViewModel {
         let changeColor = (coinModel.priceChangePercentage24H ?? 0.0 < 0)
-        return CryptoViewModel.CoinViewModel(marketCapChangePercentage24h: coinModel.marketCapChangePercentage24H?.asPercentString() ?? "0.0",
-                                                  cryptolineChart: CryptoLineChartView.ViewModel.init(data: coinModel.sparklineIn7D?.price ?? [],
+        return CryptoViewModel.CoinViewModel(marketCapChangePercentage24h: coinModel.marketCapChangePercentage24H?.asNumberString() ?? "0.0",
+                                             cryptolineChart: CryptoLineChartView.ChartViewModel.init(data: coinModel.sparklineIn7D?.price ?? [],
                                                                                                       showLegend: true,
                                                                                                       showAxis: true,
                                                                                                       fillColor: changeColor ? .systemRed : .systemGreen),
-                                                  currentPrice: coinModel.currentPrice.asCurrencyWith6Decimals(),
-                                                  priceChangePercantage24h: coinModel.priceChangePercentage24H?.asPercentString() ?? "0.0",
-                                                  marketCapitalization: coinModel.marketCap?.formattedWithAbbreviations() ?? "0.0",
-                                                  rank: String(coinModel.rank),
-                                                  volume: coinModel.totalVolume?.formattedWithAbbreviations() ?? "0.0",
-                                                  coinName: coinModel.name)
+                                             currentPrice: coinModel.currentPrice.asCurrencyWith6Decimals(),
+                                             priceChangePercantage24h: coinModel.priceChangePercentage24H?.asNumberString() ?? "0.0",
+                                             marketCapitalization: coinModel.marketCap?.formattedWithAbbreviations() ?? "0.0",
+                                             rank: String(coinModel.rank),
+                                             volume: coinModel.totalVolume?.formattedWithAbbreviations() ?? "0.0",
+                                             coinName: coinModel.name)
     }
 }

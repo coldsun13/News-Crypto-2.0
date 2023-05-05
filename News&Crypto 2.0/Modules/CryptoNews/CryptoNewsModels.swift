@@ -29,7 +29,7 @@ struct CryptoViewModel {
         var name: String
         var abbriviatedName: String
         var changePrice: String
-        var cryptolineChart: CryptoLineChartView.ViewModel
+        var cryptolineChart: CryptoLineChartView.ChartViewModel
     }
     
     let cell: [Cell]
@@ -37,7 +37,7 @@ struct CryptoViewModel {
     struct CoinViewModel: CoinControllerViewModel {
 
         var marketCapChangePercentage24h: String
-        var cryptolineChart: CryptoLineChartView.ViewModel
+        var cryptolineChart: CryptoLineChartView.ChartViewModel
         var currentPrice: String
         var priceChangePercantage24h: String
         var marketCapitalization: String

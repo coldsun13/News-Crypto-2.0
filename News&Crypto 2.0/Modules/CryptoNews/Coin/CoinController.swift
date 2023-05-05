@@ -1,7 +1,7 @@
 import UIKit
 
 protocol CoinControllerViewModel {
-    var cryptolineChart: CryptoLineChartView.ViewModel { get }
+    var cryptolineChart: CryptoLineChartView.ChartViewModel { get }
     var currentPrice: String { get }
     var priceChangePercantage24h: String { get }
     var marketCapitalization: String { get }
@@ -33,19 +33,19 @@ final class CoinViewController: UIViewController {
         addContraints()
     }
     
-    func set(info: CoinControllerViewModel) {
-        let changeMarketColor = (Double(info.marketCapChangePercentage24h) ?? 0.0 < 0)
-        capitalizationStackView.setCapitalizationLabel(info.marketCapitalization,
-                                                       info.marketCapChangePercentage24h,
+    func set(viewModel: CoinControllerViewModel) {
+        let changeMarketColor = Double(viewModel.priceChangePercantage24h) ?? 0.0 < 0.0
+        capitalizationStackView.setCapitalizationLabel(viewModel.marketCapitalization,
+                                                       viewModel.marketCapChangePercentage24h + "%",
                                                        changeMarketColor ? .systemRed : .systemGreen)
-        let changeColor = (Double(info.priceChangePercantage24h) ?? 0.0 < 0)
-        capitalizationStackView.setCurrentPriceLabel(info.currentPrice,
-                                                     info.priceChangePercantage24h,
+        let changeColor = (Double(viewModel.priceChangePercantage24h) ?? 0.0 < 0)
+        capitalizationStackView.setCurrentPriceLabel(viewModel.currentPrice,
+                                                     viewModel.priceChangePercantage24h + "%",
                                                      changeColor ? .systemRed : .systemGreen)
-        capitalizationStackView.setRankLabel(info.rank)
-        capitalizationStackView.setVolumeLabel(info.volume)
-                title = info.coinName
-        chartView.configure(viewModel: info.cryptolineChart)
+        capitalizationStackView.setRankLabel(viewModel.rank)
+        capitalizationStackView.setVolumeLabel(viewModel.volume)
+        title = viewModel.coinName
+        chartView.configure(viewModel: viewModel.cryptolineChart)
     }
 }
 
@@ -131,7 +131,6 @@ private extension CoinViewController {
     }
     
     func addNavigationSetups() {
-//        title = "Bitcoin"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
     }

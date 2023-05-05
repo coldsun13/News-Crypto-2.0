@@ -11,7 +11,12 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
     var dataFetcher = DataFetcherService()
     
-    private var cryptoNewsViewModel = CryptoViewModel(cell: [], coinViewModel: [])
+    private var cryptoNewsViewModel = CryptoViewModel(cell: [], coinViewModel: []) {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     private let panel = FloatingPanelController()
     private let tableView = UITableView()
     
@@ -50,6 +55,7 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        setupFloatingPanel()
         interactor?.makeRequest(request: CryptoNews.Model.Request.RequestType.getCoins)
     }
     
@@ -58,7 +64,6 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
             
         case .displayCoins(let cryptoViewModel):
             self.cryptoNewsViewModel = cryptoViewModel
-            tableView.reloadData()
         }
     }
 }
@@ -79,7 +84,6 @@ private extension CryptoNewsViewController {
     
     func setupFloatingPanel() {
         let vc = NewsViewController()
-//        panel.surfaceView.backgroundColor = .theme.cellColor
         panel.set(contentViewController: vc)
         panel.surfaceView.appearance.cornerRadius = 20
         panel.addPanel(toParent: self)
@@ -104,7 +108,7 @@ extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let coinVC = CoinViewController()
         let wallet = cryptoNewsViewModel.coinViewModel[indexPath.row]
-        coinVC.set(info: wallet)
+        coinVC.set(viewModel: wallet)
         present(UINavigationController(rootViewController: coinVC), animated: true)
     }
 }

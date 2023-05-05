@@ -1,15 +1,22 @@
 import UIKit
 import Charts
 
+//protocol ChartViewModel {
+//    var data: [Double] { get }
+//    var showLegend: Bool { get }
+//    var showAxis: Bool { get }
+//    var fillColor: UIColor { get }
+//}
+
 final class CryptoLineChartView: UIView {
     
     private let chartView = LineChartView()
     
-    struct ViewModel {
-        let data: [Double]
-        let showLegend: Bool
-        let showAxis: Bool
-        let fillColor: UIColor
+    struct ChartViewModel {
+        var data: [Double]
+        var showLegend: Bool
+        var showAxis: Bool
+        var fillColor: UIColor
     }
     
     override init(frame: CGRect) {
@@ -28,7 +35,7 @@ final class CryptoLineChartView: UIView {
     }
     
     // MARK: - API
-    func configure(viewModel: ViewModel) {
+    func configure(viewModel: ChartViewModel) {
         var entries = [ChartDataEntry]()
         for (index, value) in viewModel.data.enumerated() {
             entries.append(.init(x: Double(index), y: value))
