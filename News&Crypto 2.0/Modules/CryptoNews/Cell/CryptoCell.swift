@@ -1,10 +1,10 @@
 import UIKit
 
 protocol CryptoCellViewModel {
-    var price: String { get }
+    var currentPrice: String { get }
     var name: String { get }
     var abbriviatedName: String { get }
-    var changePrice: String { get }
+    var priceChangePercantage24h: String { get }
     var cryptolineChart: CryptoLineChartView.ChartViewModel { get }
     var iconURLString: String { get }
 }
@@ -42,13 +42,13 @@ final class CryptoCell: UITableViewCell {
     }
     
     func set(viewModel: CryptoCellViewModel) {
-        let changeMarketColor = Double(viewModel.changePrice) ?? 0.0 < 0
+        let changeMarketColor = Double(viewModel.priceChangePercantage24h) ?? 0.0 < 0
         coinImageView.set(imageURL: viewModel.iconURLString)
-        priceLabel.text = viewModel.price
+        priceLabel.text = viewModel.currentPrice
         coinNameLabel.text = viewModel.name
         coinAbbriviatedNameLabel.text = viewModel.abbriviatedName
         changePriceLabel.textColor = changeMarketColor ? .systemRed : .systemGreen
-        changePriceLabel.text = viewModel.changePrice + "%"
+        changePriceLabel.text = viewModel.priceChangePercantage24h + "%"
         cryptoLineChartView.configure(viewModel: viewModel.cryptolineChart)
     }
 }

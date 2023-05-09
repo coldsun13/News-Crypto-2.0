@@ -29,10 +29,10 @@ final class CryptoNewsPresenter: CryptoNewsPresentationLogic {
     private func cellViewModel(from coinModel: CoinModel) -> CryptoViewModel.Cell {
         let changeColor = (coinModel.priceChangePercentage24H ?? 0.0 < 0)
         return CryptoViewModel.Cell(iconURLString: coinModel.image,
-                                    price: coinModel.currentPrice.asCurrencyWith6Decimals(),
+                                    currentPrice: coinModel.currentPrice.asCurrencyWith6Decimals(),
                                     name: coinModel.name,
                                     abbriviatedName: coinModel.symbol.uppercased(),
-                                    changePrice: String(coinModel.priceChangePercentage24H?.asNumberString() ?? "0.0"),
+                                    priceChangePercantage24h: String(coinModel.priceChangePercentage24H?.asNumberString() ?? "0.0"),
                                     cryptolineChart: CryptoLineChartView.ChartViewModel.init(data: coinModel.sparklineIn7D?.price ?? [],
                                                                                              showLegend: false,
                                                                                              showAxis: false,

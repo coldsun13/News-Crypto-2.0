@@ -11,7 +11,7 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
     var dataFetcher = DataFetcherService()
     
-    private var cryptoNewsViewModel = CryptoViewModel(cell: [], coinViewModel: []) {
+    private var cryptoViewModel = CryptoViewModel(cell: [], coinViewModel: []) {
         didSet {
             tableView.reloadData()
         }
@@ -63,7 +63,7 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
         switch viewModel {
             
         case .displayCoins(let cryptoViewModel):
-            self.cryptoNewsViewModel = cryptoViewModel
+            self.cryptoViewModel = cryptoViewModel
         }
     }
 }
@@ -94,20 +94,20 @@ private extension CryptoNewsViewController {
 extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cryptoNewsViewModel.cell.count
+        return cryptoViewModel.cell.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CryptoCell.identifier, for: indexPath) as? CryptoCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        cell.set(viewModel: cryptoNewsViewModel.cell[indexPath.row])
+        cell.set(viewModel: cryptoViewModel.cell[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let coinVC = CoinViewController()
-        let wallet = cryptoNewsViewModel.coinViewModel[indexPath.row]
+        let wallet = cryptoViewModel.coinViewModel[indexPath.row]
         coinVC.set(viewModel: wallet)
         present(UINavigationController(rootViewController: coinVC), animated: true)
     }

@@ -24,18 +24,19 @@ enum CryptoNews {
 struct CryptoViewModel {
     
     struct Cell: CryptoCellViewModel {
+        
         var iconURLString: String
-        var price: String
+        var currentPrice: String
         var name: String
         var abbriviatedName: String
-        var changePrice: String
+        var priceChangePercantage24h: String
         var cryptolineChart: CryptoLineChartView.ChartViewModel
     }
     
     let cell: [Cell]
     
     struct CoinViewModel: CoinControllerViewModel {
-
+        
         var marketCapChangePercentage24h: String
         var cryptolineChart: CryptoLineChartView.ChartViewModel
         var currentPrice: String
