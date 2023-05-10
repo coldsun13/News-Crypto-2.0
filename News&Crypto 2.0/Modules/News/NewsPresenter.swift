@@ -1,22 +1,32 @@
-//
-//  NewsPresenter.swift
-//  News&Crypto 2.0
-//
-//  Created by Игорь Тимофеев on 22.04.23.
-//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
-//
-
 import UIKit
 
 protocol NewsPresentationLogic {
-  func presentData(response: News.Model.Response.ResponseType)
+    func presentData(response: News.Model.Response.ResponseType)
 }
 
 class NewsPresenter: NewsPresentationLogic {
-  weak var viewController: NewsDisplayLogic?
-  
-  func presentData(response: News.Model.Response.ResponseType) {
-  
-  }
-  
+    
+    weak var viewController: NewsDisplayLogic?
+    
+    func presentData(response: News.Model.Response.ResponseType) {
+        switch response {
+            
+        case .presentNews(news: let news):
+            let news = news.map { newsItem in
+                cellViewModel(from: newsItem)
+            }
+            
+            let newsViewModel = NewsViewModel(cell: news)
+            
+            viewController?.displayData(viewModel: News.Model.ViewModel.ViewModelData.displayNews(newsViewModel: newsViewModel))
+        }
+    }
+    
+    private func cellViewModel(from newsModel: NewsModel) -> NewsViewModel.Cell {
+        return NewsViewModel.Cell(url: newsModel.url,
+                                  image: newsModel.image,
+                                  headline: newsModel.headline,
+                                  source: newsModel.source,
+                                  date: .stringDate(from: newsModel.datetime))
+    }
 }

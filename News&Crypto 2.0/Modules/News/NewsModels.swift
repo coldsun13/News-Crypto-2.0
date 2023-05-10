@@ -1,31 +1,36 @@
-//
-//  NewsModels.swift
-//  News&Crypto 2.0
-//
-//  Created by Игорь Тимофеев on 22.04.23.
-//  Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
-//
-
 import UIKit
 
 enum News {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case some
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case getNews
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case presentNews(news: [NewsModel])
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case displayNews(newsViewModel: NewsViewModel)
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-        case some
-      }
+}
+
+struct NewsViewModel {
+    
+    struct Cell: NewsCellViewModel {
+        
+        var url: String
+        var image: String
+        var headline: String
+        var source: String
+        var date: String
     }
-    struct ViewModel {
-      enum ViewModelData {
-        case some
-      }
-    }
-  }
-  
+    
+    let cell: [Cell]
 }
