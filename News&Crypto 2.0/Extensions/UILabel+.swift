@@ -26,4 +26,90 @@ extension UILabel {
 
         self.attributedText = attributedString
     }
+    
+    func modificatorForCurrentPriceLabel(_ price: String, _ change: String, _ color: UIColor) -> NSMutableAttributedString {
+        let firstAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.gray,
+            NSAttributedString.Key.font: UIFont.montserrat(15, .medium)
+        ]
+        
+        let secondAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: UIFont.montserrat(20, .bold)
+        ]
+        
+        let thirdAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: color,
+            NSAttributedString.Key.font: UIFont.montserrat(12, .medium)
+        ]
+        
+        let firstString = NSMutableAttributedString(string: "💸 Current Price\n", attributes: firstAttributes)
+        
+        let secondString = NSAttributedString(string: "\(price)\n", attributes: secondAttributes)
+        let thirdString = NSAttributedString(string: "\(change)", attributes: thirdAttributes)
+        firstString.append(secondString)
+        firstString.append(thirdString)
+        self.attributedText = firstString
+        return firstString
+    }
+    
+     func modificatorForCapitalizationLabel(_ price: String, _ change: String, _ color: UIColor) -> NSMutableAttributedString {
+        let firstAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.gray,
+            NSAttributedString.Key.font: UIFont.montserrat(15, .medium)
+        ]
+        
+        let secondAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: UIFont.montserrat(20, .bold)
+        ]
+        
+        let thirdAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: color,
+            NSAttributedString.Key.font: UIFont.montserrat(12, .medium)
+        ]
+        
+        let firstString = NSMutableAttributedString(string: "🏦 Market Capitalization\n", attributes: firstAttributes)
+        
+        let secondString = NSAttributedString(string: "$ \(price)\n", attributes: secondAttributes)
+        let thirdString = NSAttributedString(string: "\(change)", attributes: thirdAttributes)
+        firstString.append(secondString)
+        firstString.append(thirdString)
+        self.attributedText = firstString
+        return firstString
+    }
+    
+    func modificatorForRankLabel(_ rank: String) -> NSMutableAttributedString {
+        let firstAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.gray,
+            NSAttributedString.Key.font: UIFont.montserrat(15, .medium)
+        ]
+        
+        let secondAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: UIFont.montserrat(20, .bold)
+        ]
+        
+        let firstString = NSMutableAttributedString(string: "🏆 Rank\n", attributes: firstAttributes)
+        
+        let secondString = NSAttributedString(string: "\(rank)", attributes: secondAttributes)
+        firstString.append(secondString)
+        self.attributedText = firstString
+        return firstString
+    }
+    
+    func modificatorForVolumeLabel(_ volume: String) -> NSMutableAttributedString {
+        let firstAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.gray,
+            NSAttributedString.Key.font: UIFont.montserrat(15, .medium)
+        ]
+        
+        let secondAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: UIFont.montserrat(20, .bold)
+        ]
+        
+        let firstString = NSMutableAttributedString(string: "💰 Volume\n", attributes: firstAttributes)
+        
+        let secondString = NSAttributedString(string: "$ \(volume)", attributes: secondAttributes)
+        firstString.append(secondString)
+        self.attributedText = firstString
+        return firstString
+    }
 }
