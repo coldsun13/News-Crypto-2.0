@@ -25,7 +25,7 @@ private extension TabBarController {
         case .wallet:
             return WalletViewController()
         case .info:
-            return InfoViewController()
+            return ProfileNavigationController(rootViewController: InfoViewController())
         case .settings:
             return SettingsViewController()
         }
