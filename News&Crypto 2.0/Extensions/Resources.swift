@@ -27,6 +27,18 @@ enum Resources {
                 }
             }
         }
+        
+        enum Change: String {
+            case up = "arrowtriangle.up.fill"
+            case down = "arrowtriangle.down.fill"
+        }
+        
+        enum FontWeight: String {
+            case bold = "Montserrat-Bold"
+            case medium = "Montserrat-Medium"
+            case regular = "Montserrat-Regular"
+            case semibold = "Montserrat-SemiBold"
+        }
     }
     
     enum Tabbar {
@@ -39,5 +51,9 @@ enum Resources {
             case .settings: return UIImage(systemName: "gear")
             }
         }
+    }
+    
+    enum Images {
+        static let avatarImage = UIImage(systemName: "person.crop.circle.fill")
     }
 }
