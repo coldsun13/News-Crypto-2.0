@@ -34,11 +34,11 @@ final class CoinViewController: UIViewController {
     }
     
     func set(viewModel: CoinControllerViewModel) {
-        let changeMarketColor = Double(viewModel.priceChangePercantage24h) ?? 0.0 < 0.0
+        let changeMarketColor = Double(viewModel.marketCapChangePercentage24h) ?? 0.0 < 0.0
         capitalizationStackView.setCapitalizationLabel(viewModel.marketCapitalization,
                                                        viewModel.marketCapChangePercentage24h + "%",
                                                        changeMarketColor ? .systemRed : .systemGreen)
-        let changeColor = (Double(viewModel.priceChangePercantage24h) ?? 0.0 < 0)
+        let changeColor = Double(viewModel.priceChangePercantage24h) ?? 0.0 < 0
         capitalizationStackView.setCurrentPriceLabel(viewModel.currentPrice,
                                                      viewModel.priceChangePercantage24h + "%",
                                                      changeColor ? .systemRed : .systemGreen)
