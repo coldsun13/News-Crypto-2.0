@@ -46,18 +46,17 @@ final class NewsTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.headline
         sourceAndDateLabel.text = viewModel.source + " • " + viewModel.date
     }
+}
+
+private extension NewsTableViewCell {
     
-    // MARK: - Constraints
-    
-    // MARK: Private
-    
-    private func addConstraints() {
+    func addConstraints() {
         addNewsViewConstraints()
         addMainStackViewConstraints()
         addNewsImageViewConstraints()
     }
     
-    private func addNewsViewConstraints() {
+    func addNewsViewConstraints() {
         newsView.translatesAutoresizingMaskIntoConstraints = false
         newsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         newsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -65,7 +64,7 @@ final class NewsTableViewCell: UITableViewCell {
         newsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
     
-    private func addMainStackViewConstraints() {
+    func addMainStackViewConstraints() {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.topAnchor.constraint(equalTo: newsView.topAnchor, constant: 5).isActive = true
         mainStackView.leadingAnchor.constraint(equalTo: newsView.leadingAnchor, constant: 15).isActive = true
@@ -73,7 +72,7 @@ final class NewsTableViewCell: UITableViewCell {
         mainStackView.bottomAnchor.constraint(equalTo: newsView.bottomAnchor, constant: -5).isActive = true
     }
     
-    private func addNewsImageViewConstraints() {
+    func addNewsImageViewConstraints() {
         newsImageView.translatesAutoresizingMaskIntoConstraints = false
         newsImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
         newsImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -83,7 +82,7 @@ final class NewsTableViewCell: UITableViewCell {
     
     // MARK: Private
     
-    private func addSubviews() {
+    func addSubviews() {
         contentView.addSubview(newsView)
         newsView.addSubview(mainStackView)
         mainStackView.addAllArrangedSubviews(newsImageView,
@@ -92,7 +91,7 @@ final class NewsTableViewCell: UITableViewCell {
                                              sourceAndDateLabel)
     }
     
-    private func addSetups() {
+    func addSetups() {
         addContentViewSetups()
         addNewsViewSetups()
         addMainStackViewSetups()
@@ -102,42 +101,42 @@ final class NewsTableViewCell: UITableViewCell {
         addSourceAndDateLabelSetups()
     }
     
-    private func addContentViewSetups() {
+    func addContentViewSetups() {
         contentView.backgroundColor = .white
     }
     
-    private func addNewsViewSetups() {
+    func addNewsViewSetups() {
         newsView.layer.cornerRadius = 20
         newsView.backgroundColor = .white
         newsView.addShadow()
     }
     
-    private func addMainStackViewSetups() {
+    func addMainStackViewSetups() {
         mainStackView.axis = .horizontal
         mainStackView.distribution = .fillProportionally
         mainStackView.alignment = .center
         mainStackView.spacing = 20
     }
     
-    private func addInfoStackSetups() {
+    func addInfoStackSetups() {
         infoStackView.axis = .vertical
         infoStackView.distribution = .fillProportionally
         infoStackView.alignment = .fill
         infoStackView.spacing = 10
     }
     
-    private func addNewsImageViewSetups() {
+    func addNewsImageViewSetups() {
         newsImageView.layer.cornerRadius = 10
         newsImageView.clipsToBounds = true
         newsImageView.contentMode = .scaleAspectFill
     }
     
-    private func addTitleLabelSetups() {
+    func addTitleLabelSetups() {
         titleLabel.font = .montserrat(17, .medium)
         titleLabel.numberOfLines = 2
     }
     
-    private func addSourceAndDateLabelSetups() {
+    func addSourceAndDateLabelSetups() {
         sourceAndDateLabel.font = .montserrat(15, .medium)
         sourceAndDateLabel.textColor = .gray
     }
