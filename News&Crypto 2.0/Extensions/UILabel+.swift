@@ -52,10 +52,10 @@ extension UILabel {
         return firstString
     }
     
-     func modificatorForCapitalizationLabel(_ price: String, _ change: String, _ color: UIColor) -> NSMutableAttributedString {
+    func modificatorForCapitalizationLabel(_ price: String, _ change: String, _ color: UIColor) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.gray,
-            NSAttributedString.Key.font: UIFont.montserrat(15, .medium)
+            NSAttributedString.Key.font: UIFont.montserrat(13, .medium)
         ]
         
         let secondAttributes: [NSAttributedString.Key: Any] = [
@@ -80,7 +80,7 @@ extension UILabel {
     func modificatorForRankLabel(_ rank: String) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.gray,
-            NSAttributedString.Key.font: UIFont.montserrat(15, .medium)
+            NSAttributedString.Key.font: UIFont.montserrat(13, .medium)
         ]
         
         let secondAttributes: [NSAttributedString.Key: Any] = [
@@ -98,7 +98,7 @@ extension UILabel {
     func modificatorForVolumeLabel(_ volume: String) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.gray,
-            NSAttributedString.Key.font: UIFont.montserrat(15, .medium)
+            NSAttributedString.Key.font: UIFont.montserrat(13, .medium)
         ]
         
         let secondAttributes: [NSAttributedString.Key: Any] = [
