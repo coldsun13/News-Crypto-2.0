@@ -41,7 +41,7 @@ final class WalletCell: UICollectionViewCell {
         priceLabel.text = viewModel.price
         coinImageView.set(imageURL: viewModel.iconUrlString)
         cryptoLineChartView.configure(viewModel: viewModel.cryptolineChart)
-        changePriceLabel.text = viewModel.changePrice
+        changePriceLabel.text = viewModel.changePrice + "%"
         changePriceImageView.image = UIImage(systemName: viewModel.changePriceImage)
     }
 }

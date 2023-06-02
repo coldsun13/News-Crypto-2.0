@@ -65,6 +65,7 @@ private extension WalletViewController {
     
     func configure() {
 
+        view.backgroundColor = .white
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -86,7 +87,8 @@ extension WalletViewController: UICollectionViewDelegate, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WalletCell.identifier, for: indexPath) as? WalletCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WalletCell.identifier,
+                                                            for: indexPath) as? WalletCell else { return UICollectionViewCell() }
         let cellViewModel = walletViewModel.cell[indexPath.row]
         cell.set(viewModel: cellViewModel)
         return cell
