@@ -24,7 +24,7 @@ extension UILabel {
         // (Swift 4.1 and 4.0) Line spacing attribute
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
 
-        self.attributedText = attributedString
+        attributedText = attributedString
     }
     
     func modificatorForCurrentPriceLabel(_ price: String, _ change: String, _ color: UIColor) -> NSMutableAttributedString {
@@ -48,7 +48,7 @@ extension UILabel {
         let thirdString = NSAttributedString(string: "\(change)", attributes: thirdAttributes)
         firstString.append(secondString)
         firstString.append(thirdString)
-        self.attributedText = firstString
+        attributedText = firstString
         return firstString
     }
     
@@ -73,7 +73,7 @@ extension UILabel {
         let thirdString = NSAttributedString(string: "\(change)", attributes: thirdAttributes)
         firstString.append(secondString)
         firstString.append(thirdString)
-        self.attributedText = firstString
+        attributedText = firstString
         return firstString
     }
     
@@ -91,7 +91,7 @@ extension UILabel {
         
         let secondString = NSAttributedString(string: "\(rank)", attributes: secondAttributes)
         firstString.append(secondString)
-        self.attributedText = firstString
+        attributedText = firstString
         return firstString
     }
     
@@ -109,7 +109,14 @@ extension UILabel {
         
         let secondString = NSAttributedString(string: "$ \(volume)", attributes: secondAttributes)
         firstString.append(secondString)
-        self.attributedText = firstString
+        attributedText = firstString
         return firstString
+    }
+
+    func addCharacterSpacing(kernValue: Double = 1.15) {
+        guard let text = text, !text.isEmpty else { return }
+        let string = NSMutableAttributedString(string: text)
+        string.addAttribute(NSAttributedString.Key.kern, value: kernValue, range: NSRange(location: 0, length: string.length - 1))
+        attributedText = string
     }
 }
