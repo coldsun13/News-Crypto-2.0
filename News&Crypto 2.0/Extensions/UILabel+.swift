@@ -1,29 +1,29 @@
 import UIKit
 
 extension UILabel {
-
+    
     func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
-
+        
         guard let labelText = self.text else { return }
-
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineSpacing
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
-
+        
         let attributedString:NSMutableAttributedString
         if let labelattributedText = self.attributedText {
             attributedString = NSMutableAttributedString(attributedString: labelattributedText)
         } else {
             attributedString = NSMutableAttributedString(string: labelText)
         }
-
+        
         // (Swift 4.2 and above) Line spacing attribute
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-
-
+        
+        
         // (Swift 4.1 and 4.0) Line spacing attribute
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-
+        
         attributedText = attributedString
     }
     
@@ -112,11 +112,21 @@ extension UILabel {
         attributedText = firstString
         return firstString
     }
-
+    
     func addCharacterSpacing(kernValue: Double = 1.15) {
         guard let text = text, !text.isEmpty else { return }
         let string = NSMutableAttributedString(string: text)
         string.addAttribute(NSAttributedString.Key.kern, value: kernValue, range: NSRange(location: 0, length: string.length - 1))
         attributedText = string
+    }
+    
+    func addImageInText(systemImage: UIImage, text: String) {
+        let attachment = NSTextAttachment()
+        attachment.image = systemImage
+        attachment.bounds = CGRect(x: 0, y: -10, width: 30, height: 30)
+        let attachmentString = NSAttributedString(attachment: attachment)
+        let myString = NSMutableAttributedString(string: text)
+        myString.insert(attachmentString, at: 0)
+        attributedText = myString
     }
 }
