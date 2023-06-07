@@ -50,16 +50,17 @@ enum Resources {
         static let walletImage = UIImage(systemName: "wallet.pass")
         static let infoImage = UIImage(systemName: "person")
         static let settingsImage = UIImage(systemName: "gear")
-    }
-    
-    enum Tabbar {
-        static func icon(for tab: Tabs) -> UIImage? {
-            
-            switch tab {
-            case .cryptoNews: return Resources.Images.cryptoNewsImage
-            case .wallet: return Resources.Images.walletImage
-            case .info: return Resources.Images.infoImage
-            case .settings: return Resources.Images.settingsImage
+        static let countyImage = UIImage(systemName: "flag")
+        
+        enum Tabbar {
+            static func icon(for tab: Tabs) -> UIImage? {
+                
+                switch tab {
+                case .cryptoNews: return Resources.Images.cryptoNewsImage
+                case .wallet: return Resources.Images.walletImage
+                case .info: return Resources.Images.infoImage
+                case .settings: return Resources.Images.settingsImage
+                }
             }
         }
     }
