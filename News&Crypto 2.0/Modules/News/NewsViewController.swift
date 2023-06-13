@@ -51,7 +51,7 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configureAppearance()
         interactor?.makeRequest(request: News.Model.Request.RequestType.getNews)
     }
     
@@ -66,7 +66,7 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
 
 private extension NewsViewController {
     
-    func configure() {
+    func configureAppearance() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

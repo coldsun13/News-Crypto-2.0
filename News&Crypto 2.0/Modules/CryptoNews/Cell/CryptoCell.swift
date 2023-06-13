@@ -27,7 +27,7 @@ final class CryptoCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addViews()
         addConstraints()
-        configure()
+        configureAppearance()
     }
     
     required init?(coder: NSCoder) {
@@ -60,8 +60,7 @@ private extension CryptoCell {
         coinStackView.addAllArrangedSubviews(coinImageView,
                                              coinNameStackView,
                                              cryptoLineChartView,
-                                             priceStackView
-                                             )
+                                             priceStackView)
         priceStackView.addAllArrangedSubviews(priceLabel,
                                               changePriceLabel)
         coinNameStackView.addAllArrangedSubviews(coinNameLabel,
@@ -87,7 +86,7 @@ private extension CryptoCell {
         cryptoLineChartView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    func configure() {
+    func configureAppearance() {
         coinStackView.axis = .horizontal
         coinStackView.distribution = .fillProportionally
         coinStackView.alignment = .center
