@@ -2,8 +2,7 @@ import UIKit
 
 enum Tabs: Int, CaseIterable {
     case cryptoNews
-    case wallet
-    case info
+    case profile
     case settings
 }
 
@@ -22,10 +21,8 @@ private extension TabBarController {
             
         case .cryptoNews:
             return CryptoNewsViewController()
-        case .wallet:
-            return WalletViewController()
-        case .info:
-            return ProfileNavigationController(rootViewController: InfoViewController())
+        case .profile:
+            return ProfileNavigationController(rootViewController: ProfileViewController())
         case .settings:
             return SettingsViewController()
         }
@@ -38,12 +35,13 @@ private extension TabBarController {
         tabBar.layer.borderColor = Resources.Colors.separator.cgColor
         tabBar.layer.borderWidth = 1
         tabBar.layer.cornerRadius = 10
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.layer.masksToBounds = true
         
         let controllers: [UIViewController] = Tabs.allCases.map { tab in
             let controller = getController(tabs: tab)
             controller.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.title(for: tab),
-                                                 image: Resources.Tabbar.icon(for: tab),
+                                                 image: Resources.Images.Tabbar.icon(for: tab),
                                                  tag: tab.rawValue)
             return controller
         }

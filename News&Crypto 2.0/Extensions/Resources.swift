@@ -18,10 +18,8 @@ enum Resources {
                 switch tab {
                 case .cryptoNews:
                     return "Home"
-                case .wallet:
-                    return "Wallet"
-                case .info:
-                    return "Info"
+                case .profile:
+                    return "Profile"
                 case .settings:
                     return "Settings"
                 }
@@ -57,8 +55,7 @@ enum Resources {
                 
                 switch tab {
                 case .cryptoNews: return Resources.Images.cryptoNewsImage
-                case .wallet: return Resources.Images.walletImage
-                case .info: return Resources.Images.infoImage
+                case .profile: return Resources.Images.walletImage
                 case .settings: return Resources.Images.settingsImage
                 }
             }
