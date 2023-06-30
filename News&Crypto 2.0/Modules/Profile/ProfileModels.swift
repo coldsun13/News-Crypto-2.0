@@ -1,6 +1,6 @@
 import UIKit
 
-enum Wallet {
+enum Profile {
     
     enum Model {
         struct Request {
@@ -15,14 +15,14 @@ enum Wallet {
         }
         struct ViewModel {
             enum ViewModelData {
-                case displayCoins(walletViewModel: WalletViewModel)
+                case displayCoins(walletViewModel: ProfileViewModel)
             }
         }
     }
 }
 
-struct WalletViewModel {
-    struct Cell: WalletCellViewModel {
+struct ProfileViewModel {
+    struct Cell: ProfileCellViewModel {
         
         var changePriceImage: String
         var abbriviatedName: String

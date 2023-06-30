@@ -1,29 +1,29 @@
 import UIKit
 
-protocol WalletPresentationLogic {
-    func presentData(response: Wallet.Model.Response.ResponseType)
+protocol ProfilePresentationLogic {
+    func presentData(response: Profile.Model.Response.ResponseType)
 }
 
-class WalletPresenter: WalletPresentationLogic {
+class ProfilePresenter: ProfilePresentationLogic {
     
-    weak var viewController: WalletDisplayLogic?
+    weak var viewController: ProfileDisplayLogic?
     
-    func presentData(response: Wallet.Model.Response.ResponseType) {
+    func presentData(response: Profile.Model.Response.ResponseType) {
         switch response {
             
         case .presentCoins(coins: let coins):
             let cells = coins.map { coinItem in
                 cellViewModel(from: coinItem)
             }
-            let cryptoViewModel = WalletViewModel(cell: cells)
+            let cryptoViewModel = ProfileViewModel(cell: cells)
             
-            viewController?.displayData(viewModel: Wallet.Model.ViewModel.ViewModelData.displayCoins(walletViewModel: cryptoViewModel))
+            viewController?.displayData(viewModel: Profile.Model.ViewModel.ViewModelData.displayCoins(walletViewModel: cryptoViewModel))
         }
     }
                                         
-    private func cellViewModel(from coinModel: CoinModel) -> WalletViewModel.Cell {
+    private func cellViewModel(from coinModel: CoinModel) -> ProfileViewModel.Cell {
         let changeColor = (coinModel.priceChangePercentage24H ?? 0.0 < 0)
-        return WalletViewModel.Cell(changePriceImage: changeColor ? Resources.Strings.Change.down.rawValue : Resources.Strings.Change.up.rawValue,
+        return ProfileViewModel.Cell(changePriceImage: changeColor ? Resources.Strings.Change.down.rawValue : Resources.Strings.Change.up.rawValue,
                                     abbriviatedName: coinModel.symbol,
                                     name: coinModel.name,
                                     price: coinModel.currentPrice.asCurrencyWith6Decimals(),

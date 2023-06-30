@@ -1,6 +1,6 @@
 import UIKit
 
-protocol WalletCellViewModel {
+protocol ProfileCellViewModel {
     var name: String { get }
     var price: String { get }
     var iconUrlString: String { get }
@@ -10,7 +10,7 @@ protocol WalletCellViewModel {
     var changePriceImage: String { get }
 }
 
-final class WalletCell: UICollectionViewCell {
+final class ProfileCell: UICollectionViewCell {
     
     static let identifier = "WalletCell"
     
@@ -36,7 +36,7 @@ final class WalletCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(viewModel: WalletCellViewModel) {
+    func set(viewModel: ProfileCellViewModel) {
         nameCryptoLabel.attributedText = modificatorForNameCoinLabel(viewModel.name, viewModel.abbriviatedName)
         priceLabel.text = viewModel.price
         coinImageView.set(imageURL: viewModel.iconUrlString)
@@ -46,11 +46,11 @@ final class WalletCell: UICollectionViewCell {
     }
 }
 
-private extension WalletCell {
+private extension ProfileCell {
     
     func addSubviews() {
         addSubview(mainView)
-        mainView.addAllSubviews(mainStackView,
+        mainView.addSubviewsAndMask(mainStackView,
                                 priceLabel,
                                 changePriceStackView,
                                 cryptoLineChartView)
@@ -86,7 +86,6 @@ private extension WalletCell {
         cryptoLineChartView.topAnchor.constraint(equalTo: changePriceStackView.bottomAnchor, constant: 5).isActive = true
         cryptoLineChartView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 5).isActive = true
         cryptoLineChartView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.8).isActive = true
-//        cryptoLineChartView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         cryptoLineChartView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -5).isActive = true
         
         changePriceImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -96,22 +95,22 @@ private extension WalletCell {
     func configure() {
         mainView.layer.cornerRadius = 15
         mainView.backgroundColor = .yellow
-        
+
         mainStackView.alignment = .center
-        
+
         nameCryptoLabel.font = .montserrat(30, .bold)
         nameCryptoLabel.numberOfLines = 2
-        
+
         changePriceLabel.font = .montserrat(15, .regular)
         changePriceLabel.textColor = .black
         changePriceImageView.tintColor = .systemGreen
-        
+
         priceLabel.font = .montserrat(30, .bold)
-        
+
         coinImageView.layer.cornerRadius = coinImageView.frame.size.width / 2
         coinImageView.clipsToBounds = true
         coinImageView.contentMode = .scaleAspectFill
-        
+
         cryptoLineChartView.clipsToBounds = true
         cryptoLineChartView.isUserInteractionEnabled = false
     }
