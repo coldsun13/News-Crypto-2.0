@@ -60,7 +60,7 @@ final class CapitalizationStackView: UIStackView {
     // MARK: Private
 }
 
-extension CapitalizationStackView {
+private extension CapitalizationStackView {
     
     func addSubviews() {
         addAllArrangedSubviews(currentAndCapitalizationStackView,
