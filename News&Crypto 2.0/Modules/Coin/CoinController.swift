@@ -78,12 +78,8 @@ private extension CoinViewController {
         mainStackView.heightAnchor.constraint(equalToConstant: 500).isActive = true
     }
     
-    // MARK: - Setups
-    
-    // MARK: Private
-    
     func addSubviews() {
-        view.addAllSubviews(scrollView)
+        view.addSubviewsAndMask(scrollView)
         scrollView.addSubview(mainStackView)
         mainStackView.addAllArrangedSubviews(chartView,
                                           overviewAndWalletButtonStackView,

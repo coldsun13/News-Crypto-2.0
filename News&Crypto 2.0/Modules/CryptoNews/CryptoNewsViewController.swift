@@ -87,7 +87,6 @@ private extension CryptoNewsViewController {
         panel.set(contentViewController: vc)
         panel.surfaceView.appearance.cornerRadius = 20
         panel.addPanel(toParent: self)
-        
     }
 }
 
@@ -106,9 +105,14 @@ extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let coinVC = CoinViewController()
-        let wallet = cryptoViewModel.coinViewModel[indexPath.row]
-        coinVC.set(viewModel: wallet)
-        present(UINavigationController(rootViewController: coinVC), animated: true)
+        router?.openCoinController(source: self, viewModel: cryptoViewModel.coinViewModel[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .insert {
+            
+        }
     }
 }
