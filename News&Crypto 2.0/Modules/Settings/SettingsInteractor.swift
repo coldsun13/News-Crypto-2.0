@@ -13,6 +13,15 @@ class SettingsInteractor: SettingsBusinessLogic {
         if service == nil {
             service = SettingsService()
         }
+        
+        switch request {
+            
+        case .saveUser:
+            presenter?.presentData(response: Settings.Model.Response.ResponseType.presentAlert(name: "Enter your name"))
+        }
     }
-    
+}
+
+extension SettingsInteractor {
+
 }

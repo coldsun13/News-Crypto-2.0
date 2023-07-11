@@ -12,10 +12,10 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
     private let headerView = HeaderView()
     private let acccountView = AccountView()
     private let preferencesView = PreferencesView()
-
+    
     private let accountLabel = UILabel()
     private let preferencesLabel = UILabel()
-
+    
     
     // MARK: Object lifecycle
     
@@ -57,9 +57,12 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
     }
     
     func displayData(viewModel: Settings.Model.ViewModel.ViewModelData) {
-        
+        switch viewModel {
+            
+        case .displayAlert(name: let name):
+            router?.revealAlertController(name)
+        }
     }
-    
 }
 
 private extension SettingsViewController {
@@ -77,7 +80,7 @@ private extension SettingsViewController {
         headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         headerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
-    
+        
         accountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20).isActive = true
         accountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         
@@ -107,5 +110,42 @@ private extension SettingsViewController {
         preferencesLabel.addCharacterSpacing(kernValue: 1.25)
         preferencesLabel.font = .montserrat(12, .bold)
         preferencesLabel.textColor = .systemGray2
+        headerView.delegate = self
+        acccountView.delegate = self
     }
 }
+
+extension SettingsViewController: HeaderViewDelegate {
+    
+    func revealAlertController() {
+        interactor?.makeRequest(request: Settings.Model.Request.RequestType.saveUser)
+    }
+    
+    func changePhotoAvatarImage() {
+        router?.showImagePicker()
+    }
+}
+
+extension SettingsViewController: AccountViewDelegate {
+    func saveCountry(country: String) {
+        print("saveC")
+    }
+    
+    func saveNumber(number: String) {
+        print("saveN")
+    }
+}
+
+extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+//        if let image = info[.editedImage] as? UIImage {
+//
+//        }
+//        if let image = info[.originalImage] as? UIImage {
+//      
+//        }
+    }
+}
+

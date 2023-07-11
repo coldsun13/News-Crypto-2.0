@@ -1,23 +1,22 @@
 import UIKit
 
 enum Settings {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case some
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case saveUser
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case presentAlert(name: String)
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case displayAlert(name: String)
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-        case some
-      }
-    }
-    struct ViewModel {
-      enum ViewModelData {
-        case some
-      }
-    }
-  }
-  
 }
