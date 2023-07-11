@@ -49,6 +49,7 @@ enum Resources {
         static let infoImage = UIImage(systemName: "person")
         static let settingsImage = UIImage(systemName: "gear")
         static let countyImage = UIImage(systemName: "flag")
+        static let arrowImage = UIImage(systemName: "chevron.right")
         
         enum Tabbar {
             static func icon(for tab: Tabs) -> UIImage? {
