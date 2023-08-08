@@ -15,8 +15,13 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
     
     private let accountLabel = UILabel()
     private let preferencesLabel = UILabel()
+    private let saveButton = UIButton()
     
-    
+//    var infoData = Accounts(country: "hello", phoneNumber: "hello", email: "hello", name: "hello", image: (Resources.Images.arrowImage?.pngData())!)
+    var infoData = Accounts(country: "hello", phoneNumber: "hello", email: "hello", name: "hello")
+
+    var accountsData = Account()
+//    var infoEmail = String()
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -56,6 +61,11 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
         configureAppearance()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print(infoData)
+        print("Hello")
+    }
+    
     func displayData(viewModel: Settings.Model.ViewModel.ViewModelData) {
         switch viewModel {
             
@@ -73,6 +83,7 @@ private extension SettingsViewController {
                                 preferencesView,
                                 accountLabel,
                                 preferencesLabel)
+        preferencesView.addSubviewsAndMask(saveButton)
     }
     
     func addConstraints() {
@@ -96,6 +107,9 @@ private extension SettingsViewController {
         preferencesView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         preferencesView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         preferencesView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        saveButton.bottomAnchor.constraint(equalTo: preferencesView.bottomAnchor, constant: -120).isActive = true
+        saveButton.centerXAnchor.constraint(equalTo: preferencesView.centerXAnchor).isActive = true
     }
     
     func configureAppearance() {
@@ -112,13 +126,35 @@ private extension SettingsViewController {
         preferencesLabel.textColor = .systemGray2
         headerView.delegate = self
         acccountView.delegate = self
+        saveButton.setTitle("НАЖМИ СУКА", for: .normal)
+        saveButton.tintColor = .black
+        saveButton.backgroundColor = .black
+        
+        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
+    }
+    
+    @objc func saveButtonAction() {
+//        interactor?.makeRequest(request: Settings.Model.Request.RequestType.saveProfile(profile: <#T##Accounts#>))
+//        let myAcc = Accounts(country: <#T##String#>, phoneNumber: <#T##String#>, email: <#T##String#>, name: <#T##String#>, image: <#T##Data#>)
+        let coreManager = CoreDataWorker.shared
+        coreManager.saveAccount(account: infoData)
+//        print(accountsData)
     }
 }
 
+// Сохранить кордату и передать в роутер 
+
 extension SettingsViewController: HeaderViewDelegate {
+    func transferEmailString(email: String) {
+        infoData.email = email
+    }
+
+    func transferNameString(name: String) {
+        infoData.name = name
+    }
     
     func revealAlertController() {
-        interactor?.makeRequest(request: Settings.Model.Request.RequestType.saveUser)
+        interactor?.makeRequest(request: Settings.Model.Request.RequestType.callAlert)
     }
     
     func changePhotoAvatarImage() {
@@ -127,12 +163,15 @@ extension SettingsViewController: HeaderViewDelegate {
 }
 
 extension SettingsViewController: AccountViewDelegate {
-    func saveCountry(country: String) {
-        print("saveC")
+    func transferCountryString(string: String) {
+        infoData.country = string
+//        print("\(infoData)")
+        print(string)
     }
     
-    func saveNumber(number: String) {
-        print("saveN")
+    func transferPhoneNumberString(string: String) {
+        infoData.phoneNumber = string
+        print(string)
     }
 }
 

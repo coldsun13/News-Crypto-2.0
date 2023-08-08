@@ -13,3 +13,7 @@ struct Accounts {
 }
 
 extension Accounts: Codable { }
+
+struct Coins {
+    var coinName: String
+}

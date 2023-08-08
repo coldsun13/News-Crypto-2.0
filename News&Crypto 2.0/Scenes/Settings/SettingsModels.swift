@@ -5,7 +5,8 @@ enum Settings {
     enum Model {
         struct Request {
             enum RequestType {
-                case saveUser
+                case callAlert
+//                case saveProfile(profile: Accounts)
             }
         }
         struct Response {

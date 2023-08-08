@@ -7,7 +7,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Coin" representedClassName="Coin" syncable="YES" codeGenerationType="class">
+    <entity name="Coin" representedClassName="Coin" syncable="YES">
         <attribute name="coinSymbol" optional="YES" attributeType="String"/>
     </entity>
 </model>

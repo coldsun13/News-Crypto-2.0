@@ -8,6 +8,8 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
 
     var interactor: ProfileBusinessLogic?
     var router: (NSObjectProtocol & ProfileRoutingLogic)?
+    
+    private var storageService: PersistenceStorage?
 
     private let scrollView = UIScrollView()
     private let mainStackView = UIStackView()
@@ -15,6 +17,7 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
     private var profileViewModel = ProfileViewModel(cell: [])
     private let layout = CustomFlowLayout(width: 300, height: 400)
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    var accmy = [Accounts]()
 
     // MARK: Object lifecycle
 
@@ -24,6 +27,36 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
         addSubviews()
         addConstraints()
         configureAppearance()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getAccounts { card in
+            self.accmy = card
+        }
+        print(accmy)
+    }
+    
+    func getAccounts(completion: @escaping ([Accounts]) -> Void) {
+        CoreDataWorker.shared.fetchAccount { fetchedAccounts in
+
+            var accounts = [Accounts]()
+            for account in fetchedAccounts {
+                let account = Accounts(country: account.country ?? "",
+                                       phoneNumber: account.phoneNumber ?? "",
+                                       email: account.email ?? "",
+                                       name: account.name ?? "")
+                accounts.append(account)
+            }
+            completion(accounts)
+        }
+    }
+    
+//    func get
+    func getAccounts2(completion: @escaping ([Accounts]) -> Void) {
+        CoreDataWorker.shared.fetchAccount { fetchedAccounts in
+            var accounts = [Accounts]()
+//            accounts.append(Accounts(country: fetchedAccounts., phoneNumber: <#T##String#>, email: <#T##String#>, name: <#T##String#>))
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -117,3 +150,18 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDeleg
     }
 
 }
+
+//extension ProfileViewController: ProfileViewDelegate {
+//    func setName(_ name: String) {
+//        CoreDataManager.getName(<#T##self: CoreDataManager##CoreDataManager#>)
+//    }
+    
+    
+//}
+
+
+////            account.append(Accounts(country: card.country!, phoneNumber: card.phoneNumber!, email: card.email!, name: card.name!))
+////            account.append(Accounts(country: card., phoneNumber: <#T##String#>, email: <#T##String#>, name: <#T##String#>))
+////            account.append(Accounts(country: card.country, phoneNumber: <#T##String#>, email: <#T##String#>, name: A))
+////            account?.append(Accounts(country: card., phoneNumber: <#T##String#>, email: <#T##String#>, name: A))
+//            account?.append(Accounts(country: card., phoneNumber: <#T##String#>, email: <#T##String#>, name: <#T##String#>))

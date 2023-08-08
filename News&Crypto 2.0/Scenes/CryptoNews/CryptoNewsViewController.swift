@@ -9,7 +9,8 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     
     var interactor: CryptoNewsBusinessLogic?
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
-    var dataFetcher = DataFetcherService()
+    let dataFetcher = DataFetcherService()
+    var coin = Coin()
     
     private var cryptoViewModel = CryptoViewModel(cell: [], coinViewModel: []) {
         didSet {
@@ -111,8 +112,10 @@ extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        if editingStyle == .insert {
-            
+        if editingStyle == .delete {
+//            CoreDataWorker.saveCoin(coin, coin: cryptoViewModel.coinViewModel[indexPath.row].coinName)
+            CoreDataWorker.shared.saveCoin(coin: Coin(), symbol: cryptoViewModel.coinViewModel[indexPath.row].coinName)
+            print("saveCoreData")
         }
     }
 }

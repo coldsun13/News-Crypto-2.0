@@ -11,12 +11,12 @@ class SettingsInteractor: SettingsBusinessLogic {
     
     func makeRequest(request: Settings.Model.Request.RequestType) {
         if service == nil {
-            service = SettingsService()
+//            service = SettingsService()
         }
         
         switch request {
             
-        case .saveUser:
+        case .callAlert:
             presenter?.presentData(response: Settings.Model.Response.ResponseType.presentAlert(name: "Enter your name"))
         }
     }

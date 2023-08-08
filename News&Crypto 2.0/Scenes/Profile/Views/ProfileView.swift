@@ -1,14 +1,25 @@
 import UIKit
 
+protocol ProfileViewDelegate: AnyObject {
+    func setName(_ name: String)
+}
+
 final class ProfileView: UIView {
     
     private let nameLabel = UILabel()
     private let emailLabel = UILabel()
     private let phoneNumberLabel = UILabel()
     private let countryLabel = UILabel()
+    private let profileNameLabel = UILabel()
+    
+    private var account = [Account]()
+    
+    weak var delegate: ProfileViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+//        account = CoreDataManager.shared.getName()!
         addSubviews()
         addConstraints()
         configureAppearance()
@@ -16,6 +27,10 @@ final class ProfileView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setName(name: String) {
+        profileNameLabel.text = name
     }
 }
 
@@ -25,7 +40,7 @@ private extension ProfileView {
         addSubviewsAndMask(nameLabel,
                            emailLabel,
                            phoneNumberLabel,
-                           countryLabel)
+                           countryLabel, profileNameLabel)
     }
     
     func addConstraints() {
@@ -40,6 +55,9 @@ private extension ProfileView {
         
         countryLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 20).isActive = true
         countryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        
+        profileNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
+        profileNameLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -15).isActive = true
     }
     
     func configureAppearance() {
@@ -55,9 +73,16 @@ private extension ProfileView {
         countryLabel.textColor = .gray
         countryLabel.font = .montserrat(15, .regular)
         
+        profileNameLabel.textColor = .gray
+        profileNameLabel.font = .montserrat(15, .regular)
+        
         nameLabel.text = "Name:"
         emailLabel.text = "E-mail:"
         phoneNumberLabel.text = "Phone:"
         countryLabel.text = "Country:"
+        
+//        profileNameLabel.text = String(account[0])
     }
+    
+   
 }

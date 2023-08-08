@@ -3,6 +3,8 @@ import UIKit
 protocol HeaderViewDelegate: AnyObject {
     func revealAlertController()
     func changePhotoAvatarImage()
+    func transferEmailString(email: String)
+    func transferNameString(name: String)
 }
 
 final class HeaderView: UIView {
@@ -12,6 +14,27 @@ final class HeaderView: UIView {
     private let emailLabel = UILabel()
     private let avatarImageView = UIImageView()
     private let changeInfoButton = UIButton()
+    
+    private var emailLabelText: String {
+        get {
+            return emailLabel.text ?? ""
+        }
+        set {
+            emailLabel.text = newValue
+            delegate?.transferEmailString(email: emailLabelText)
+        }
+    }
+    
+    private var nameLabelText: String {
+        get {
+            return nameLabel.text ?? ""
+        }
+        
+        set {
+            nameLabel.text = newValue
+            delegate?.transferNameString(name: nameLabelText)
+        }
+    }
     
     weak var delegate: HeaderViewDelegate?
     
@@ -56,9 +79,9 @@ private extension HeaderView {
     }
     
     func setupLabels() {
-        nameLabel.text = "Ihar Tsimafeyeu"
+//        nameLabel.text = "Ihar Tsimafeyeu"
         nameLabel.font = .montserrat(20, .semibold)
-        emailLabel.text = "coldsun@email.com"
+//        emailLabel.text = "coldsun@email.com"
         emailLabel.font = .montserrat(14, .medium)
         emailLabel.textColor = .gray
     }

@@ -1,8 +1,8 @@
 import UIKit
 
 protocol AccountViewDelegate: AnyObject {
-    func saveCountry(country: String)
-    func saveNumber(number: String)
+    func transferCountryString(string: String)
+    func transferPhoneNumberString(string: String)
 }
 
 final class AccountView: UIView {
@@ -34,7 +34,9 @@ private extension AccountView {
         addSubviewsAndMask(countryLabel,
                            phoneNumberLabel,
                            acceptCountryButton,
-                           acceptNumberButton, numberNameTextField, countryNameTextField)
+                           acceptNumberButton,
+                           numberNameTextField,
+                           countryNameTextField)
     }
     
     func addConstraints() {
@@ -91,10 +93,10 @@ private extension AccountView {
     }
     
     @objc func changeNumberAction() {
-        delegate?.saveNumber(number: "hello")
+        delegate?.transferCountryString(string: countryNameTextField.text ?? "")
     }
     
     @objc func changeCountryAction() {
-        delegate?.saveCountry(country: "privet")
+        delegate?.transferPhoneNumberString(string: numberNameTextField.text ?? "")
     }
 }
