@@ -1,10 +1,10 @@
 import UIKit
 
-protocol NewsRoutingLogic {
+protocol NewsRouterProtocol {
     
 }
 
-class NewsRouter: NSObject, NewsRoutingLogic {
+class NewsRouter: NSObject, NewsRouterProtocol {
     
     weak var viewController: NewsViewController?
     

@@ -23,8 +23,8 @@ enum News {
 
 struct NewsViewModel {
     
-    struct Cell: NewsCellViewModel {
-        
+    struct News: NewsCellViewModel {
+        // udalti protocol
         var url: String
         var image: String
         var headline: String
@@ -32,5 +32,5 @@ struct NewsViewModel {
         var date: String
     }
     
-    let cell: [Cell]
+    let models: [News]
 }

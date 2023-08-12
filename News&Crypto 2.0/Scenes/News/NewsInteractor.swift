@@ -1,15 +1,23 @@
-import UIKit
+import Foundation
 
-protocol NewsBusinessLogic {
+protocol NewsInteractorProtocol {
     func makeRequest(request: News.Model.Request.RequestType)
 }
 
-class NewsInteractor: NewsBusinessLogic {
+class NewsInteractor {
     
-    var presenter: NewsPresentationLogic?
-    var service: NewsService?
+    var presenter: NewsPresenterProtocol?
     
+    private var service: NewsService?
     private var fetcher = DataFetcherService()
+    
+    init(service: NewsService) {
+        self.service = service
+    }
+    
+}
+
+extension NewsInteractor: NewsInteractorProtocol {
     
     func makeRequest(request: News.Model.Request.RequestType) {
         if service == nil {
@@ -25,5 +33,5 @@ class NewsInteractor: NewsBusinessLogic {
             }
         }
     }
-    
+
 }

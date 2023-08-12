@@ -1,16 +1,16 @@
 import UIKit
 import SafariServices
 
-protocol NewsDisplayLogic: AnyObject {
+protocol NewsViewProtocol: AnyObject {
     func displayData(viewModel: News.Model.ViewModel.ViewModelData)
 }
 
-class NewsViewController: UIViewController, NewsDisplayLogic {
+final class NewsViewController: UIViewController {
     
-    var interactor: NewsBusinessLogic?
-    var router: (NSObjectProtocol & NewsRoutingLogic)?
+    var interactor: NewsInteractorProtocol?
+    var router: (NSObjectProtocol & NewsRouterProtocol)?
     //    private let tableView = UITableView()
-    private var newsViewModel = NewsViewModel(cell: []) {
+    private var newsViewModel = NewsViewModel(model: []) {
         didSet {
             tableView.reloadData()
         }
@@ -18,42 +18,13 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
     }()
-    
-    // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    // MARK: Setup
-    
-    private func setup() {
-        let viewController        = self
-        let interactor            = NewsInteractor()
-        let presenter             = NewsPresenter()
-        let router                = NewsRouter()
-        viewController.interactor = interactor
-        viewController.router     = router
-        interactor.presenter      = presenter
-        presenter.viewController  = viewController
-        router.viewController     = viewController
-    }
-    
-    // MARK: Routing
-    
-    
-    
+
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -61,21 +32,12 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
         configureAppearance()
         interactor?.makeRequest(request: News.Model.Request.RequestType.getNews)
     }
-    
-    func displayData(viewModel: News.Model.ViewModel.ViewModelData) {
-        switch viewModel {
-            
-        case .displayNews(newsViewModel: let newsViewModel):
-            self.newsViewModel = newsViewModel
-        }
-    }
 }
 
 private extension NewsViewController {
     
     func configureAppearance() {
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -101,22 +63,34 @@ private extension NewsViewController {
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        newsViewModel.cell.count
+        newsViewModel.model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
                                                        for: indexPath) as? NewsTableViewCell else { return UITableViewCell ()}
-        cell.set(viewModel: newsViewModel.cell[indexPath.row])
+        let model = newsViewModel.model[indexPath.row]
+        // dump(indexPath)
+        cell.set(viewModel: model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let story = newsViewModel.cell[indexPath.row]
+        let story = newsViewModel.models[indexPath.row]
         guard let url = URL(string: story.url) else {
             presentFailedOpenAlert()
             return
         }
         open(url: url)
+    }
+}
+
+extension NewsViewController: NewsViewProtocol {
+    func displayData(viewModel: News.Model.ViewModel.ViewModelData) {
+        switch viewModel {
+            
+        case .displayNews(newsViewModel: let newsViewModel):
+            self.newsViewModel = newsViewModel
+        }
     }
 }

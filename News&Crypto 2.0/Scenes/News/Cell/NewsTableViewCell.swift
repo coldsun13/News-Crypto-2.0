@@ -18,13 +18,6 @@ final class NewsTableViewCell: UITableViewCell {
     
     // MARK: Private
     
-//    private let newsView = UIView()
-//    private let mainStackView = UIStackView()
-//    private let newsImageView = WebImageView()
-//    private let infoStackView = UIStackView()
-//    private let titleLabel = UILabel()
-//    private let sourceAndDateLabel = UILabel()
-    
     private lazy var newsView: UIView = {
        let newsView = UIView()
         newsView.layer.cornerRadius = 20
@@ -141,55 +134,5 @@ private extension NewsTableViewCell {
         infoStackView.addAllArrangedSubviews(titleLabel,
                                              sourceAndDateLabel)
     }
-    
-//    func addSetups() {
-//        addContentViewSetups()
-//        addNewsViewSetups()
-//        addMainStackViewSetups()
-//        addInfoStackSetups()
-//        addNewsImageViewSetups()
-//        addTitleLabelSetups()
-//        addSourceAndDateLabelSetups()
-//    }
-//
-//    func addContentViewSetups() {
-//        contentView.backgroundColor = .white
-//    }
-//
-//    func addNewsViewSetups() {
-//        newsView.layer.cornerRadius = 20
-//        newsView.backgroundColor = .white
-//        newsView.addShadow()
-//    }
-//
-//    func addMainStackViewSetups() {
-//        mainStackView.axis = .horizontal
-//        mainStackView.distribution = .fillProportionally
-//        mainStackView.alignment = .center
-//        mainStackView.spacing = 20
-//    }
-//
-//    func addInfoStackSetups() {
-//        infoStackView.axis = .vertical
-//        infoStackView.distribution = .fillProportionally
-//        infoStackView.alignment = .fill
-//        infoStackView.spacing = 10
-//    }
-//
-//    func addNewsImageViewSetups() {
-//        newsImageView.layer.cornerRadius = 10
-//        newsImageView.clipsToBounds = true
-//        newsImageView.contentMode = .scaleAspectFill
-//    }
-//
-//    func addTitleLabelSetups() {
-//        titleLabel.font = .montserrat(17, .medium)
-//        titleLabel.numberOfLines = 2
-//    }
-//
-//    func addSourceAndDateLabelSetups() {
-//        sourceAndDateLabel.font = .montserrat(15, .medium)
-//        sourceAndDateLabel.textColor = .gray
-//    }
 }
 

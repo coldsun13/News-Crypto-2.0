@@ -1,12 +1,23 @@
 import UIKit
 
-protocol NewsPresentationLogic {
+protocol NewsPresenterProtocol {
     func presentData(response: News.Model.Response.ResponseType)
 }
 
-class NewsPresenter: NewsPresentationLogic {
+class NewsPresenter {
     
-    weak var viewController: NewsDisplayLogic?
+    weak var viewController: NewsViewProtocol?
+    
+    private func cellViewModel(from newsModel: NewsModel) -> NewsViewModel.News {
+        return NewsViewModel.News(url: newsModel.url,
+                                  image: newsModel.image,
+                                  headline: newsModel.headline,
+                                  source: newsModel.source,
+                                  date: .stringDate(from: newsModel.datetime))
+    }
+}
+
+extension NewsPresenter: NewsPresenterProtocol {
     
     func presentData(response: News.Model.Response.ResponseType) {
         switch response {
@@ -16,17 +27,9 @@ class NewsPresenter: NewsPresentationLogic {
                 cellViewModel(from: newsItem)
             }
             
-            let newsViewModel = NewsViewModel(cell: news)
+            let newsViewModel = NewsViewModel(models: news)
             
             viewController?.displayData(viewModel: News.Model.ViewModel.ViewModelData.displayNews(newsViewModel: newsViewModel))
         }
-    }
-    
-    private func cellViewModel(from newsModel: NewsModel) -> NewsViewModel.Cell {
-        return NewsViewModel.Cell(url: newsModel.url,
-                                  image: newsModel.image,
-                                  headline: newsModel.headline,
-                                  source: newsModel.source,
-                                  date: .stringDate(from: newsModel.datetime))
     }
 }
