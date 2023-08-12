@@ -9,13 +9,20 @@ class NewsViewController: UIViewController, NewsDisplayLogic {
     
     var interactor: NewsBusinessLogic?
     var router: (NSObjectProtocol & NewsRoutingLogic)?
-    private let tableView = UITableView()
+    //    private let tableView = UITableView()
     private var newsViewModel = NewsViewModel(cell: []) {
         didSet {
             tableView.reloadData()
         }
     }
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
     
     // MARK: Object lifecycle
     
@@ -73,10 +80,6 @@ private extension NewsViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     func open(url: URL) {

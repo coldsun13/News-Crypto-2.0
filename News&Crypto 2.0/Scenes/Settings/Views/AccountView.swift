@@ -9,12 +9,62 @@ final class AccountView: UIView {
     
     weak var delegate: AccountViewDelegate?
     
-    private let countryLabel = UILabel()
-    private let phoneNumberLabel = UILabel()
-    private let acceptCountryButton = UIButton()
-    private let acceptNumberButton = UIButton()
-    private let countryNameTextField = UITextField()
-    private let numberNameTextField = UITextField()
+//    private let countryLabel = UILabel()
+//    private let phoneNumberLabel = UILabel()
+//    private let acceptCountryButton = UIButton()
+//    private let acceptNumberButton = UIButton()
+//    private let countryNameTextField = UITextField()
+//    private let numberNameTextField = UITextField()
+    
+    private lazy var countryLabel: UILabel = {
+        let countryLabel = UILabel()
+        countryLabel.font = .montserrat(15, .medium)
+        countryLabel.addImageInText(systemImage: Resources.Images.countyImage!, text: "  Country")
+        return countryLabel
+    }()
+    
+    private lazy var phoneNumberLabel: UILabel = {
+        let phoneNumberLabel = UILabel()
+        phoneNumberLabel.font = .montserrat(15, .medium)
+        phoneNumberLabel.addImageInText(systemImage: Resources.Images.phoneImage!, text: "  Phone")
+        return phoneNumberLabel
+    }()
+    
+    private lazy var acceptCountryButton: UIButton = {
+        let acceptCountryButton = UIButton()
+        acceptCountryButton.setImage(Resources.Images.arrowImage, for: .normal)
+        acceptCountryButton.tintColor = .black
+        acceptCountryButton.addTarget(self, action: #selector(changeCountryAction), for: .touchUpInside)
+        return acceptCountryButton
+    }()
+    
+    private lazy var acceptNumberButton: UIButton = {
+        let acceptNumberButton = UIButton()
+        acceptNumberButton.setImage(Resources.Images.arrowImage, for: .normal)
+        acceptNumberButton.tintColor = .black
+        acceptNumberButton.addTarget(self, action: #selector(changeNumberAction), for: .touchUpInside)
+        return acceptNumberButton
+    }()
+    
+    private lazy var countryNameTextField: UITextField = {
+        let countryNameTextField = UITextField()
+        countryNameTextField.layer.cornerRadius = 10
+        countryNameTextField.layer.borderWidth = 1.0
+        countryNameTextField.layer.borderColor = UIColor.black.cgColor
+        countryNameTextField.font = .montserrat(10, .regular)
+        countryNameTextField.addLeftView(spacing: 10)
+        return countryNameTextField
+    }()
+    
+    private lazy var numberNameTextField: UITextField = {
+        let numberNameTextField = UITextField()
+        numberNameTextField.layer.cornerRadius = 10
+        numberNameTextField.layer.borderWidth = 1.0
+        numberNameTextField.font = .montserrat(10, .regular)
+        numberNameTextField.font = .montserrat(10, .regular)
+        numberNameTextField.addLeftView(spacing: 10)
+        return numberNameTextField
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,32 +114,30 @@ private extension AccountView {
     }
     
     func configureAppearance() {
-        phoneNumberLabel.font = .montserrat(15, .medium)
-        phoneNumberLabel.addImageInText(systemImage: Resources.Images.phoneImage!, text: "  Phone")
-        countryLabel.font = .montserrat(15, .medium)
-        countryLabel.addImageInText(systemImage: Resources.Images.countyImage!, text: "  Country")
-        acceptNumberButton.setImage(Resources.Images.arrowImage, for: .normal)
-        acceptCountryButton.setImage(Resources.Images.arrowImage, for: .normal)
-        acceptCountryButton.tintColor = .black
-        acceptNumberButton.tintColor = .black
+//        phoneNumberLabel.font = .montserrat(15, .medium)
+//        phoneNumberLabel.addImageInText(systemImage: Resources.Images.phoneImage!, text: "  Phone")
+//        countryLabel.font = .montserrat(15, .medium)
+//        countryLabel.addImageInText(systemImage: Resources.Images.countyImage!, text: "  Country")
+//        acceptNumberButton.setImage(Resources.Images.arrowImage, for: .normal)
+//
+//        acceptNumberButton.tintColor = .black
         
-        acceptNumberButton.addTarget(self, action: #selector(changeNumberAction), for: .touchUpInside)
-        acceptCountryButton.addTarget(self, action: #selector(changeCountryAction), for: .touchUpInside)
-        
-        countryNameTextField.layer.cornerRadius = 10
-        numberNameTextField.layer.cornerRadius = 10
-        
-        countryNameTextField.layer.borderWidth = 1.0
-        numberNameTextField.layer.borderWidth = 1.0
-        
-        countryNameTextField.layer.borderColor = UIColor.black.cgColor
-        numberNameTextField.layer.borderColor = UIColor.black.cgColor
-        
-        countryNameTextField.font = .montserrat(10, .regular)
-        numberNameTextField.font = .montserrat(10, .regular)
-        
-        countryNameTextField.addLeftView(spacing: 10)
-        numberNameTextField.addLeftView(spacing: 10)
+//        acceptCountryButton.setImage(Resources.Images.arrowImage, for: .normal)
+//        acceptCountryButton.tintColor = .black
+//        countryNameTextField.layer.cornerRadius = 10
+//        numberNameTextField.layer.cornerRadius = 10
+//
+//        countryNameTextField.layer.borderWidth = 1.0
+//        numberNameTextField.layer.borderWidth = 1.0
+//
+//        countryNameTextField.layer.borderColor = UIColor.black.cgColor
+//        numberNameTextField.layer.borderColor = UIColor.black.cgColor
+//
+//        countryNameTextField.font = .montserrat(10, .regular)
+//        numberNameTextField.font = .montserrat(10, .regular)
+//
+//        countryNameTextField.addLeftView(spacing: 10)
+//        numberNameTextField.addLeftView(spacing: 10)
     }
     
     @objc func changeNumberAction() {

@@ -10,7 +10,7 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
     var interactor: CryptoNewsBusinessLogic?
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
     let dataFetcher = DataFetcherService()
-    var coin = Coin()
+//    var coin = Coin()
     
     private var cryptoViewModel = CryptoViewModel(cell: [], coinViewModel: []) {
         didSet {
@@ -18,8 +18,19 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsDisplayLogic {
         }
     }
     
-    private let panel = FloatingPanelController()
-    private let tableView = UITableView()
+    private lazy var panel: FloatingPanelController = {
+        let panel = FloatingPanelController()
+        return panel
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CryptoCell.self, forCellReuseIdentifier: CryptoCell.identifier)
+        return tableView
+    }()
     
     // MARK: Object lifecycle
     
@@ -78,9 +89,6 @@ private extension CryptoNewsViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CryptoCell.self, forCellReuseIdentifier: CryptoCell.identifier)
     }
     
     func setupFloatingPanel() {
@@ -112,10 +120,10 @@ extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-//            CoreDataWorker.saveCoin(coin, coin: cryptoViewModel.coinViewModel[indexPath.row].coinName)
-            CoreDataWorker.shared.saveCoin(coin: Coin(), symbol: cryptoViewModel.coinViewModel[indexPath.row].coinName)
-            print("saveCoreData")
-        }
+//        if editingStyle == .delete {
+////            CoreDataWorker.saveCoin(coin, coin: cryptoViewModel.coinViewModel[indexPath.row].coinName)
+//            CoreDataWorker.shared.saveCoin(coin: Coin(), symbol: cryptoViewModel.coinViewModel[indexPath.row].coinName)
+//            print("saveCoreData")
+//        }
     }
 }

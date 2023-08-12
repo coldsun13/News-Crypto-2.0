@@ -9,32 +9,76 @@ protocol HeaderViewDelegate: AnyObject {
 
 final class HeaderView: UIView {
     
-    private let headerStackView = UIStackView()
-    private let nameLabel = UILabel()
-    private let emailLabel = UILabel()
-    private let avatarImageView = UIImageView()
-    private let changeInfoButton = UIButton()
+//    private var emailLabelText: String {
+//        get {
+//            return emailLabel.text ?? ""
+//        }
+//        set {
+//            emailLabel.text = newValue
+//            delegate?.transferEmailString(email: emailLabelText)
+//        }
+//    }
+//
+//    private var nameLabelText: String {
+//        get {
+//            return nameLabel.text ?? ""
+//        }
+//
+//        set {
+//            nameLabel.text = newValue
+//            delegate?.transferNameString(name: nameLabelText)
+//        }
+//    }
     
-    private var emailLabelText: String {
-        get {
-            return emailLabel.text ?? ""
-        }
-        set {
-            emailLabel.text = newValue
-            delegate?.transferEmailString(email: emailLabelText)
-        }
-    }
+//
+//    private let headerStackView = UIStackView()
+//    private let nameLabel = UILabel()
+//    private let emailLabel = UILabel()
+//    private let avatarImageView = UIImageView()
+//    private let changeInfoButton = UIButton()
     
-    private var nameLabelText: String {
-        get {
-            return nameLabel.text ?? ""
-        }
-        
-        set {
-            nameLabel.text = newValue
-            delegate?.transferNameString(name: nameLabelText)
-        }
-    }
+    private lazy var headerStackView: UIStackView = {
+       let headerStackView = UIStackView()
+        headerStackView.axis = .vertical
+        headerStackView.spacing = 15
+        headerStackView.distribution = .equalSpacing
+        headerStackView.alignment = .center
+        return headerStackView
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+       let nameLabel = UILabel()
+        nameLabel.font = .montserrat(20, .semibold)
+        return nameLabel
+    }()
+    
+    private lazy var emailLabel: UILabel = {
+        let emailLabel = UILabel()
+        emailLabel.font = .montserrat(14, .medium)
+        emailLabel.textColor = .gray
+        return emailLabel
+    }()
+    
+    private lazy var avatarImageView: UIImageView = {
+       let avatarImageView = UIImageView()
+        avatarImageView.image = Resources.Images.avatarImage
+        avatarImageView.tintColor = .systemGray3
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        let tap = UITapGestureRecognizer(target: self, action: #selector(changePhotoAvatarAction))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tap)
+        return avatarImageView
+    }()
+    
+    private lazy var changeInfoButton: UIButton = {
+       let changeInfoButton = UIButton()
+        changeInfoButton.backgroundColor = .blue
+        changeInfoButton.layer.cornerRadius = 10
+        changeInfoButton.setTitle("Edit profile", for: .normal)
+        changeInfoButton.titleLabel?.font = .montserrat(15, .semibold)
+        changeInfoButton.addTarget(self, action: #selector(changeInfoAction), for: .touchUpInside)
+        return changeInfoButton
+    }()
     
     weak var delegate: HeaderViewDelegate?
     
@@ -80,34 +124,34 @@ private extension HeaderView {
     
     func setupLabels() {
 //        nameLabel.text = "Ihar Tsimafeyeu"
-        nameLabel.font = .montserrat(20, .semibold)
-//        emailLabel.text = "coldsun@email.com"
-        emailLabel.font = .montserrat(14, .medium)
-        emailLabel.textColor = .gray
+//        nameLabel.font = .montserrat(20, .semibold)
+////        emailLabel.text = "coldsun@email.com"
+//        emailLabel.font = .montserrat(14, .medium)
+//        emailLabel.textColor = .gray
     }
     
     func setupHeaderStackView() {
-        headerStackView.axis = .vertical
-        headerStackView.spacing = 15
-        headerStackView.distribution = .equalSpacing
-        headerStackView.alignment = .center
+//        headerStackView.axis = .vertical
+//        headerStackView.spacing = 15
+//        headerStackView.distribution = .equalSpacing
+//        headerStackView.alignment = .center
     }
     
     func setupChangeInfoButton() {
-        changeInfoButton.backgroundColor = .blue
-        changeInfoButton.layer.cornerRadius = 10
-        changeInfoButton.setTitle("Edit profile", for: .normal)
-        changeInfoButton.titleLabel?.font = .montserrat(15, .semibold)
-        changeInfoButton.addTarget(self, action: #selector(changeInfoAction), for: .touchUpInside)
+//        changeInfoButton.backgroundColor = .blue
+//        changeInfoButton.layer.cornerRadius = 10
+//        changeInfoButton.setTitle("Edit profile", for: .normal)
+//        changeInfoButton.titleLabel?.font = .montserrat(15, .semibold)
+//        changeInfoButton.addTarget(self, action: #selector(changeInfoAction), for: .touchUpInside)
     }
     
     func setupAvatarImageView() {
-        avatarImageView.image = Resources.Images.avatarImage
-        avatarImageView.tintColor = .systemGray3
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
-        let tap = UITapGestureRecognizer(target: self, action: #selector(changePhotoAvatarAction))
-        avatarImageView.isUserInteractionEnabled = true
-        avatarImageView.addGestureRecognizer(tap)
+//        avatarImageView.image = Resources.Images.avatarImage
+//        avatarImageView.tintColor = .systemGray3
+//        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(changePhotoAvatarAction))
+//        avatarImageView.isUserInteractionEnabled = true
+//        avatarImageView.addGestureRecognizer(tap)
     }
     
     @objc func changeInfoAction() {

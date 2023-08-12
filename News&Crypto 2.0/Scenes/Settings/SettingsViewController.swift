@@ -9,13 +9,62 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
     var interactor: SettingsBusinessLogic?
     var router: (NSObjectProtocol & SettingsRoutingLogic)?
     
-    private let headerView = HeaderView()
-    private let acccountView = AccountView()
-    private let preferencesView = PreferencesView()
+//    private let headerView = HeaderView()
+//    private let acccountView = AccountView()
+//    private let preferencesView = PreferencesView()
+//
+//    private let accountLabel = UILabel()
+//    private let preferencesLabel = UILabel()
+//    private let saveButton = UIButton()
     
-    private let accountLabel = UILabel()
-    private let preferencesLabel = UILabel()
-    private let saveButton = UIButton()
+    private lazy var headerView: HeaderView = {
+        let headerView = HeaderView()
+        headerView.backgroundColor = .white
+        headerView.delegate = self
+        return headerView
+    }()
+    
+    private lazy var acccountView: AccountView = {
+        let acccountView = AccountView()
+        acccountView.backgroundColor = .white
+        acccountView.delegate = self 
+        return acccountView
+    }()
+    
+    private lazy var preferencesView: PreferencesView = {
+        let preferencesView = PreferencesView()
+        
+        return preferencesView
+    }()
+    
+    private lazy var accountLabel: UILabel = {
+        let accountLabel = UILabel()
+        accountLabel.text = "Account"
+        accountLabel.addCharacterSpacing(kernValue: 1.25)
+        accountLabel.font = .montserrat(12, .bold)
+        accountLabel.textColor = .systemGray2
+        return accountLabel
+    }()
+    
+    private lazy var preferencesLabel: UILabel = {
+        let preferencesLabel = UILabel()
+        preferencesLabel.text = "Preferences"
+        preferencesLabel.addCharacterSpacing(kernValue: 1.25)
+        preferencesLabel.font = .montserrat(12, .bold)
+        preferencesLabel.textColor = .systemGray2
+        return preferencesLabel
+    }()
+    
+    private lazy var saveButton: UIButton = {
+        let saveButton = UIButton()
+        saveButton.setTitle("НАЖМИ СУКА", for: .normal)
+        saveButton.tintColor = .black
+        saveButton.backgroundColor = .black
+        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
+        return saveButton
+    }()
+    
+    
     
 //    var infoData = Accounts(country: "hello", phoneNumber: "hello", email: "hello", name: "hello", image: (Resources.Images.arrowImage?.pngData())!)
     var infoData = Accounts(country: "hello", phoneNumber: "hello", email: "hello", name: "hello")
@@ -114,23 +163,23 @@ private extension SettingsViewController {
     
     func configureAppearance() {
         view.backgroundColor = .systemGray6
-        headerView.backgroundColor = .white
-        acccountView.backgroundColor = .white
-        accountLabel.text = "Account"
-        accountLabel.addCharacterSpacing(kernValue: 1.25)
-        accountLabel.font = .montserrat(12, .bold)
-        accountLabel.textColor = .systemGray2
-        preferencesLabel.text = "Preferences"
-        preferencesLabel.addCharacterSpacing(kernValue: 1.25)
-        preferencesLabel.font = .montserrat(12, .bold)
-        preferencesLabel.textColor = .systemGray2
-        headerView.delegate = self
-        acccountView.delegate = self
-        saveButton.setTitle("НАЖМИ СУКА", for: .normal)
-        saveButton.tintColor = .black
-        saveButton.backgroundColor = .black
-        
-        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
+//        headerView.backgroundColor = .white
+//        acccountView.backgroundColor = .white
+//        accountLabel.text = "Account"
+//        accountLabel.addCharacterSpacing(kernValue: 1.25)
+//        accountLabel.font = .montserrat(12, .bold)
+//        accountLabel.textColor = .systemGray2
+//        preferencesLabel.text = "Preferences"
+//        preferencesLabel.addCharacterSpacing(kernValue: 1.25)
+//        preferencesLabel.font = .montserrat(12, .bold)
+//        preferencesLabel.textColor = .systemGray2
+//        headerView.delegate = self
+//        acccountView.delegate = self
+//        saveButton.setTitle("НАЖМИ СУКА", for: .normal)
+//        saveButton.tintColor = .black
+//        saveButton.backgroundColor = .black
+//
+//        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
     }
     
     @objc func saveButtonAction() {

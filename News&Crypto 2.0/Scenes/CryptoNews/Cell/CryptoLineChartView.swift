@@ -10,7 +10,18 @@ import Charts
 
 final class CryptoLineChartView: UIView {
     
-    private let chartView = LineChartView()
+    //    private let chartView = LineChartView()
+    private lazy var chartView: LineChartView = {
+        let chartView = LineChartView()
+        chartView.setScaleEnabled(true)
+        chartView.xAxis.enabled = false
+        chartView.leftAxis.enabled = false
+        chartView.rightAxis.enabled = false
+        chartView.drawGridBackgroundEnabled = false
+        chartView.pinchZoomEnabled = false
+        chartView.legend.enabled = false
+        return chartView
+    }()
     
     struct ChartViewModel {
         var data: [Double]
@@ -69,12 +80,12 @@ private extension CryptoLineChartView {
     }
     
     func addSetups() {
-        chartView.setScaleEnabled(true)
-        chartView.xAxis.enabled = false
-        chartView.leftAxis.enabled = false
-        chartView.rightAxis.enabled = false
-        chartView.drawGridBackgroundEnabled = false
-        chartView.pinchZoomEnabled = false
-        chartView.legend.enabled = false
+        //        chartView.setScaleEnabled(true)
+        //        chartView.xAxis.enabled = false
+        //        chartView.leftAxis.enabled = false
+        //        chartView.rightAxis.enabled = false
+        //        chartView.drawGridBackgroundEnabled = false
+        //        chartView.pinchZoomEnabled = false
+        //        chartView.legend.enabled = false
     }
 }

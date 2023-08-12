@@ -2,7 +2,13 @@ import UIKit
 
 public class ProfileNavigationController: UINavigationController  {
     
-    private let avatarImageView = UIImageView()
+    private lazy var avatarImageView: UIImageView = {
+        let avatarImageView = UIImageView()
+        avatarImageView.image = Resources.Images.avatarImage
+        avatarImageView.contentMode = .scaleAspectFit
+        avatarImageView.tintColor = .systemGray3
+        return avatarImageView
+    }()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +45,9 @@ extension ProfileNavigationController: UINavigationControllerDelegate {
 private extension ProfileNavigationController {
     
     func configureAppearance() {
-        avatarImageView.image = Resources.Images.avatarImage
-        avatarImageView.contentMode = .scaleAspectFit
-        avatarImageView.tintColor = .systemGray3
+//        avatarImageView.image = Resources.Images.avatarImage
+//        avatarImageView.contentMode = .scaleAspectFit
+//        avatarImageView.tintColor = .systemGray3
         delegate = self
         navigationBar.prefersLargeTitles = true
     }

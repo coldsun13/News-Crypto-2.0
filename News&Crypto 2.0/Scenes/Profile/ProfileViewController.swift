@@ -11,12 +11,41 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
     
     private var storageService: PersistenceStorage?
 
-    private let scrollView = UIScrollView()
-    private let mainStackView = UIStackView()
-    private let profileInfoView = ProfileView()
+//    private let scrollView = UIScrollView()
+//    private let mainStackView = UIStackView()
+//    private let profileInfoView = ProfileView()
     private var profileViewModel = ProfileViewModel(cell: [])
     private let layout = CustomFlowLayout(width: 300, height: 400)
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    
+//    private lazy var collectionView: UICollectionView = {
+//        let collectionView = UICollectionView()
+//        collectionView.frame = .zero
+//        collectionView.collectionViewLayout = layout
+//        return collectionView
+//    }()
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        
+        return scrollView
+    }()
+    
+    private lazy var mainStackView: UIStackView = {
+       let mainStackView = UIStackView()
+        mainStackView.axis = .vertical
+        mainStackView.spacing = 20
+        return mainStackView
+    }()
+    
+    private lazy var profileInfoView: ProfileView = {
+       let profileInfoView = ProfileView()
+        
+        return profileInfoView
+    }()
+    
+    
+    
     var accmy = [Accounts]()
 
     // MARK: Object lifecycle

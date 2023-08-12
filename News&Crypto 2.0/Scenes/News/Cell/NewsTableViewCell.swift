@@ -18,19 +18,70 @@ final class NewsTableViewCell: UITableViewCell {
     
     // MARK: Private
     
-    private let newsView = UIView()
-    private let mainStackView = UIStackView()
-    private let newsImageView = WebImageView()
-    private let infoStackView = UIStackView()
-    private let titleLabel = UILabel()
-    private let sourceAndDateLabel = UILabel()
+//    private let newsView = UIView()
+//    private let mainStackView = UIStackView()
+//    private let newsImageView = WebImageView()
+//    private let infoStackView = UIStackView()
+//    private let titleLabel = UILabel()
+//    private let sourceAndDateLabel = UILabel()
+    
+    private lazy var newsView: UIView = {
+       let newsView = UIView()
+        newsView.layer.cornerRadius = 20
+        newsView.backgroundColor = .white
+        newsView.addShadow()
+        
+        return newsView
+    }()
+    
+    private lazy var mainStackView: UIStackView = {
+       let mainStackView = UIStackView()
+        mainStackView.axis = .horizontal
+        mainStackView.distribution = .fillProportionally
+        mainStackView.alignment = .center
+        mainStackView.spacing = 20
+        
+        return mainStackView
+    }()
+    
+    private lazy var newsImageView: WebImageView = {
+       let newsImageView = WebImageView()
+        newsImageView.layer.cornerRadius = 10
+        newsImageView.clipsToBounds = true
+        newsImageView.contentMode = .scaleAspectFill
+        return newsImageView
+    }()
+    
+    private lazy var infoStackView: UIStackView = {
+       let infoStackView = UIStackView()
+        infoStackView.axis = .vertical
+        infoStackView.distribution = .fillProportionally
+        infoStackView.alignment = .fill
+        infoStackView.spacing = 10
+        return infoStackView
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.font = .montserrat(17, .medium)
+        titleLabel.numberOfLines = 2
+        
+        return titleLabel
+    }()
+    
+    private lazy var sourceAndDateLabel: UILabel = {
+        let sourceAndDateLabel = UILabel()
+        sourceAndDateLabel.font = .montserrat(15, .medium)
+        sourceAndDateLabel.textColor = .gray
+
+        return sourceAndDateLabel
+    }()
     
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
-        addSetups()
         addConstraints()
     }
     
@@ -91,54 +142,54 @@ private extension NewsTableViewCell {
                                              sourceAndDateLabel)
     }
     
-    func addSetups() {
-        addContentViewSetups()
-        addNewsViewSetups()
-        addMainStackViewSetups()
-        addInfoStackSetups()
-        addNewsImageViewSetups()
-        addTitleLabelSetups()
-        addSourceAndDateLabelSetups()
-    }
-    
-    func addContentViewSetups() {
-        contentView.backgroundColor = .white
-    }
-    
-    func addNewsViewSetups() {
-        newsView.layer.cornerRadius = 20
-        newsView.backgroundColor = .white
-        newsView.addShadow()
-    }
-    
-    func addMainStackViewSetups() {
-        mainStackView.axis = .horizontal
-        mainStackView.distribution = .fillProportionally
-        mainStackView.alignment = .center
-        mainStackView.spacing = 20
-    }
-    
-    func addInfoStackSetups() {
-        infoStackView.axis = .vertical
-        infoStackView.distribution = .fillProportionally
-        infoStackView.alignment = .fill
-        infoStackView.spacing = 10
-    }
-    
-    func addNewsImageViewSetups() {
-        newsImageView.layer.cornerRadius = 10
-        newsImageView.clipsToBounds = true
-        newsImageView.contentMode = .scaleAspectFill
-    }
-    
-    func addTitleLabelSetups() {
-        titleLabel.font = .montserrat(17, .medium)
-        titleLabel.numberOfLines = 2
-    }
-    
-    func addSourceAndDateLabelSetups() {
-        sourceAndDateLabel.font = .montserrat(15, .medium)
-        sourceAndDateLabel.textColor = .gray
-    }
+//    func addSetups() {
+//        addContentViewSetups()
+//        addNewsViewSetups()
+//        addMainStackViewSetups()
+//        addInfoStackSetups()
+//        addNewsImageViewSetups()
+//        addTitleLabelSetups()
+//        addSourceAndDateLabelSetups()
+//    }
+//
+//    func addContentViewSetups() {
+//        contentView.backgroundColor = .white
+//    }
+//
+//    func addNewsViewSetups() {
+//        newsView.layer.cornerRadius = 20
+//        newsView.backgroundColor = .white
+//        newsView.addShadow()
+//    }
+//
+//    func addMainStackViewSetups() {
+//        mainStackView.axis = .horizontal
+//        mainStackView.distribution = .fillProportionally
+//        mainStackView.alignment = .center
+//        mainStackView.spacing = 20
+//    }
+//
+//    func addInfoStackSetups() {
+//        infoStackView.axis = .vertical
+//        infoStackView.distribution = .fillProportionally
+//        infoStackView.alignment = .fill
+//        infoStackView.spacing = 10
+//    }
+//
+//    func addNewsImageViewSetups() {
+//        newsImageView.layer.cornerRadius = 10
+//        newsImageView.clipsToBounds = true
+//        newsImageView.contentMode = .scaleAspectFill
+//    }
+//
+//    func addTitleLabelSetups() {
+//        titleLabel.font = .montserrat(17, .medium)
+//        titleLabel.numberOfLines = 2
+//    }
+//
+//    func addSourceAndDateLabelSetups() {
+//        sourceAndDateLabel.font = .montserrat(15, .medium)
+//        sourceAndDateLabel.textColor = .gray
+//    }
 }
 

@@ -13,15 +13,82 @@ final class CryptoCell: UITableViewCell {
     
     static let identifier = "CryptoCell"
     
-    private let coinNameStackView = UIStackView()
-    private let priceStackView = UIStackView()
-    private let coinStackView = UIStackView()
-    private let cryptoLineChartView = CryptoLineChartView()
-    private let priceLabel = UILabel()
-    private let coinImageView = WebImageView()
-    private let coinNameLabel = UILabel()
-    private let coinAbbriviatedNameLabel = UILabel()
-    private let changePriceLabel = UILabel()
+//    private let coinNameStackView = UIStackView()
+//    private let priceStackView = UIStackView()
+//    private let coinStackView = UIStackView()
+//    private let cryptoLineChartView = CryptoLineChartView()
+//    private let priceLabel = UILabel()
+//    private let coinImageView = WebImageView()
+//    private let coinNameLabel = UILabel()
+//    private let coinAbbriviatedNameLabel = UILabel()
+//    private let changePriceLabel = UILabel()
+    //MARK: Lazy var properties
+    private lazy var coinNameStackView: UIStackView = {
+       let coinNameStackView = UIStackView()
+        coinNameStackView.axis = .vertical
+        coinNameStackView.distribution = .fillProportionally
+        coinNameStackView.alignment = .fill
+        return coinNameStackView
+    }()
+    
+    private lazy var priceStackView: UIStackView = {
+       let priceStackView = UIStackView()
+        priceStackView.axis = .vertical
+        priceStackView.distribution = .fillProportionally
+        priceStackView.alignment = .trailing
+        
+        return priceStackView
+    }()
+    
+    private lazy var coinStackView: UIStackView = {
+        let coinStackView = UIStackView()
+        coinStackView.axis = .horizontal
+        coinStackView.distribution = .fillProportionally
+        coinStackView.alignment = .center
+        coinStackView.spacing = 15
+        coinStackView.backgroundColor = .systemBackground
+        return coinStackView
+    }()
+    
+    private lazy var cryptoLineChartView: CryptoLineChartView = {
+       let cryptoLineChartView = CryptoLineChartView()
+        cryptoLineChartView.clipsToBounds = true
+        cryptoLineChartView.isUserInteractionEnabled = false
+        return cryptoLineChartView
+    }()
+    
+    private lazy var priceLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.font = .montserrat(16, .medium)
+        priceLabel.adjustsFontSizeToFitWidth = true
+        priceLabel.minimumScaleFactor = 0.5
+        return priceLabel
+    }()
+    
+    private lazy var coinImageView: WebImageView = {
+        let coinImageView = WebImageView()
+        
+        return coinImageView
+    }()
+    
+    private lazy var coinNameLabel: UILabel = {
+       let coinNameLabel = UILabel()
+        coinNameLabel.font = .montserrat(17, .medium)
+        return coinNameLabel
+    }()
+    
+    private lazy var coinAbbriviatedNameLabel: UILabel = {
+        let coinAbbriviatedNameLabel = UILabel()
+        coinAbbriviatedNameLabel.font = .montserrat(15, .regular)
+        coinAbbriviatedNameLabel.textColor = .gray
+        return coinAbbriviatedNameLabel
+    }()
+    
+    private lazy var changePriceLabel: UILabel = {
+        let changePriceLabel = UILabel()
+        changePriceLabel.font = .montserrat(13, .regular)
+        return changePriceLabel
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -87,32 +154,32 @@ private extension CryptoCell {
     }
     
     func configureAppearance() {
-        coinStackView.axis = .horizontal
-        coinStackView.distribution = .fillProportionally
-        coinStackView.alignment = .center
-        coinStackView.spacing = 15
-        coinStackView.backgroundColor = .systemBackground
+//        coinStackView.axis = .horizontal
+//        coinStackView.distribution = .fillProportionally
+//        coinStackView.alignment = .center
+//        coinStackView.spacing = 15
+//        coinStackView.backgroundColor = .systemBackground
         
-        coinNameStackView.axis = .vertical
-        coinNameStackView.distribution = .fillProportionally
-        coinNameStackView.alignment = .fill
+//        coinNameStackView.axis = .vertical
+//        coinNameStackView.distribution = .fillProportionally
+//        coinNameStackView.alignment = .fill
         
-        priceStackView.axis = .vertical
-        priceStackView.distribution = .fillProportionally
-        priceStackView.alignment = .trailing
+//        priceStackView.axis = .vertical
+//        priceStackView.distribution = .fillProportionally
+//        priceStackView.alignment = .trailing
+//
+//        coinNameLabel.font = .montserrat(17, .medium)
         
-        coinNameLabel.font = .montserrat(17, .medium)
+//        coinAbbriviatedNameLabel.font = .montserrat(15, .regular)
+//        coinAbbriviatedNameLabel.textColor = .gray
         
-        coinAbbriviatedNameLabel.font = .montserrat(15, .regular)
-        coinAbbriviatedNameLabel.textColor = .gray
+//        priceLabel.font = .montserrat(16, .medium)
+//        priceLabel.adjustsFontSizeToFitWidth = true
+//        priceLabel.minimumScaleFactor = 0.5
         
-        priceLabel.font = .montserrat(16, .medium)
-        priceLabel.adjustsFontSizeToFitWidth = true
-        priceLabel.minimumScaleFactor = 0.5
+//        changePriceLabel.font = .montserrat(13, .regular)
         
-        changePriceLabel.font = .montserrat(13, .regular)
-        
-        cryptoLineChartView.clipsToBounds = true
-        cryptoLineChartView.isUserInteractionEnabled = false
+//        cryptoLineChartView.clipsToBounds = true
+//        cryptoLineChartView.isUserInteractionEnabled = false
     }
 }

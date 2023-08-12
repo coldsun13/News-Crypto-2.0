@@ -14,22 +14,69 @@ final class ProfileCell: UICollectionViewCell {
     
     static let identifier = "WalletCell"
     
-    private let mainView = UIView()
-    private let mainStackView = UIStackView()
-    private let changePriceStackView = UIStackView()
+    private lazy var mainView: UIView = {
+        let mainView = UIView()
+        mainView.layer.cornerRadius = 15
+        mainView.backgroundColor = .yellow
+        return mainView
+    }()
     
-    private let nameCryptoLabel = UILabel()
-    private let priceLabel = UILabel()
-    private let changePriceImageView = UIImageView()
-    private let changePriceLabel = UILabel()
-    private let coinImageView = WebImageView()
-    private let cryptoLineChartView = CryptoLineChartView()
+    private lazy var mainStackView: UIStackView = {
+        let mainStackView = UIStackView()
+        mainStackView.alignment = .center
+        return mainStackView
+    }()
+    
+    private lazy var changePriceStackView: UIStackView = {
+        let changePriceStackView = UIStackView()
+        return changePriceStackView
+    }()
+    
+    private lazy var nameCryptoLabel: UILabel = {
+        let nameCryptoLabel = UILabel()
+        nameCryptoLabel.font = .montserrat(30, .bold)
+        nameCryptoLabel.numberOfLines = 2
+        return nameCryptoLabel
+    }()
+    
+    private lazy var priceLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.font = .montserrat(30, .bold)
+        return priceLabel
+    }()
+    
+    private lazy var changePriceImageView: UIImageView = {
+        let changePriceImageView = UIImageView()
+        changePriceImageView.tintColor = .systemGreen
+        return changePriceImageView
+    }()
+    
+    private lazy var changePriceLabel: UILabel = {
+        let changePriceLabel = UILabel()
+        changePriceLabel.font = .montserrat(15, .regular)
+        changePriceLabel.textColor = .black
+        return changePriceLabel
+    }()
+    
+    private lazy var coinImageView: WebImageView = {
+        let coinImageView = WebImageView()
+        coinImageView.layer.cornerRadius = coinImageView.frame.size.width / 2
+        coinImageView.clipsToBounds = true
+        coinImageView.contentMode = .scaleAspectFill
+        return coinImageView
+    }()
+    
+    private lazy var cryptoLineChartView: CryptoLineChartView = {
+        let cryptoLineChartView = CryptoLineChartView()
+        cryptoLineChartView.clipsToBounds = true
+        cryptoLineChartView.isUserInteractionEnabled = false
+        return cryptoLineChartView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
         addConstraints()
-        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -51,9 +98,9 @@ private extension ProfileCell {
     func addSubviews() {
         addSubview(mainView)
         mainView.addSubviewsAndMask(mainStackView,
-                                priceLabel,
-                                changePriceStackView,
-                                cryptoLineChartView)
+                                    priceLabel,
+                                    changePriceStackView,
+                                    cryptoLineChartView)
         mainStackView.addAllArrangedSubviews(nameCryptoLabel,
                                              coinImageView)
         changePriceStackView.addAllArrangedSubviews(changePriceImageView,
@@ -68,21 +115,21 @@ private extension ProfileCell {
         mainView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         mainView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         mainView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-
+        
         mainStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 10).isActive = true
         mainStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15).isActive = true
         mainStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -15).isActive = true
-
+        
         priceLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 10).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15).isActive = true
         
         coinImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         coinImageView.heightAnchor.constraint(equalTo: coinImageView.widthAnchor).isActive = true
-
+        
         changePriceStackView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 10).isActive = true
         changePriceStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15).isActive = true
         changePriceStackView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.5).isActive = true
-
+        
         cryptoLineChartView.topAnchor.constraint(equalTo: changePriceStackView.bottomAnchor, constant: 5).isActive = true
         cryptoLineChartView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 5).isActive = true
         cryptoLineChartView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.8).isActive = true
@@ -91,30 +138,6 @@ private extension ProfileCell {
         changePriceImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         changePriceImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
-    
-    func configure() {
-        mainView.layer.cornerRadius = 15
-        mainView.backgroundColor = .yellow
-
-        mainStackView.alignment = .center
-
-        nameCryptoLabel.font = .montserrat(30, .bold)
-        nameCryptoLabel.numberOfLines = 2
-
-        changePriceLabel.font = .montserrat(15, .regular)
-        changePriceLabel.textColor = .black
-        changePriceImageView.tintColor = .systemGreen
-
-        priceLabel.font = .montserrat(30, .bold)
-
-        coinImageView.layer.cornerRadius = coinImageView.frame.size.width / 2
-        coinImageView.clipsToBounds = true
-        coinImageView.contentMode = .scaleAspectFill
-
-        cryptoLineChartView.clipsToBounds = true
-        cryptoLineChartView.isUserInteractionEnabled = false
-    }
-    
     
     func modificatorForNameCoinLabel(_ coinName: String, _ coinSymbol: String) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [

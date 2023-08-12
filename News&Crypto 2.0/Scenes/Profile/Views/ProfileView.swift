@@ -6,11 +6,44 @@ protocol ProfileViewDelegate: AnyObject {
 
 final class ProfileView: UIView {
     
-    private let nameLabel = UILabel()
-    private let emailLabel = UILabel()
-    private let phoneNumberLabel = UILabel()
-    private let countryLabel = UILabel()
-    private let profileNameLabel = UILabel()
+    private lazy var nameLabel: UILabel = {
+        let nameLabel = UILabel()
+        nameLabel.textColor = .gray
+        nameLabel.font = .montserrat(15, .regular)
+        nameLabel.text = "Name:"
+        return nameLabel
+    }()
+    
+    private lazy var emailLabel: UILabel = {
+        let emailLabel = UILabel()
+        emailLabel.textColor = .gray
+        emailLabel.font = .montserrat(15, .regular)
+        emailLabel.text = "E-mail:"
+        return emailLabel
+    }()
+    
+    private lazy var phoneNumberLabel: UILabel = {
+        let phoneNumberLabel = UILabel()
+        phoneNumberLabel.textColor = .gray
+        phoneNumberLabel.font = .montserrat(15, .regular)
+        phoneNumberLabel.text = "Phone:"
+        return phoneNumberLabel
+    }()
+    
+    private lazy var countryLabel: UILabel = {
+        let countryLabel = UILabel()
+        countryLabel.textColor = .gray
+        countryLabel.text = "Country:"
+        countryLabel.font = .montserrat(15, .regular)
+        return countryLabel
+    }()
+    
+    private lazy var profileNameLabel: UILabel = {
+        let profileNameLabel = UILabel()
+        profileNameLabel.textColor = .gray
+        profileNameLabel.font = .montserrat(15, .regular)
+        return profileNameLabel
+    }()
     
     private var account = [Account]()
     
@@ -18,11 +51,8 @@ final class ProfileView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        account = CoreDataManager.shared.getName()!
         addSubviews()
         addConstraints()
-        configureAppearance()
     }
     
     required init?(coder: NSCoder) {
@@ -59,30 +89,4 @@ private extension ProfileView {
         profileNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
         profileNameLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -15).isActive = true
     }
-    
-    func configureAppearance() {
-        nameLabel.textColor = .gray
-        nameLabel.font = .montserrat(15, .regular)
-        
-        emailLabel.textColor = .gray
-        emailLabel.font = .montserrat(15, .regular)
-        
-        phoneNumberLabel.textColor = .gray
-        phoneNumberLabel.font = .montserrat(15, .regular)
-        
-        countryLabel.textColor = .gray
-        countryLabel.font = .montserrat(15, .regular)
-        
-        profileNameLabel.textColor = .gray
-        profileNameLabel.font = .montserrat(15, .regular)
-        
-        nameLabel.text = "Name:"
-        emailLabel.text = "E-mail:"
-        phoneNumberLabel.text = "Phone:"
-        countryLabel.text = "Country:"
-        
-//        profileNameLabel.text = String(account[0])
-    }
-    
-   
 }
