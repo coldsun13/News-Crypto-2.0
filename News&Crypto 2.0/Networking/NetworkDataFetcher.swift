@@ -6,7 +6,7 @@ protocol DataFetcher {
 
 class NetworkDataFetcher: DataFetcher {
     
-    var networking: Networking
+    let networking: Networking
     
     init(networking: Networking = NetworkService()) {
         self.networking = networking
