@@ -1,16 +1,24 @@
 import UIKit
 
-protocol ProfileBusinessLogic {
+protocol ProfileInteractorProtocol {
     func makeRequest(request: Profile.Model.Request.RequestType)
 }
 
-class ProfileInteractor: ProfileBusinessLogic {
+class ProfileInteractor {
     
-    var presenter: ProfilePresentationLogic?
+    var presenter: ProfilePresenterProtocol?
     var service: ProfileService?
+    
+    init(service: ProfileService) {
+        self.service = service
+    }
     
     private var fetcher = DataFetcherService()
     
+   
+}
+
+extension ProfileInteractor: ProfileInteractorProtocol {
     func makeRequest(request: Profile.Model.Request.RequestType) {
         if service == nil {
             service = ProfileService()
@@ -25,5 +33,4 @@ class ProfileInteractor: ProfileBusinessLogic {
             }
         }
     }
-    
 }

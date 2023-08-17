@@ -1,4 +1,5 @@
 import UIKit
+import UILib
 
 protocol SettingsDisplayLogic: AnyObject {
     func displayData(viewModel: Settings.Model.ViewModel.ViewModelData)
@@ -6,16 +7,23 @@ protocol SettingsDisplayLogic: AnyObject {
 
 class SettingsViewController: UIViewController, SettingsDisplayLogic {
     
-    var interactor: SettingsBusinessLogic?
+    var interactor: SettingsInteractorProtocol?
     var router: (NSObjectProtocol & SettingsRoutingLogic)?
     
-//    private let headerView = HeaderView()
-//    private let acccountView = AccountView()
-//    private let preferencesView = PreferencesView()
-//
-//    private let accountLabel = UILabel()
-//    private let preferencesLabel = UILabel()
-//    private let saveButton = UIButton()
+    enum Constant {
+        static let accountLabelTopInset: CGFloat = 20
+        static let accountLabelLeadingInset: CGFloat = 10
+        
+        static let accountViewTopInset: CGFloat = 10
+        static let accountViewHeightSize: CGFloat = 120
+        
+        static let preferencesLabelTopInset: CGFloat = 20
+        static let preferencesLabelLeadingInset: CGFloat = 10
+        
+        static let prefencesViewTopInset: CGFloat = 10
+        
+        static let saveButtonBottomInset: CGFloat = -120
+    }
     
     private lazy var headerView: HeaderView = {
         let headerView = HeaderView()
@@ -41,7 +49,7 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
         let accountLabel = UILabel()
         accountLabel.text = "Account"
         accountLabel.addCharacterSpacing(kernValue: 1.25)
-        accountLabel.font = .montserrat(12, .bold)
+//        accountLabel.font = .montserrat(12, .bold)
         accountLabel.textColor = .systemGray2
         return accountLabel
     }()
@@ -50,7 +58,7 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
         let preferencesLabel = UILabel()
         preferencesLabel.text = "Preferences"
         preferencesLabel.addCharacterSpacing(kernValue: 1.25)
-        preferencesLabel.font = .montserrat(12, .bold)
+//        preferencesLabel.font = .montserrat(12, .bold)
         preferencesLabel.textColor = .systemGray2
         return preferencesLabel
     }()
@@ -64,54 +72,25 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
         return saveButton
     }()
     
-    
-    
-//    var infoData = Accounts(country: "hello", phoneNumber: "hello", email: "hello", name: "hello", image: (Resources.Images.arrowImage?.pngData())!)
-    var infoData = Accounts(country: "hello", phoneNumber: "hello", email: "hello", name: "hello")
-
-    var accountsData = Account()
-//    var infoEmail = String()
-    // MARK: Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
     }
-    
-    // MARK: Setup
-    
-    private func setup() {
-        let viewController        = self
-        let interactor            = SettingsInteractor()
-        let presenter             = SettingsPresenter()
-        let router                = SettingsRouter()
-        viewController.interactor = interactor
-        viewController.router     = router
-        interactor.presenter      = presenter
-        presenter.viewController  = viewController
-        router.viewController     = viewController
-    }
-    
-    // MARK: Routing
-    
-    
-    
+
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
-        addConstraints()
         configureAppearance()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(infoData)
+//        print(infoData)
         print("Hello")
     }
     
@@ -133,60 +112,84 @@ private extension SettingsViewController {
                                 accountLabel,
                                 preferencesLabel)
         preferencesView.addSubviewsAndMask(saveButton)
+        let headerViewConstraints = self.setHeaderViewConstraints()
+        let accountLabelConstraints = self.setAccountLabelConstraints()
+        let acccountViewConstraints = self.setAccountViewConstraints()
+        let preferencesLabelConstraints = self.setPreferncesLabelConstraints()
+        let preferencesViewConstraints = self.setPreferencesViewConstraints()
+        let saveButtonConstraints = self.setSaveButtonConstraints()
+        
+        NSLayoutConstraint.activate(headerViewConstraints +
+                                    accountLabelConstraints +
+                                    acccountViewConstraints +
+                                    preferencesLabelConstraints +
+                                    preferencesViewConstraints +
+                                    saveButtonConstraints)
     }
     
-    func addConstraints() {
-        headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
-        
-        accountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20).isActive = true
-        accountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        
-        acccountView.topAnchor.constraint(equalTo: accountLabel.bottomAnchor, constant: 10).isActive = true
-        acccountView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        acccountView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        acccountView.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        
-        preferencesLabel.topAnchor.constraint(equalTo: acccountView.bottomAnchor, constant: 20).isActive = true
-        preferencesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        
-        preferencesView.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: 10).isActive = true
-        preferencesView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        preferencesView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        preferencesView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        saveButton.bottomAnchor.constraint(equalTo: preferencesView.bottomAnchor, constant: -120).isActive = true
-        saveButton.centerXAnchor.constraint(equalTo: preferencesView.centerXAnchor).isActive = true
+    func setHeaderViewConstraints() -> [NSLayoutConstraint] {
+        let leadingAnchor = headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let trailingAnchor = headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let topAnchor = headerView.topAnchor.constraint(equalTo: view.topAnchor)
+        let headerAnchor = headerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3)
+        return [leadingAnchor,
+                trailingAnchor,
+                topAnchor,
+                headerAnchor]
+    }
+    
+    func setAccountLabelConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = accountLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: Constant.accountLabelTopInset)
+        let leadingAnchor = accountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.accountLabelLeadingInset)
+        return [topAnchor,
+                leadingAnchor]
+    }
+    
+    func setAccountViewConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = acccountView.topAnchor.constraint(equalTo: accountLabel.bottomAnchor, constant: Constant.accountViewTopInset)
+        let trailingAnchor = acccountView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let leadingAnchor = acccountView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let height = acccountView.heightAnchor.constraint(equalToConstant: Constant.accountViewHeightSize)
+        return [topAnchor,
+                trailingAnchor,
+                leadingAnchor,
+                height]
+    }
+    
+    func setPreferncesLabelConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = preferencesLabel.topAnchor.constraint(equalTo: acccountView.bottomAnchor, constant: Constant.preferencesLabelTopInset)
+        let leadingAnchor = preferencesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.preferencesLabelLeadingInset)
+        return [topAnchor,
+                leadingAnchor]
+    }
+    
+    func setPreferencesViewConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = preferencesView.topAnchor.constraint(equalTo: preferencesLabel.bottomAnchor, constant: Constant.prefencesViewTopInset)
+        let leadingAnchor = preferencesView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let trailingAnchor = preferencesView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let bottomAnchor = preferencesView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        return [topAnchor,
+                leadingAnchor,
+                trailingAnchor,
+                bottomAnchor]
+    }
+    
+    func setSaveButtonConstraints() -> [NSLayoutConstraint] {
+        let bottomAnchor = saveButton.bottomAnchor.constraint(equalTo: preferencesView.bottomAnchor, constant: Constant.saveButtonBottomInset)
+        let centerXAnchor = saveButton.centerXAnchor.constraint(equalTo: preferencesView.centerXAnchor)
+        return [bottomAnchor,
+                centerXAnchor]
     }
     
     func configureAppearance() {
         view.backgroundColor = .systemGray6
-//        headerView.backgroundColor = .white
-//        acccountView.backgroundColor = .white
-//        accountLabel.text = "Account"
-//        accountLabel.addCharacterSpacing(kernValue: 1.25)
-//        accountLabel.font = .montserrat(12, .bold)
-//        accountLabel.textColor = .systemGray2
-//        preferencesLabel.text = "Preferences"
-//        preferencesLabel.addCharacterSpacing(kernValue: 1.25)
-//        preferencesLabel.font = .montserrat(12, .bold)
-//        preferencesLabel.textColor = .systemGray2
-//        headerView.delegate = self
-//        acccountView.delegate = self
-//        saveButton.setTitle("НАЖМИ СУКА", for: .normal)
-//        saveButton.tintColor = .black
-//        saveButton.backgroundColor = .black
-//
-//        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
     }
     
     @objc func saveButtonAction() {
 //        interactor?.makeRequest(request: Settings.Model.Request.RequestType.saveProfile(profile: <#T##Accounts#>))
 //        let myAcc = Accounts(country: <#T##String#>, phoneNumber: <#T##String#>, email: <#T##String#>, name: <#T##String#>, image: <#T##Data#>)
-        let coreManager = CoreDataWorker.shared
-        coreManager.saveAccount(account: infoData)
+//        let coreManager = CoreDataWorker.shared
+//        coreManager.saveAccount(account: infoData)
 //        print(accountsData)
     }
 }
@@ -195,11 +198,11 @@ private extension SettingsViewController {
 
 extension SettingsViewController: HeaderViewDelegate {
     func transferEmailString(email: String) {
-        infoData.email = email
+//        infoData.email = email
     }
 
     func transferNameString(name: String) {
-        infoData.name = name
+//        infoData.name = name
     }
     
     func revealAlertController() {
@@ -213,14 +216,14 @@ extension SettingsViewController: HeaderViewDelegate {
 
 extension SettingsViewController: AccountViewDelegate {
     func transferCountryString(string: String) {
-        infoData.country = string
+//        infoData.country = string
 //        print("\(infoData)")
-        print(string)
+//        print(string)
     }
     
     func transferPhoneNumberString(string: String) {
-        infoData.phoneNumber = string
-        print(string)
+//        infoData.phoneNumber = string
+//        print(string)
     }
 }
 

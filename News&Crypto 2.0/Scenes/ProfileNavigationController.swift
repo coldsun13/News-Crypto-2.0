@@ -1,4 +1,5 @@
 import UIKit
+import UILib
 
 public class ProfileNavigationController: UINavigationController  {
     
@@ -45,9 +46,6 @@ extension ProfileNavigationController: UINavigationControllerDelegate {
 private extension ProfileNavigationController {
     
     func configureAppearance() {
-//        avatarImageView.image = Resources.Images.avatarImage
-//        avatarImageView.contentMode = .scaleAspectFit
-//        avatarImageView.tintColor = .systemGray3
         delegate = self
         navigationBar.prefersLargeTitles = true
     }

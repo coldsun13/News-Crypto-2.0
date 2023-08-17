@@ -1,30 +1,12 @@
 import UIKit
 
-protocol CryptoNewsPresentationLogic {
+protocol CryptoNewsPresenterProtocol {
     func presentData(response: CryptoNews.Model.Response.ResponseType)
 }
 
-final class CryptoNewsPresenter: CryptoNewsPresentationLogic {
+final class CryptoNewsPresenter {
     
-    weak var viewController: CryptoNewsDisplayLogic?
-    
-    func presentData(response: CryptoNews.Model.Response.ResponseType) {
-        switch response {
-            
-        case .presentCoins(let coins):
-            
-            let cells = coins.map { coinItem in
-                cellViewModel(from: coinItem)
-            }
-            let info = coins.map { coinItem in
-                coinViewModel(from: coinItem)
-            }
-            
-            let cryptoViewModel = CryptoViewModel(cell: cells, coinViewModel: info)
-            
-            viewController?.displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData.displayCoins(cryptoViewModel: cryptoViewModel))
-        }
-    }
+    weak var viewController: CryptoNewsViewProtocol?
     
     private func cellViewModel(from coinModel: CoinModel) -> CryptoViewModel.Cell {
         let changeColor = (coinModel.priceChangePercentage24H ?? 0.0 < 0)
@@ -53,4 +35,26 @@ final class CryptoNewsPresenter: CryptoNewsPresentationLogic {
                                              volume: coinModel.totalVolume?.formattedWithAbbreviations() ?? "0.0",
                                              coinName: coinModel.name)
     }
+}
+
+extension CryptoNewsPresenter: CryptoNewsPresenterProtocol {
+    
+    func presentData(response: CryptoNews.Model.Response.ResponseType) {
+        switch response {
+            
+        case .presentCoins(let coins):
+            
+            let cells = coins.map { coinItem in
+                cellViewModel(from: coinItem)
+            }
+            let info = coins.map { coinItem in
+                coinViewModel(from: coinItem)
+            }
+            
+            let cryptoViewModel = CryptoViewModel(models: cells, coinViewModel: info)
+            
+            viewController?.displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData.displayCoins(cryptoViewModel: cryptoViewModel))
+        }
+    }
+
 }

@@ -1,13 +1,17 @@
 import UIKit
 
-protocol SettingsBusinessLogic {
+protocol SettingsInteractorProtocol {
     func makeRequest(request: Settings.Model.Request.RequestType)
 }
 
-class SettingsInteractor: SettingsBusinessLogic {
+class SettingsInteractor: SettingsInteractorProtocol {
     
-    var presenter: SettingsPresentationLogic?
+    var presenter: SettingsPresenterProtocol?
     var service: SettingsService?
+    
+    init(service: SettingsService) {
+        self.service = service
+    }
     
     func makeRequest(request: Settings.Model.Request.RequestType) {
         if service == nil {

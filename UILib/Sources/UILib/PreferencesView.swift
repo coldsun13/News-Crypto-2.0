@@ -1,10 +1,7 @@
 import UIKit
 
-final class PreferencesView: UIView {
-    
-    //    private let darkmodeSwitch = UISwitch()
-    //    private let languageLabel = UILabel()
-    //    private let darkmodeLabel = UILabel()
+@available(iOS 13.0, *)
+public final class PreferencesView: UIView {
     
     private lazy var darkmodeSwitch: UISwitch = {
         let darkmodeSwitch = UISwitch()
@@ -14,14 +11,14 @@ final class PreferencesView: UIView {
     
     private lazy var languageLabel: UILabel = {
         let languageLabel = UILabel()
-        languageLabel.font = .montserrat(15, .medium)
+//        languageLabel.font = .montserrat(15, .medium)
         languageLabel.addImageInText(systemImage: Resources.Images.languageImage!, text: "  Language")
         return languageLabel
     }()
     
     private lazy var darkmodeLabel: UILabel = {
         let darkmodeLabel = UILabel()
-        darkmodeLabel.font = .montserrat(15, .medium)
+//        darkmodeLabel.font = .montserrat(15, .medium)
         darkmodeLabel.addImageInText(systemImage: Resources.Images.colormodeImage!, text: "  Dark Mode")
         return darkmodeLabel
     }()
@@ -38,6 +35,7 @@ final class PreferencesView: UIView {
     }
 }
 
+@available(iOS 13.0, *)
 private extension PreferencesView {
     
     func addSubviews() {
@@ -59,9 +57,9 @@ private extension PreferencesView {
     
     func configureAppearance() {
         backgroundColor = .white
-        //        languageLabel.font = .montserrat(15, .medium)
-        //        languageLabel.addImageInText(systemImage: Resources.Images.languageImage!, text: "  Language")
-        //        darkmodeLabel.font = .montserrat(15, .medium)
-        //        darkmodeLabel.addImageInText(systemImage: Resources.Images.colormodeImage!, text: "  Dark Mode")
+//                languageLabel.font = .montserrat(15, .medium)
+                languageLabel.addImageInText(systemImage: Resources.Images.languageImage!, text: "  Language")
+//                darkmodeLabel.font = .montserrat(15, .medium)
+                darkmodeLabel.addImageInText(systemImage: Resources.Images.colormodeImage!, text: "  Dark Mode")
     }
 }

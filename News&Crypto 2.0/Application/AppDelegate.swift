@@ -1,11 +1,13 @@
 import UIKit
 import CoreData
+import UILib
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let uilib = UILib.init()
         return true
     }
 
@@ -22,29 +24,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CoreData")
-        container.loadPersistentStores { description, error in
-            if let error {
-                print(error.localizedDescription)
-            } else {
-                print("DB url -", description.url?.absoluteString)
-            }
-        }
-        
-        return container
-    }()
-    
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let error = error as? NSError
-                fatalError()
-            }
-        }
-    }
+//    lazy var persistentContainer: NSPersistentContainer = {
+//        let container = NSPersistentContainer(name: "CoreData")
+//        container.loadPersistentStores { description, error in
+//            if let error {
+//                print(error.localizedDescription)
+//            } else {
+//                print("DB url -", description.url?.absoluteString)
+//            }
+//        }
+//
+//        return container
+//    }()
+//
+//    func saveContext() {
+//        let context = persistentContainer.viewContext
+//        if context.hasChanges {
+//            do {
+//                try context.save()
+//            } catch {
+//                let error = error as? NSError
+//                fatalError()
+//            }
+//        }
+//    }
 }
 

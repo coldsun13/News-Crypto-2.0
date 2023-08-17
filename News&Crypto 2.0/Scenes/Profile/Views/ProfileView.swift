@@ -6,10 +6,27 @@ protocol ProfileViewDelegate: AnyObject {
 
 final class ProfileView: UIView {
     
+    enum Constants {
+        static let nameLabelTopInset: CGFloat = 15
+        static let nameLabelLeadingInset: CGFloat = 15
+        
+        static let emailLabelTopInset: CGFloat = 20
+        static let emailLabelLeadingInset: CGFloat = 15
+        
+        static let phoneNumberLabelTopInset: CGFloat = 20
+        static let phoneNumberLeadingInset: CGFloat = 15
+        
+        static let countryLabelTopInset: CGFloat = 20
+        static let countryLabelLeadingInset: CGFloat = 15
+        
+        static let profileNameLabelTopInset: CGFloat = 20
+        static let profileNameLabelTrailingInset: CGFloat = -15
+    }
+    
     private lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.textColor = .gray
-        nameLabel.font = .montserrat(15, .regular)
+//        nameLabel.font = .montserrat(15, .regular)
         nameLabel.text = "Name:"
         return nameLabel
     }()
@@ -17,7 +34,7 @@ final class ProfileView: UIView {
     private lazy var emailLabel: UILabel = {
         let emailLabel = UILabel()
         emailLabel.textColor = .gray
-        emailLabel.font = .montserrat(15, .regular)
+//        emailLabel.font = .montserrat(15, .regular)
         emailLabel.text = "E-mail:"
         return emailLabel
     }()
@@ -25,7 +42,7 @@ final class ProfileView: UIView {
     private lazy var phoneNumberLabel: UILabel = {
         let phoneNumberLabel = UILabel()
         phoneNumberLabel.textColor = .gray
-        phoneNumberLabel.font = .montserrat(15, .regular)
+//        phoneNumberLabel.font = .montserrat(15, .regular)
         phoneNumberLabel.text = "Phone:"
         return phoneNumberLabel
     }()
@@ -34,25 +51,22 @@ final class ProfileView: UIView {
         let countryLabel = UILabel()
         countryLabel.textColor = .gray
         countryLabel.text = "Country:"
-        countryLabel.font = .montserrat(15, .regular)
+//        countryLabel.font = .montserrat(15, .regular)
         return countryLabel
     }()
     
     private lazy var profileNameLabel: UILabel = {
         let profileNameLabel = UILabel()
         profileNameLabel.textColor = .gray
-        profileNameLabel.font = .montserrat(15, .regular)
+//        profileNameLabel.font = .montserrat(15, .regular)
         return profileNameLabel
     }()
-    
-    private var account = [Account]()
     
     weak var delegate: ProfileViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews()
-        addConstraints()
+        drawSelf()
     }
     
     required init?(coder: NSCoder) {
@@ -66,27 +80,58 @@ final class ProfileView: UIView {
 
 private extension ProfileView {
     
-    func addSubviews() {
+    func drawSelf() {
         addSubviewsAndMask(nameLabel,
                            emailLabel,
                            phoneNumberLabel,
-                           countryLabel, profileNameLabel)
+                           countryLabel,
+                           profileNameLabel)
+        let nameLabelConstraints = self.setNameLabelConstraints()
+        let emailLabelConstraints = self.setEmailLabelConstraints()
+        let phoneNumberLabelConstraints = self.setPhoneNumberLabelConstraints()
+        let countryNumberLabelConstraints = self.setCountryLabelConstraints()
+        let profileNameLabelConstraints = self.setProfileNameConstraints()
+        
+        NSLayoutConstraint.activate(nameLabelConstraints +
+                                    emailLabelConstraints +
+                                    phoneNumberLabelConstraints +
+                                    countryNumberLabelConstraints +
+                                    profileNameLabelConstraints)
     }
     
-    func addConstraints() {
-        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        
-        emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
-        emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        
-        phoneNumberLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 20).isActive = true
-        phoneNumberLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        
-        countryLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 20).isActive = true
-        countryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        
-        profileNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
-        profileNameLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -15).isActive = true
+    
+    func setNameLabelConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.nameLabelTopInset)
+        let leadingAnchor = nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.nameLabelLeadingInset)
+        return [topAnchor,
+                leadingAnchor]
+    }
+    
+    func setEmailLabelConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.emailLabelTopInset)
+        let leadingAnchor = emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.emailLabelLeadingInset)
+        return [topAnchor,
+                leadingAnchor]
+    }
+    
+    func setPhoneNumberLabelConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = phoneNumberLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: Constants.phoneNumberLabelTopInset)
+        let leadingAnchor = phoneNumberLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.phoneNumberLeadingInset)
+        return [topAnchor,
+                leadingAnchor]
+    }
+    
+    func setCountryLabelConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = countryLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: Constants.countryLabelTopInset)
+        let leadingAnchor = countryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.countryLabelLeadingInset)
+        return [topAnchor,
+                leadingAnchor]
+    }
+    
+    func setProfileNameConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = profileNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.profileNameLabelTopInset)
+        let trailingAnchor = profileNameLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.profileNameLabelTrailingInset)
+        return [topAnchor,
+                trailingAnchor]
     }
 }

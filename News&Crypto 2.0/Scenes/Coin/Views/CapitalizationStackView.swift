@@ -4,13 +4,45 @@ final class CapitalizationStackView: UIStackView {
     // MARK: - Properties
     
     // MARK: Private
+    private lazy var currentAndCapitalizationStackView: UIStackView = {
+        let currentAndCapitalizationStackView = UIStackView()
+        currentAndCapitalizationStackView.axis = .horizontal
+        currentAndCapitalizationStackView.distribution = .fillEqually
+        currentAndCapitalizationStackView.alignment = .leading
+        return currentAndCapitalizationStackView
+    }()
     
-    private let currentAndCapitalizationStackView = UIStackView()
-    private let currentPriceLabel = UILabel()
-    private let capitalizationLabel = UILabel()
-    private let rankAndVolumeStackView = UIStackView()
-    private let rankLabel = UILabel()
-    private let volumeLabel = UILabel()
+    private lazy var rankAndVolumeStackView: UIStackView = {
+        let rankAndVolumeStackView = UIStackView()
+        rankAndVolumeStackView.axis = .horizontal
+        rankAndVolumeStackView.distribution = .fillEqually
+        rankAndVolumeStackView.alignment = .leading
+        return rankAndVolumeStackView
+    }()
+    
+    private lazy var currentPriceLabel: UILabel = {
+        let currentPriceLabel = UILabel()
+        currentPriceLabel.numberOfLines = 3
+        return currentPriceLabel
+    }()
+    
+    private lazy var capitalizationLabel: UILabel = {
+        let capitalizationLabel = UILabel()
+        capitalizationLabel.numberOfLines = 3
+        return capitalizationLabel
+    }()
+    
+    private lazy var rankLabel: UILabel = {
+        let rankLabel = UILabel()
+        rankLabel.numberOfLines = 2
+        return rankLabel
+    }()
+    
+    private lazy var volumeLabel: UILabel = {
+        let volumeLabel = UILabel()
+        volumeLabel.numberOfLines = 2
+        return volumeLabel
+    }()
     
     // MARK: - Initialization
     
@@ -64,42 +96,16 @@ private extension CapitalizationStackView {
     
     func addSubviews() {
         addAllArrangedSubviews(currentAndCapitalizationStackView,
-                            rankAndVolumeStackView)
+                               rankAndVolumeStackView)
         currentAndCapitalizationStackView.addAllArrangedSubviews(currentPriceLabel,
-                                                              capitalizationLabel)
+                                                                 capitalizationLabel)
         rankAndVolumeStackView.addAllArrangedSubviews(rankLabel,
-                                                   volumeLabel)
+                                                      volumeLabel)
     }
     
     func addSetups() {
-        addStackViewSetups()
-        addCurrentAndCapitalizationStackViewSetups()
-        addRankAndVolumeStackViewSetups()
-        addLabelsNumberLinesSetup()
-    }
-    
-    func addStackViewSetups() {
         axis = .vertical
         distribution = .fillEqually
         alignment = .fill
-    }
-    
-    func addCurrentAndCapitalizationStackViewSetups() {
-        currentAndCapitalizationStackView.axis = .horizontal
-        currentAndCapitalizationStackView.distribution = .fillEqually
-        currentAndCapitalizationStackView.alignment = .leading
-    }
-    
-    func addRankAndVolumeStackViewSetups() {
-        rankAndVolumeStackView.axis = .horizontal
-        rankAndVolumeStackView.distribution = .fillEqually
-        rankAndVolumeStackView.alignment = .leading
-    }
-    
-    func addLabelsNumberLinesSetup() {
-        currentPriceLabel.numberOfLines = 3
-        capitalizationLabel.numberOfLines = 3
-        rankLabel.numberOfLines = 2
-        volumeLabel.numberOfLines = 2
     }
 }

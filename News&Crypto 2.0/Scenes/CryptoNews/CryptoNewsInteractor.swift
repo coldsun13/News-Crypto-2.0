@@ -1,16 +1,23 @@
 import UIKit
 
-protocol CryptoNewsBusinessLogic {
+protocol CryptoNewsInteractorProtocol {
   func makeRequest(request: CryptoNews.Model.Request.RequestType)
 }
 
-final class CryptoNewsInteractor: CryptoNewsBusinessLogic {
+final class CryptoNewsInteractor {
     
-    var presenter: CryptoNewsPresentationLogic?
+    var presenter: CryptoNewsPresenterProtocol?
     var service: CryptoNewsService?
-    
+
     private var fetcher = DataFetcherService()
     
+    init(service: CryptoNewsService) {
+        self.service = service
+    }
+    
+}
+
+extension CryptoNewsInteractor: CryptoNewsInteractorProtocol {
     func makeRequest(request: CryptoNews.Model.Request.RequestType) {
         if service == nil {
             service = CryptoNewsService()
@@ -24,6 +31,6 @@ final class CryptoNewsInteractor: CryptoNewsBusinessLogic {
                 self?.presenter?.presentData(response: CryptoNews.Model.Response.ResponseType.presentCoins(coins: coinResponse))
             }
         }
-        
     }
+
 }

@@ -10,7 +10,7 @@ final class NewsViewController: UIViewController {
     var interactor: NewsInteractorProtocol?
     var router: (NSObjectProtocol & NewsRouterProtocol)?
     //    private let tableView = UITableView()
-    private var newsViewModel = NewsViewModel(model: []) {
+    private var newsViewModel = NewsViewModel(models: []) {
         didSet {
             tableView.reloadData()
         }
@@ -29,19 +29,30 @@ final class NewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureAppearance()
+        drawSelf()
         interactor?.makeRequest(request: News.Model.Request.RequestType.getNews)
     }
 }
 
 private extension NewsViewController {
     
-    func configureAppearance() {
+    func drawSelf() {
         view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        let tableViewConstraints = self.setTableViewConstraints()
+        NSLayoutConstraint.activate(tableViewConstraints)
+    }
+    
+    func setTableViewConstraints() -> [NSLayoutConstraint] {
+        let leadingAnchor = tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let trailingAnchor = tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let topAnchor = tableView.topAnchor.constraint(equalTo: view.topAnchor)
+        let bottomAnchor = tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        return [
+            leadingAnchor,
+            trailingAnchor,
+            topAnchor,
+            bottomAnchor
+        ]
     }
     
     func open(url: URL) {
@@ -63,14 +74,15 @@ private extension NewsViewController {
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        newsViewModel.model.count
+        newsViewModel.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
                                                        for: indexPath) as? NewsTableViewCell else { return UITableViewCell ()}
-        let model = newsViewModel.model[indexPath.row]
+        let model = newsViewModel.models[indexPath.row]
         // dump(indexPath)
+        print(indexPath)
         cell.set(viewModel: model)
         return cell
     }

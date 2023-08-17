@@ -1,10 +1,5 @@
 import UIKit
-
-enum Tabs: Int, CaseIterable {
-    case cryptoNews
-    case profile
-    case settings
-}
+import UILib
 
 final class TabBarController: UITabBarController {
     
@@ -16,15 +11,15 @@ final class TabBarController: UITabBarController {
 
 private extension TabBarController {
     
-    func getController(tabs: Tabs) -> UIViewController {
+    func getController(tabs: Resources.Tabs) -> UIViewController {
         switch tabs {
             
         case .cryptoNews:
-            return CryptoNewsViewController()
+            return CryptoNewsAssembly.assemblyModule()
         case .profile:
-            return ProfileNavigationController(rootViewController: ProfileViewController())
+            return ProfileNavigationController(rootViewController: ProfileAssemplby.assembleModule())
         case .settings:
-            return SettingsViewController()
+            return SettingsAssemby.assembleModule()
         }
     }
     
@@ -38,7 +33,7 @@ private extension TabBarController {
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.layer.masksToBounds = true
         
-        let controllers: [UIViewController] = Tabs.allCases.map { tab in
+        let controllers: [UIViewController] = Resources.Tabs.allCases.map { tab in
             let controller = getController(tabs: tab)
             controller.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.title(for: tab),
                                                  image: Resources.Images.Tabbar.icon(for: tab),

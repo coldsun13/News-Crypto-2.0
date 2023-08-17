@@ -14,6 +14,27 @@ final class ProfileCell: UICollectionViewCell {
     
     static let identifier = "WalletCell"
     
+    enum Constants {
+        static let mainStackViewTopInset: CGFloat = 10
+        static let mainStackViewLeadingInset: CGFloat = 15
+        static let mainStackViewTrailingInset: CGFloat = -15
+        
+        static let priceLabelTopInset: CGFloat = 10
+        static let priceLabelLeadingInset: CGFloat = 15
+        
+        static let coinImageViewWidthSize: CGFloat = 30
+        
+        static let changePriceStackViewTopInset: CGFloat = 10
+        static let changePriceStackViewLeadingInset: CGFloat = 15
+        
+        static let cryptoLineChartViewTopInset: CGFloat = 5
+        static let cryptoLineChartViewLeadingInset: CGFloat = 5
+        static let cryptoLineChartViewBottomInset: CGFloat = -5
+        
+        static let changePriceImageViewWidthSize: CGFloat = 20
+        static let changePriceImageViewHeightSize: CGFloat = 20
+    }
+    
     private lazy var mainView: UIView = {
         let mainView = UIView()
         mainView.layer.cornerRadius = 15
@@ -34,14 +55,14 @@ final class ProfileCell: UICollectionViewCell {
     
     private lazy var nameCryptoLabel: UILabel = {
         let nameCryptoLabel = UILabel()
-        nameCryptoLabel.font = .montserrat(30, .bold)
+//        nameCryptoLabel.font = .montserrat(30, .bold)
         nameCryptoLabel.numberOfLines = 2
         return nameCryptoLabel
     }()
     
     private lazy var priceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.font = .montserrat(30, .bold)
+//        priceLabel.font = .montserrat(30, .bold)
         return priceLabel
     }()
     
@@ -53,7 +74,7 @@ final class ProfileCell: UICollectionViewCell {
     
     private lazy var changePriceLabel: UILabel = {
         let changePriceLabel = UILabel()
-        changePriceLabel.font = .montserrat(15, .regular)
+//        changePriceLabel.font = .montserrat(15, .regular)
         changePriceLabel.textColor = .black
         return changePriceLabel
     }()
@@ -75,8 +96,7 @@ final class ProfileCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews()
-        addConstraints()
+        drawSelf()
     }
     
     required init?(coder: NSCoder) {
@@ -95,7 +115,7 @@ final class ProfileCell: UICollectionViewCell {
 
 private extension ProfileCell {
     
-    func addSubviews() {
+    func drawSelf() {
         addSubview(mainView)
         mainView.addSubviewsAndMask(mainStackView,
                                     priceLabel,
@@ -105,38 +125,91 @@ private extension ProfileCell {
                                              coinImageView)
         changePriceStackView.addAllArrangedSubviews(changePriceImageView,
                                                     changePriceLabel)
-    }
-    
-    func addConstraints() {
-        
         addMaskForAllViews(mainView, mainStackView, priceLabel, changePriceStackView, cryptoLineChartView)
         
-        mainView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        mainView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        mainView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        mainView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        let mainViewConstraints = self.setMainViewConstraints()
+        let mainStackViewConstraints = self.setMainStackViewConstraints()
+        let priceLabelConstraints = self.setPriceLabelConstraints()
+        let coinImageViewConstraints = self.setCoinImageViewConstraints()
+        let changePriceStackViewConstraints = self.setChangePriceStackViewConstraints()
+        let cryptolineChartViewConstraints = self.setCryptoLineChartViewConstraints()
+        let changePriceImageViewConstraints = self.setChangePriceImageViewConstraints()
         
-        mainStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 10).isActive = true
-        mainStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15).isActive = true
-        mainStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -15).isActive = true
+        NSLayoutConstraint.activate(mainViewConstraints +
+                                    mainStackViewConstraints +
+                                    priceLabelConstraints +
+                                    coinImageViewConstraints +
+                                    changePriceImageViewConstraints +
+                                    changePriceStackViewConstraints +
+                                    cryptolineChartViewConstraints)
+    }
+    
+    func setMainViewConstraints() -> [NSLayoutConstraint] {
+        let leadingAnchor = mainView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        let trailingAnchor = mainView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        let topAnchor = mainView.topAnchor.constraint(equalTo: topAnchor)
+        let bottomAnchor = mainView.bottomAnchor.constraint(equalTo: bottomAnchor)
         
-        priceLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 10).isActive = true
-        priceLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15).isActive = true
+        return [leadingAnchor,
+                trailingAnchor,
+                topAnchor,
+                bottomAnchor]
+    }
+    
+    func setMainStackViewConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = mainStackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: Constants.mainStackViewTopInset)
+        let leadingAnchor = mainStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: Constants.mainStackViewLeadingInset)
+        let trailingAnchor = mainStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: Constants.mainStackViewLeadingInset)
         
-        coinImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        coinImageView.heightAnchor.constraint(equalTo: coinImageView.widthAnchor).isActive = true
+        return [topAnchor,
+                leadingAnchor,
+                trailingAnchor]
+    }
+    
+    func setPriceLabelConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = priceLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: Constants.priceLabelTopInset)
+        let leadingAnchor = priceLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: Constants.priceLabelLeadingInset)
         
-        changePriceStackView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 10).isActive = true
-        changePriceStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15).isActive = true
-        changePriceStackView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.5).isActive = true
+        return [topAnchor,
+                leadingAnchor]
+    }
+    
+    func setCoinImageViewConstraints() -> [NSLayoutConstraint] {
+        let width = coinImageView.widthAnchor.constraint(equalToConstant: Constants.coinImageViewWidthSize)
+        let height = coinImageView.heightAnchor.constraint(equalTo: coinImageView.widthAnchor)
         
-        cryptoLineChartView.topAnchor.constraint(equalTo: changePriceStackView.bottomAnchor, constant: 5).isActive = true
-        cryptoLineChartView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 5).isActive = true
-        cryptoLineChartView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.8).isActive = true
-        cryptoLineChartView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -5).isActive = true
+        return [width,
+                height]
+    }
+    
+    func setChangePriceStackViewConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = changePriceStackView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: Constants.changePriceStackViewTopInset)
+        let leadingAnchor = changePriceStackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: Constants.changePriceStackViewLeadingInset)
+        let width = changePriceStackView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.5)
         
-        changePriceImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        changePriceImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        return [topAnchor,
+                leadingAnchor,
+                width]
+    }
+    
+    func setCryptoLineChartViewConstraints() -> [NSLayoutConstraint] {
+        let topAnchor = cryptoLineChartView.topAnchor.constraint(equalTo: changePriceStackView.bottomAnchor, constant: Constants.cryptoLineChartViewTopInset)
+        let leadingAnchor = cryptoLineChartView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: Constants.cryptoLineChartViewLeadingInset)
+        let bottomAnchor = cryptoLineChartView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: Constants.cryptoLineChartViewBottomInset)
+        let widthAnchor = cryptoLineChartView.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.8)
+        
+        return [topAnchor,
+                leadingAnchor,
+                bottomAnchor,
+                widthAnchor]
+    }
+    
+    func setChangePriceImageViewConstraints() -> [NSLayoutConstraint] {
+        let width = changePriceImageView.widthAnchor.constraint(equalToConstant: Constants.changePriceImageViewWidthSize)
+        let height = changePriceImageView.heightAnchor.constraint(equalToConstant: Constants.changePriceImageViewHeightSize)
+        
+        return [width,
+                height]
     }
     
     func modificatorForNameCoinLabel(_ coinName: String, _ coinSymbol: String) -> NSMutableAttributedString {

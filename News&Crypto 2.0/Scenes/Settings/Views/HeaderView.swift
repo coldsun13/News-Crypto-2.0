@@ -1,4 +1,5 @@
 import UIKit
+import UILib
 
 protocol HeaderViewDelegate: AnyObject {
     func revealAlertController()
@@ -9,33 +10,11 @@ protocol HeaderViewDelegate: AnyObject {
 
 final class HeaderView: UIView {
     
-//    private var emailLabelText: String {
-//        get {
-//            return emailLabel.text ?? ""
-//        }
-//        set {
-//            emailLabel.text = newValue
-//            delegate?.transferEmailString(email: emailLabelText)
-//        }
-//    }
-//
-//    private var nameLabelText: String {
-//        get {
-//            return nameLabel.text ?? ""
-//        }
-//
-//        set {
-//            nameLabel.text = newValue
-//            delegate?.transferNameString(name: nameLabelText)
-//        }
-//    }
-    
-//
-//    private let headerStackView = UIStackView()
-//    private let nameLabel = UILabel()
-//    private let emailLabel = UILabel()
-//    private let avatarImageView = UIImageView()
-//    private let changeInfoButton = UIButton()
+    enum Constant {
+        static let changeInfoButtonWidthSize: CGFloat = 130
+        
+        static let avatarImageViewHeightSize: CGFloat = 80
+    }
     
     private lazy var headerStackView: UIStackView = {
        let headerStackView = UIStackView()
@@ -48,13 +27,13 @@ final class HeaderView: UIView {
     
     private lazy var nameLabel: UILabel = {
        let nameLabel = UILabel()
-        nameLabel.font = .montserrat(20, .semibold)
+//        nameLabel.font = .montserrat(20, .semibold)
         return nameLabel
     }()
     
     private lazy var emailLabel: UILabel = {
         let emailLabel = UILabel()
-        emailLabel.font = .montserrat(14, .medium)
+//        emailLabel.font = .montserrat(14, .medium)
         emailLabel.textColor = .gray
         return emailLabel
     }()
@@ -75,7 +54,7 @@ final class HeaderView: UIView {
         changeInfoButton.backgroundColor = .blue
         changeInfoButton.layer.cornerRadius = 10
         changeInfoButton.setTitle("Edit profile", for: .normal)
-        changeInfoButton.titleLabel?.font = .montserrat(15, .semibold)
+//        changeInfoButton.titleLabel?.font = .montserrat(15, .semibold)
         changeInfoButton.addTarget(self, action: #selector(changeInfoAction), for: .touchUpInside)
         return changeInfoButton
     }()
@@ -84,8 +63,7 @@ final class HeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews()
-        addConstraints()
+        drawSelf()
         configureAppearance()
     }
     
@@ -96,62 +74,42 @@ final class HeaderView: UIView {
 
 private extension HeaderView {
     
-    func addSubviews() {
+    func drawSelf() {
         addSubviewsAndMask(headerStackView)
         headerStackView.addAllArrangedSubviews(avatarImageView,
                                                nameLabel,
                                                emailLabel,
                                                changeInfoButton)
+        let headerStackViewConstraints = self.setHeaderStackViewConstraints()
+        let changeInfoButtonConstraints = self.setChangeInfoButtonConstraints()
+        let avatarImageViewConstraints = self.setAvatarImageConstraints()
+        
+        NSLayoutConstraint.activate(headerStackViewConstraints +
+                                    changeInfoButtonConstraints +
+                                    avatarImageViewConstraints)
     }
     
-    func addConstraints() {
-        headerStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        headerStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
-        changeInfoButton.widthAnchor.constraint(equalToConstant: 130).isActive = true
-        
-        avatarImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor).isActive = true
+    func setHeaderStackViewConstraints() -> [NSLayoutConstraint] {
+        let centerXAnchor = headerStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        let centerYAnchor = headerStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        return [centerYAnchor,
+                centerXAnchor]
+    }
+    
+    func setChangeInfoButtonConstraints() -> [NSLayoutConstraint] {
+        let width = changeInfoButton.widthAnchor.constraint(equalToConstant: Constant.changeInfoButtonWidthSize)
+        return [width]
+    }
+    
+    func setAvatarImageConstraints() -> [NSLayoutConstraint] {
+        let heightAnchor = avatarImageView.heightAnchor.constraint(equalToConstant: Constant.avatarImageViewHeightSize)
+        let widthAnchor = avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor)
+        return [heightAnchor,
+                widthAnchor]
     }
     
     func configureAppearance() {
         backgroundColor = .white
-        setupHeaderStackView()
-        setupChangeInfoButton()
-        setupAvatarImageView()
-        setupLabels()
-    }
-    
-    func setupLabels() {
-//        nameLabel.text = "Ihar Tsimafeyeu"
-//        nameLabel.font = .montserrat(20, .semibold)
-////        emailLabel.text = "coldsun@email.com"
-//        emailLabel.font = .montserrat(14, .medium)
-//        emailLabel.textColor = .gray
-    }
-    
-    func setupHeaderStackView() {
-//        headerStackView.axis = .vertical
-//        headerStackView.spacing = 15
-//        headerStackView.distribution = .equalSpacing
-//        headerStackView.alignment = .center
-    }
-    
-    func setupChangeInfoButton() {
-//        changeInfoButton.backgroundColor = .blue
-//        changeInfoButton.layer.cornerRadius = 10
-//        changeInfoButton.setTitle("Edit profile", for: .normal)
-//        changeInfoButton.titleLabel?.font = .montserrat(15, .semibold)
-//        changeInfoButton.addTarget(self, action: #selector(changeInfoAction), for: .touchUpInside)
-    }
-    
-    func setupAvatarImageView() {
-//        avatarImageView.image = Resources.Images.avatarImage
-//        avatarImageView.tintColor = .systemGray3
-//        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(changePhotoAvatarAction))
-//        avatarImageView.isUserInteractionEnabled = true
-//        avatarImageView.addGestureRecognizer(tap)
     }
     
     @objc func changeInfoAction() {

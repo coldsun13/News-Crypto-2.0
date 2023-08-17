@@ -1,10 +1,11 @@
 import UIKit
+import UILib
 
-protocol ProfilePresentationLogic {
+protocol ProfilePresenterProtocol {
     func presentData(response: Profile.Model.Response.ResponseType)
 }
 
-class ProfilePresenter: ProfilePresentationLogic {
+class ProfilePresenter: ProfilePresenterProtocol {
     
     weak var viewController: ProfileDisplayLogic?
     

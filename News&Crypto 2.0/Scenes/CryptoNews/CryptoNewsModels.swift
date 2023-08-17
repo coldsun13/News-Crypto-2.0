@@ -33,7 +33,7 @@ struct CryptoViewModel {
         var cryptolineChart: CryptoLineChartView.ChartViewModel
     }
     
-    let cell: [Cell]
+    let models: [Cell]
     
     struct CoinViewModel: CoinControllerViewModel {
         

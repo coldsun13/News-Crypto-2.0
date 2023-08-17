@@ -1,10 +1,10 @@
 import UIKit
 
-protocol SettingsPresentationLogic {
+protocol SettingsPresenterProtocol {
     func presentData(response: Settings.Model.Response.ResponseType)
 }
 
-class SettingsPresenter: SettingsPresentationLogic {
+class SettingsPresenter: SettingsPresenterProtocol {
     weak var viewController: SettingsDisplayLogic?
     
     func presentData(response: Settings.Model.Response.ResponseType) {
