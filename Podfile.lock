@@ -1,0 +1,34 @@
+PODS:
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
+  - Confetto (0.2.5)
+  - FloatingPanel (2.5.4)
+  - SwiftAlgorithms (1.0.0)
+  - SwiftLint (0.51.0)
+
+DEPENDENCIES:
+  - Charts (~> 4.0)
+  - Confetto
+  - FloatingPanel
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - Confetto
+    - FloatingPanel
+    - SwiftAlgorithms
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
+  Confetto: 6e2cbcdc252f7cff64040353e0371d792be77975
+  FloatingPanel: 387377aa46a9b088e5f8f5f2a8d2c00c61e67298
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+  SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
+
+PODFILE CHECKSUM: f1771c61a422478afa7f42f9d34b20233bc7c91a
+
+COCOAPODS: 1.12.0
