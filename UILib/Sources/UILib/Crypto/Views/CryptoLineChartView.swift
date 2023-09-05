@@ -1,14 +1,8 @@
 import UIKit
 import Charts
 
-//protocol ChartViewModel {
-//    var data: [Double] { get }
-//    var showLegend: Bool { get }
-//    var showAxis: Bool { get }
-//    var fillColor: UIColor { get }
-//}
 
-final class CryptoLineChartView: UIView {
+public final class CryptoLineChartView: UIView {
     
     //    private let chartView = LineChartView()
     private lazy var chartView: LineChartView = {
@@ -23,11 +17,18 @@ final class CryptoLineChartView: UIView {
         return chartView
     }()
     
-    struct ChartViewModel {
+    public struct ChartViewModel {
         var data: [Double]
         var showLegend: Bool
         var showAxis: Bool
         var fillColor: UIColor
+        
+        public init(data: [Double], showLegend: Bool, showAxis: Bool, fillColor: UIColor) {
+            self.data = data
+            self.showLegend = showLegend
+            self.showAxis = showAxis
+            self.fillColor = fillColor
+        }
     }
     
     override init(frame: CGRect) {
@@ -40,13 +41,13 @@ final class CryptoLineChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         chartView.frame = bounds
     }
     
     // MARK: - API
-    func configure(viewModel: ChartViewModel) {
+    public func configure(viewModel: ChartViewModel) {
         var entries = [ChartDataEntry]()
         for (index, value) in viewModel.data.enumerated() {
             entries.append(.init(x: Double(index), y: value))

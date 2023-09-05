@@ -1,14 +1,14 @@
 import UIKit
 import UILib
 
-protocol AccountViewDelegate: AnyObject {
+public protocol AccountViewDelegate: AnyObject {
     func transferCountryString(string: String)
     func transferPhoneNumberString(string: String)
 }
 
-final class AccountView: UIView {
+public final class AccountView: UIView {
     
-    weak var delegate: AccountViewDelegate?
+    public weak var delegate: AccountViewDelegate?
     
     enum Constant {
         static let countryLabelTopInset: CGFloat = 10

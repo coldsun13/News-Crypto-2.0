@@ -1,14 +1,14 @@
 import UIKit
 //import UILib
 
-protocol HeaderViewDelegate: AnyObject {
+public protocol HeaderViewDelegate: AnyObject {
     func revealAlertController()
     func changePhotoAvatarImage()
     func transferEmailString(email: String)
     func transferNameString(name: String)
 }
 
-final class HeaderView: UIView {
+public final class HeaderView: UIView {
     
     enum Constant {
         static let changeInfoButtonWidthSize: CGFloat = 130
@@ -59,7 +59,7 @@ final class HeaderView: UIView {
         return changeInfoButton
     }()
     
-    weak var delegate: HeaderViewDelegate?
+    public weak var delegate: HeaderViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

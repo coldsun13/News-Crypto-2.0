@@ -1,7 +1,7 @@
 import UIKit
 import Kingfisher
 
-protocol NewsCellViewModel {
+public protocol NewsCellViewModel {
     var image: String { get }
     var headline: String { get }
     var source: String { get }
@@ -9,10 +9,10 @@ protocol NewsCellViewModel {
     var url: String { get }
 }
 
-final class NewsTableViewCell: UITableViewCell {
+public final class NewsTableViewCell: UITableViewCell {
     // MARK: - Identifier
     
-    static let identifier = "NewsTableViewCell"
+    public static let identifier = "NewsTableViewCell"
     
     enum Constants {
         static let newsViewTopInset: CGFloat = 10
@@ -97,7 +97,7 @@ final class NewsTableViewCell: UITableViewCell {
     
     // MARK: - API
     
-    func set(viewModel: NewsCellViewModel) {
+    public func set(viewModel: NewsCellViewModel) {
         newsImageView.kf.setImage(with: URL(string: viewModel.image))
         titleLabel.text = viewModel.headline
         sourceAndDateLabel.text = viewModel.source + " • " + viewModel.date

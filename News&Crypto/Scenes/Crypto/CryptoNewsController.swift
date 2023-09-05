@@ -1,5 +1,6 @@
 import UIKit
 import FloatingPanel
+import UILib
 
 protocol CryptoNewsViewProtocol: AnyObject {
     func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData)

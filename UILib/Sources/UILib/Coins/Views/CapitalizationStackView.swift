@@ -1,6 +1,6 @@
 import UIKit
 
-final class CapitalizationStackView: UIStackView {
+public final class CapitalizationStackView: UIStackView {
     // MARK: - Properties
     
     // MARK: Private
@@ -59,7 +59,7 @@ final class CapitalizationStackView: UIStackView {
     
     // MARK: - Lifecycle
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         DispatchQueue.main.async { [weak self] in
             self?.currentPriceLabel.setLineSpacing(lineSpacing: 4.0)
@@ -71,19 +71,19 @@ final class CapitalizationStackView: UIStackView {
     
     // MARK: - API
     
-    func setCurrentPriceLabel(_ price: String, _ change: String, _ color: UIColor) {
+    public func setCurrentPriceLabel(_ price: String, _ change: String, _ color: UIColor) {
         currentPriceLabel.modificatorForCurrentPriceLabel(price, change, color)
     }
     
-    func setCapitalizationLabel(_ price: String, _ change: String, _ color: UIColor) {
+    public func setCapitalizationLabel(_ price: String, _ change: String, _ color: UIColor) {
         capitalizationLabel.modificatorForCapitalizationLabel(price, change, color)
     }
     
-    func setRankLabel(_ rank: String) {
+    public func setRankLabel(_ rank: String) {
         rankLabel.modificatorForRankLabel(rank)
     }
     
-    func setVolumeLabel(_ volume: String) {
+    public func setVolumeLabel(_ volume: String) {
         volumeLabel.modificatorForVolumeLabel(volume)
     }
     

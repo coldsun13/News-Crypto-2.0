@@ -1,7 +1,7 @@
 import UIKit
 import Charts
 
-protocol CryptoCellViewModel {
+public protocol CryptoCellViewModel {
     var currentPrice: String { get }
     var name: String { get }
     var abbriviatedName: String { get }
@@ -10,9 +10,9 @@ protocol CryptoCellViewModel {
     var iconURLString: String { get }
 }
 
-final class CryptoCell: UITableViewCell {
+public final class CryptoCell: UITableViewCell {
     
-    static let identifier = "CryptoCell"
+    public static let identifier = "CryptoCell"
     
     private enum Constant {
         static let coinStackViewLeadingInset: CGFloat = 10
@@ -106,14 +106,14 @@ final class CryptoCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         coinImageView.layer.cornerRadius = coinImageView.frame.size.width / 2
         coinImageView.clipsToBounds = true
         coinImageView.contentMode = .scaleAspectFill
     }
     
-    func set(viewModel: CryptoCellViewModel) {
+    public func set(viewModel: CryptoCellViewModel) {
         let changeMarketColor = Double(viewModel.priceChangePercantage24h) ?? 0.0 < 0
         coinImageView.set(imageURL: viewModel.iconURLString)
         priceLabel.text = viewModel.currentPrice

@@ -1,4 +1,5 @@
 import UIKit
+import UILib
 import SafariServices
 
 protocol NewsViewProtocol: AnyObject {

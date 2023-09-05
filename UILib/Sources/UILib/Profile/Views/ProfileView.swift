@@ -4,7 +4,7 @@ protocol ProfileViewDelegate: AnyObject {
     func setName(_ name: String)
 }
 
-final class ProfileView: UIView {
+public final class ProfileView: UIView {
     
     enum Constants {
         static let nameLabelTopInset: CGFloat = 15

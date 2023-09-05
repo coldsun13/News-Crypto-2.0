@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ProfileCellViewModel {
+public protocol ProfileCellViewModel {
     var name: String { get }
     var price: String { get }
     var iconUrlString: String { get }
@@ -10,9 +10,9 @@ protocol ProfileCellViewModel {
     var changePriceImage: String { get }
 }
 
-final class ProfileCell: UICollectionViewCell {
+public final class ProfileCell: UICollectionViewCell {
     
-    static let identifier = "WalletCell"
+    public static let identifier = "WalletCell"
     
     enum Constants {
         static let mainStackViewTopInset: CGFloat = 10
@@ -103,7 +103,7 @@ final class ProfileCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(viewModel: ProfileCellViewModel) {
+    public func set(viewModel: ProfileCellViewModel) {
         nameCryptoLabel.attributedText = modificatorForNameCoinLabel(viewModel.name, viewModel.abbriviatedName)
         priceLabel.text = viewModel.price
         coinImageView.set(imageURL: viewModel.iconUrlString)

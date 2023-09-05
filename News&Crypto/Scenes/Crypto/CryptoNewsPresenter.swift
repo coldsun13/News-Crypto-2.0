@@ -1,5 +1,5 @@
 import UIKit
-
+import UILib
 protocol CryptoNewsPresenterProtocol {
     func presentData(response: CryptoNews.Model.Response.ResponseType)
 }

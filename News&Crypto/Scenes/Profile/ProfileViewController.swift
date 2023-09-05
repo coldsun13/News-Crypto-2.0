@@ -1,4 +1,5 @@
 import UIKit
+import UILib
 
 protocol ProfileDisplayLogic: AnyObject {
     func displayData(viewModel: Profile.Model.ViewModel.ViewModelData)
