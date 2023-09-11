@@ -7,25 +7,27 @@ let package = Package(
     name: "UILib",
     platforms: [.iOS(.v14)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "UILib",
             targets: ["UILib"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/danielgindi/Charts.git", from: "4.0.0"),
         .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.9.1")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "UILib",
             dependencies: [
                 .product(name: "Charts", package: "Charts"),
                 .product(name: "Kingfisher", package: "Kingfisher")
-            ])
+            ],
+            resources: [
+                .process("Montserrat-Bold.ttf"),
+                .process("Montserrat-ExtraBold.ttf"),
+                .process("Montserrat-Light.ttf"),
+                .process("Montserrat-Medium.ttf"),
+                .process("Montserrat-Regular.ttf"),
+                .process("Montserrat-SemiBold.ttf")])
     ]
 )

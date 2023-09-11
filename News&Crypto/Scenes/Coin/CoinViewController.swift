@@ -68,7 +68,7 @@ final class CoinViewController: UIViewController {
     private lazy var overviewLabel: UILabel = {
         let overviewLabel = UILabel()
         overviewLabel.text = "Overview"
-//        overviewLabel.font = .montserrat(30, .bold)
+        overviewLabel.font = .montserrat(30, .bold)
         return overviewLabel
     }()
     

@@ -15,7 +15,8 @@ packages:
     minorVersion: 7.9.0
   UILib:
     path: ./UILib
-
+  NetworkLib:
+    path: ./NetworkLib
   
 options:
   # preGenCommand:
@@ -54,3 +55,4 @@ targets:
     dependencies:
       - package: Kingfisher
       - package: UILib
+      - package: NetworkLib

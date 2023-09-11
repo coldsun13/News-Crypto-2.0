@@ -10,7 +10,6 @@ final class NewsViewController: UIViewController {
     
     var interactor: NewsInteractorProtocol?
     var router: (NSObjectProtocol & NewsRouterProtocol)?
-    //    private let tableView = UITableView()
     private var newsViewModel = NewsViewModel(models: []) {
         didSet {
             tableView.reloadData()
@@ -82,8 +81,6 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
                                                        for: indexPath) as? NewsTableViewCell else { return UITableViewCell ()}
         let model = newsViewModel.models[indexPath.row]
-        // dump(indexPath)
-        print(indexPath)
         cell.set(viewModel: model)
         return cell
     }

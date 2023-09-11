@@ -49,7 +49,7 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
         let accountLabel = UILabel()
         accountLabel.text = "Account"
         accountLabel.addCharacterSpacing(kernValue: 1.25)
-//        accountLabel.font = .montserrat(12, .bold)
+        accountLabel.font = .montserrat(12, .bold)
         accountLabel.textColor = .systemGray2
         return accountLabel
     }()
@@ -58,7 +58,7 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
         let preferencesLabel = UILabel()
         preferencesLabel.text = "Preferences"
         preferencesLabel.addCharacterSpacing(kernValue: 1.25)
-//        preferencesLabel.font = .montserrat(12, .bold)
+        preferencesLabel.font = .montserrat(12, .bold)
         preferencesLabel.textColor = .systemGray2
         return preferencesLabel
     }()

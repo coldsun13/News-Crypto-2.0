@@ -1,5 +1,6 @@
 import UIKit
 import UILib
+import NetworkLib
 
 protocol ProfilePresenterProtocol {
     func presentData(response: Profile.Model.Response.ResponseType)

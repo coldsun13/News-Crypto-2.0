@@ -1,4 +1,5 @@
 import UIKit
+import NetworkLib
 
 protocol CryptoNewsInteractorProtocol {
   func makeRequest(request: CryptoNews.Model.Request.RequestType)

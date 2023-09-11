@@ -1,4 +1,5 @@
 import Foundation
+import NetworkLib
 
 protocol NewsInteractorProtocol {
     func makeRequest(request: News.Model.Request.RequestType)

@@ -1,4 +1,5 @@
 import UIKit
+import NetworkLib
 
 protocol ProfileInteractorProtocol {
     func makeRequest(request: Profile.Model.Request.RequestType)

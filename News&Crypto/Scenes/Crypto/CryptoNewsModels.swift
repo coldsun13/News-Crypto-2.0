@@ -1,5 +1,7 @@
 import UIKit
 import UILib
+import NetworkLib
+
 enum CryptoNews {
     
     enum Model {

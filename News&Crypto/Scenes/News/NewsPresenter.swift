@@ -1,4 +1,5 @@
 import UIKit
+import NetworkLib
 
 protocol NewsPresenterProtocol {
     func presentData(response: News.Model.Response.ResponseType)
