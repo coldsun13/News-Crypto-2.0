@@ -14,6 +14,7 @@
 		2C16BBD62766047EE4D23CDC /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0B32F12D315CB602760BC /* ProfileAssembly.swift */; };
 		37247A687BA54AFA15DCD6F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CF2B85EDC9B2CBD3FE15ED /* SettingsViewController.swift */; };
 		3BC1342BD08DB19B406E4B3F /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824FD2F580D2363D91260600 /* SettingsInteractor.swift */; };
+		42981350433C07C2648532D1 /* Pods_News_Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285A8A362B88FD7663234DE0 /* Pods_News_Crypto.framework */; };
 		477FF6DF3C7D2C067DECF229 /* +UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7BCB52AB0C33897480F950 /* +UIFont.swift */; };
 		4EC4067199C59719C803D76E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571BCFCD6A6AC0C4B4455A1 /* StorageManager.swift */; };
 		5103AE636A4928207BA9EBDB /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF3ED7ED59D608A10EC620 /* ProfilePresenter.swift */; };
@@ -35,8 +36,8 @@
 		9441456FB639677B12F4B58A /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31768F7392357BF8D52C5BA /* SettingsAssembly.swift */; };
 		A1D1A0C8A227B217CD5DF938 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B97A59C6E5FC2AB759F5D /* SettingsWorker.swift */; };
 		B080CAC931292465F73A39BE /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84007D7F8C39E16659F3141 /* ProfileWorker.swift */; };
-		B8398442B6B56016D93E6663 /* CryptoNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D249DD8F0B7DBE66F9566 /* CryptoNewsViewController.swift */; };
 		BA9262CE8928D249D5828F88 /* NewsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC952B1E9A9D330ECA50E6 /* NewsModels.swift */; };
+		BADAF1FD65A3C1C3216E4132 /* CryptoNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93844ABE2B83C3DF8323017 /* CryptoNewsViewController.swift */; };
 		C11A54F9576BC132D6B5583C /* CryptoNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B698F3BFE0501266C94DB10 /* CryptoNewsPresenter.swift */; };
 		CAC7D458B6F281F8FA569CCD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AE9AC83329633CA8982468 /* Model.swift */; };
 		CE6EF1556072EF71801D6538 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF1E90E7890180E6A057F8 /* NewsViewController.swift */; };
@@ -46,7 +47,6 @@
 		D50F5F9AD859196733FB29D0 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA5943531313C387AB3690B /* CoinViewController.swift */; };
 		D5E6EE54ABF1370D1D634FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1371E12DAF2757E18C006E4D /* AppDelegate.swift */; };
 		D9097173953BD2898C4FC9BC /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF665784C3D9BADCB5D2E06 /* SettingsModels.swift */; };
-		DB638C7D836723DEB26268FC /* Pods_News_Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAB27C1D5F72E8852ED4707 /* Pods_News_Crypto.framework */; };
 		DE6C2B55FEBC9E97B22FF149 /* CryptoNewsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BCAAF751490E39BC02625 /* CryptoNewsModels.swift */; };
 		E10E585F0E7173131C2A7988 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E9DB785A9829E4252196F /* CoreDataWorker.swift */; };
 		E797A372A354379FB0E72021 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE139B2453F9C8E051283F8 /* ProfileRouter.swift */; };
@@ -56,7 +56,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0596FD54C5A6E073EE0CCEAA /* Pods-News&Crypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News&Crypto.release.xcconfig"; path = "Target Support Files/Pods-News&Crypto/Pods-News&Crypto.release.xcconfig"; sourceTree = "<group>"; };
 		06AE9AC83329633CA8982468 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0BCE60B6B16AAACC96E45791 /* CryptoNewsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsAssembly.swift; sourceTree = "<group>"; };
 		0D437CB7240CE3DE46F002B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,7 +67,9 @@
 		2000C43212FD3801400D8522 /* NetworkLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NetworkLib; sourceTree = SOURCE_ROOT; };
 		2165C3374052EB7B19CC495B /* UILib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UILib; sourceTree = SOURCE_ROOT; };
 		22BF1E90E7890180E6A057F8 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		285A8A362B88FD7663234DE0 /* Pods_News_Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_News_Crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7F7CA5F6A26A87984BA56E /* NewsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
+		3280DADAB7A4EB59477E5873 /* Pods-News&Crypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News&Crypto.debug.xcconfig"; path = "Target Support Files/Pods-News&Crypto/Pods-News&Crypto.debug.xcconfig"; sourceTree = "<group>"; };
 		3FE0B32F12D315CB602760BC /* ProfileAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
 		4571BCFCD6A6AC0C4B4455A1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		479C8B6C1DFD1D0865619B0D /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		72D888299A171397FC1C36F2 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		75EFD1195D30E2226F83AD8B /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		7CC8381A6AC18DF1572F3E8A /* ProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
-		7FAB27C1D5F72E8852ED4707 /* Pods_News_Crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_News_Crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8026AE605AC3BBDCE959E021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		824FD2F580D2363D91260600 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		8B698F3BFE0501266C94DB10 /* CryptoNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsPresenter.swift; sourceTree = "<group>"; };
@@ -96,15 +96,15 @@
 		C10E9DB785A9829E4252196F /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
 		C31768F7392357BF8D52C5BA /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
 		C3555E314123727F5C5C41A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CE89714C84D9D0930139E417 /* Pods-News&Crypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News&Crypto.release.xcconfig"; path = "Target Support Files/Pods-News&Crypto/Pods-News&Crypto.release.xcconfig"; sourceTree = "<group>"; };
 		CFBB559E3DE90FD3ED15D3FC /* NewsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWorker.swift; sourceTree = "<group>"; };
-		DB0D249DD8F0B7DBE66F9566 /* CryptoNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsViewController.swift; sourceTree = "<group>"; };
+		E93844ABE2B83C3DF8323017 /* CryptoNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsViewController.swift; sourceTree = "<group>"; };
 		EA86F9ED307664FF9DD33B88 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		EBE139B2453F9C8E051283F8 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		ECD6399D60D6F7E5C6A6D786 /* NewsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAssembly.swift; sourceTree = "<group>"; };
 		F0CF2B85EDC9B2CBD3FE15ED /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F65591A3B6672E9043066787 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		F84007D7F8C39E16659F3141 /* ProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorker.swift; sourceTree = "<group>"; };
-		FD5C8E27C30E6765BB3A1261 /* Pods-News&Crypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News&Crypto.debug.xcconfig"; path = "Target Support Files/Pods-News&Crypto/Pods-News&Crypto.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 				12C4859D6A5B030061169099 /* Kingfisher in Frameworks */,
 				6F0704B03A48E9CD60EE9AC1 /* UILib in Frameworks */,
 				1C4DB9A5FCC85E294B13FC39 /* NetworkLib in Frameworks */,
-				DB638C7D836723DEB26268FC /* Pods_News_Crypto.framework in Frameworks */,
+				42981350433C07C2648532D1 /* Pods_News_Crypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,9 +128,17 @@
 				1A85E8C650C42C77D5346057 /* News&Crypto */,
 				A9432FBAAD2EED94E764BDFD /* Packages */,
 				A22AF2EFF8C0CFCA0F7B290C /* Products */,
-				E880781D0990D7609BFB1E37 /* Pods */,
-				214CD65C8D69849D283E2CA2 /* Frameworks */,
+				C5384F1313CCAEF0B39B6289 /* Pods */,
+				0DBD228883DD7D82C5DB2B09 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		0DBD228883DD7D82C5DB2B09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				285A8A362B88FD7663234DE0 /* Pods_News_Crypto.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		107C5B75B00D76454D431A51 /* News */ = {
@@ -151,11 +159,11 @@
 			isa = PBXGroup;
 			children = (
 				0BCE60B6B16AAACC96E45791 /* CryptoNewsAssembly.swift */,
-				DB0D249DD8F0B7DBE66F9566 /* CryptoNewsViewController.swift */,
 				8E3393DC3B924EDD5120CAD6 /* CryptoNewsInteractor.swift */,
 				177BCAAF751490E39BC02625 /* CryptoNewsModels.swift */,
 				8B698F3BFE0501266C94DB10 /* CryptoNewsPresenter.swift */,
 				AB653C21D4BFD23E6150EF7F /* CryptoNewsRouter.swift */,
+				E93844ABE2B83C3DF8323017 /* CryptoNewsViewController.swift */,
 				54F8E94D33861B99D5211C8E /* CryptoNewsWorker.swift */,
 			);
 			path = Crypto;
@@ -171,14 +179,6 @@
 				C4BAE9ABC64988EA1747C29E /* Supporting Files */,
 			);
 			path = "News&Crypto";
-			sourceTree = "<group>";
-		};
-		214CD65C8D69849D283E2CA2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7FAB27C1D5F72E8852ED4707 /* Pods_News_Crypto.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4CAD80E58DA359B05093B73F /* Settings */ = {
@@ -267,6 +267,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C5384F1313CCAEF0B39B6289 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3280DADAB7A4EB59477E5873 /* Pods-News&Crypto.debug.xcconfig */,
+				CE89714C84D9D0930139E417 /* Pods-News&Crypto.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CC8E292C15F1466AF50FD034 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,15 +297,6 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		E880781D0990D7609BFB1E37 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FD5C8E27C30E6765BB3A1261 /* Pods-News&Crypto.debug.xcconfig */,
-				0596FD54C5A6E073EE0CCEAA /* Pods-News&Crypto.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		EAD31E5F8855D50DF56F29C0 /* FileSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,11 +312,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC9361B0AB3746055279B6C1 /* Build configuration list for PBXNativeTarget "News&Crypto" */;
 			buildPhases = (
-				C517644DED1F98A77EBF6AF9 /* [CP] Check Pods Manifest.lock */,
+				84212F0388FFDC0E5EF00E40 /* [CP] Check Pods Manifest.lock */,
 				AC5C2BC52C414FEA615AD46E /* Sources */,
 				DBD9940F0DBA0DDC421DCC5C /* Resources */,
 				E70D186A283B20F663E75D50 /* Frameworks */,
-				C3057FA4598FBDC756C0E3A5 /* [CP] Embed Pods Frameworks */,
+				3AA45AD205CD8F3105FE50FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -380,7 +380,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C3057FA4598FBDC756C0E3A5 /* [CP] Embed Pods Frameworks */ = {
+		3AA45AD205CD8F3105FE50FB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -397,7 +397,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-News&Crypto/Pods-News&Crypto-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C517644DED1F98A77EBF6AF9 /* [CP] Check Pods Manifest.lock */ = {
+		84212F0388FFDC0E5EF00E40 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -432,11 +432,11 @@
 				CF3C74A1BF965E083693027F /* CoreDataService.swift in Sources */,
 				E10E585F0E7173131C2A7988 /* CoreDataWorker.swift in Sources */,
 				D2F76CFB06FE3BD2E500E0F5 /* CryptoNewsAssembly.swift in Sources */,
-				B8398442B6B56016D93E6663 /* CryptoNewsViewController.swift in Sources */,
 				91C4CC07310164619997B2B5 /* CryptoNewsInteractor.swift in Sources */,
 				DE6C2B55FEBC9E97B22FF149 /* CryptoNewsModels.swift in Sources */,
 				C11A54F9576BC132D6B5583C /* CryptoNewsPresenter.swift in Sources */,
 				F78AE31246582DD25D26B007 /* CryptoNewsRouter.swift in Sources */,
+				BADAF1FD65A3C1C3216E4132 /* CryptoNewsViewController.swift in Sources */,
 				002B2B7911D8DADB8ACF5F85 /* CryptoNewsWorker.swift in Sources */,
 				D2BF6A9F3F4C17288346DFA4 /* FileSystem.swift in Sources */,
 				65771216052A52DA4BAA0B77 /* Layout.swift in Sources */,
@@ -547,7 +547,7 @@
 		};
 		2E59A4EAA51847C3958F6FE9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0596FD54C5A6E073EE0CCEAA /* Pods-News&Crypto.release.xcconfig */;
+			baseConfigurationReference = CE89714C84D9D0930139E417 /* Pods-News&Crypto.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -579,7 +579,7 @@
 		};
 		3F870F54E62302B63221F16F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD5C8E27C30E6765BB3A1261 /* Pods-News&Crypto.debug.xcconfig */;
+			baseConfigurationReference = 3280DADAB7A4EB59477E5873 /* Pods-News&Crypto.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

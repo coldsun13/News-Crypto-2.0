@@ -1,22 +1,22 @@
 import Foundation
 
-struct CoinModel: Identifiable, Decodable {
+public struct CoinModel: Identifiable, Decodable {
 
-    let id, symbol, name: String
-    let image: String
-    let currentPrice: Double
-    let marketCap, marketCapRank, fullyDilutedValuation: Double?
-    let totalVolume, high24H, low24H: Double?
-    let priceChange24H, priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H: Double?
-    let circulatingSupply, totalSupply, maxSupply, ath: Double?
-    let athChangePercentage: Double?
-    let athDate: String?
-    let atl, atlChangePercentage: Double?
-    let atlDate: String?
-    let lastUpdated: String?
-    let sparklineIn7D: SparklineIn7D?
-    let priceChangePercentage24HInCurrency: Double?
-    let currentHoldings: Double?
+    public let id, symbol, name: String
+    public let image: String
+    public let currentPrice: Double
+    public let marketCap, marketCapRank, fullyDilutedValuation: Double?
+    public let totalVolume, high24H, low24H: Double?
+    public let priceChange24H, priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H: Double?
+    public let circulatingSupply, totalSupply, maxSupply, ath: Double?
+    public let athChangePercentage: Double?
+    public let athDate: String?
+    public let atl, atlChangePercentage: Double?
+    public let atlDate: String?
+    public let lastUpdated: String?
+    public let sparklineIn7D: SparklineIn7D?
+    public let priceChangePercentage24HInCurrency: Double?
+    public let currentHoldings: Double?
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
@@ -46,13 +46,13 @@ struct CoinModel: Identifiable, Decodable {
         case currentHoldings
     }
     
-    var rank: Int {
+    public var rank: Int {
         return Int(marketCapRank ?? 0)
     }
 }
 
-struct SparklineIn7D: Codable {
-    let price: [Double]?
+public struct SparklineIn7D: Codable {
+    public let price: [Double]?
 }
 
 

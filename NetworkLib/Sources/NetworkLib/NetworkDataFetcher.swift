@@ -1,18 +1,18 @@
 import Foundation
 
-protocol DataFetcher {
+public protocol DataFetcher {
     func fetchGenericData<T: Decodable>(urlString: String, response: @escaping (T?) -> Void)
 }
 
-class NetworkDataFetcher: DataFetcher {
+public class NetworkDataFetcher: DataFetcher {
     
-    let networking: Networking
+    public let networking: Networking
     
-    init(networking: Networking = NetworkService()) {
+    public init(networking: Networking = NetworkService()) {
         self.networking = networking
     }
     
-    func fetchGenericData<T: Decodable>(urlString: String, response: @escaping (T?) -> Void) {
+    public func fetchGenericData<T: Decodable>(urlString: String, response: @escaping (T?) -> Void) {
         networking.request(urlString: urlString) { data, error in
             if let error = error {
                 print("Error received requesting data: \(error.localizedDescription)")

@@ -1,5 +1,6 @@
 import UIKit
 import Kingfisher
+import NetworkLib
 
 public protocol NewsCellViewModel {
     var image: String { get }
