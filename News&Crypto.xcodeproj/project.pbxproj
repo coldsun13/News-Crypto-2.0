@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		002B2B7911D8DADB8ACF5F85 /* CryptoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F8E94D33861B99D5211C8E /* CryptoWorker.swift */; };
+		002B2B7911D8DADB8ACF5F85 /* CryptoNewsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F8E94D33861B99D5211C8E /* CryptoNewsWorker.swift */; };
 		12C4859D6A5B030061169099 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA23370C799C7835229C7A2D /* Kingfisher */; };
 		1C4DB9A5FCC85E294B13FC39 /* NetworkLib in Frameworks */ = {isa = PBXBuildFile; productRef = F4CC257EC40DDD48C77C363C /* NetworkLib */; };
 		24175D0E066E458FCCBC7736 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A732AD15528E7740F023CC4 /* ProfileViewController.swift */; };
@@ -31,35 +31,35 @@
 		83117B1C5D4590771E53CF15 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EFD1195D30E2226F83AD8B /* SettingsPresenter.swift */; };
 		8CC9A236E4B629466609390C /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8381A6AC18DF1572F3E8A /* ProfileNavigationController.swift */; };
 		8F42B4248AB3EDC3B12EEFB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D437CB7240CE3DE46F002B2 /* Assets.xcassets */; };
-		91C4CC07310164619997B2B5 /* CryptoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3393DC3B924EDD5120CAD6 /* CryptoInteractor.swift */; };
+		91C4CC07310164619997B2B5 /* CryptoNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3393DC3B924EDD5120CAD6 /* CryptoNewsInteractor.swift */; };
 		9441456FB639677B12F4B58A /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31768F7392357BF8D52C5BA /* SettingsAssembly.swift */; };
 		A1D1A0C8A227B217CD5DF938 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B97A59C6E5FC2AB759F5D /* SettingsWorker.swift */; };
 		B080CAC931292465F73A39BE /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84007D7F8C39E16659F3141 /* ProfileWorker.swift */; };
 		BA9262CE8928D249D5828F88 /* NewsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC952B1E9A9D330ECA50E6 /* NewsModels.swift */; };
-		BADAF1FD65A3C1C3216E4132 /* CryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93844ABE2B83C3DF8323017 /* CryptoViewController.swift */; };
-		C11A54F9576BC132D6B5583C /* CryptoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B698F3BFE0501266C94DB10 /* CryptoPresenter.swift */; };
+		BADAF1FD65A3C1C3216E4132 /* CryptoNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93844ABE2B83C3DF8323017 /* CryptoNewsViewController.swift */; };
+		C11A54F9576BC132D6B5583C /* CryptoNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B698F3BFE0501266C94DB10 /* CryptoNewsPresenter.swift */; };
 		CAC7D458B6F281F8FA569CCD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AE9AC83329633CA8982468 /* Model.swift */; };
 		CE6EF1556072EF71801D6538 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF1E90E7890180E6A057F8 /* NewsViewController.swift */; };
 		CF3C74A1BF965E083693027F /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA86F9ED307664FF9DD33B88 /* CoreDataService.swift */; };
 		D2BF6A9F3F4C17288346DFA4 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8C00CCB52E616682AA4B9 /* FileSystem.swift */; };
-		D2F76CFB06FE3BD2E500E0F5 /* CryptoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE60B6B16AAACC96E45791 /* CryptoAssembly.swift */; };
+		D2F76CFB06FE3BD2E500E0F5 /* CryptoNewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE60B6B16AAACC96E45791 /* CryptoNewsAssembly.swift */; };
 		D50F5F9AD859196733FB29D0 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA5943531313C387AB3690B /* CoinViewController.swift */; };
 		D5E6EE54ABF1370D1D634FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1371E12DAF2757E18C006E4D /* AppDelegate.swift */; };
 		D9097173953BD2898C4FC9BC /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF665784C3D9BADCB5D2E06 /* SettingsModels.swift */; };
-		DE6C2B55FEBC9E97B22FF149 /* CryptoModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BCAAF751490E39BC02625 /* CryptoModels.swift */; };
+		DE6C2B55FEBC9E97B22FF149 /* CryptoNewsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BCAAF751490E39BC02625 /* CryptoNewsModels.swift */; };
 		E10E585F0E7173131C2A7988 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E9DB785A9829E4252196F /* CoreDataWorker.swift */; };
 		E797A372A354379FB0E72021 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE139B2453F9C8E051283F8 /* ProfileRouter.swift */; };
 		F229BAF45124FB6E0FBD0779 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3555E314123727F5C5C41A2 /* SceneDelegate.swift */; };
-		F78AE31246582DD25D26B007 /* CryptoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB653C21D4BFD23E6150EF7F /* CryptoRouter.swift */; };
+		F78AE31246582DD25D26B007 /* CryptoNewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB653C21D4BFD23E6150EF7F /* CryptoNewsRouter.swift */; };
 		FB41C33AF8A4D607BCD17EB7 /* NewsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBB559E3DE90FD3ED15D3FC /* NewsWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		06AE9AC83329633CA8982468 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		0BCE60B6B16AAACC96E45791 /* CryptoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAssembly.swift; sourceTree = "<group>"; };
+		0BCE60B6B16AAACC96E45791 /* CryptoNewsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsAssembly.swift; sourceTree = "<group>"; };
 		0D437CB7240CE3DE46F002B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1371E12DAF2757E18C006E4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		177BCAAF751490E39BC02625 /* CryptoModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoModels.swift; sourceTree = "<group>"; };
+		177BCAAF751490E39BC02625 /* CryptoNewsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsModels.swift; sourceTree = "<group>"; };
 		1CA5943531313C387AB3690B /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
 		1EF665784C3D9BADCB5D2E06 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		2000C43212FD3801400D8522 /* NetworkLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NetworkLib; sourceTree = SOURCE_ROOT; };
@@ -72,7 +72,7 @@
 		4571BCFCD6A6AC0C4B4455A1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		479C8B6C1DFD1D0865619B0D /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		50CF3ED7ED59D608A10EC620 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
-		54F8E94D33861B99D5211C8E /* CryptoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoWorker.swift; sourceTree = "<group>"; };
+		54F8E94D33861B99D5211C8E /* CryptoNewsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsWorker.swift; sourceTree = "<group>"; };
 		5842289A4E6FDCA9C8F8CC1F /* NewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
 		5A732AD15528E7740F023CC4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5CD8C00CCB52E616682AA4B9 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
@@ -84,11 +84,11 @@
 		7CC8381A6AC18DF1572F3E8A /* ProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
 		8026AE605AC3BBDCE959E021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		824FD2F580D2363D91260600 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
-		8B698F3BFE0501266C94DB10 /* CryptoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPresenter.swift; sourceTree = "<group>"; };
-		8E3393DC3B924EDD5120CAD6 /* CryptoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoInteractor.swift; sourceTree = "<group>"; };
+		8B698F3BFE0501266C94DB10 /* CryptoNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsPresenter.swift; sourceTree = "<group>"; };
+		8E3393DC3B924EDD5120CAD6 /* CryptoNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsInteractor.swift; sourceTree = "<group>"; };
 		90AE94E779DA8A18D6CDB028 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		939197925AA4590F2E042B85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AB653C21D4BFD23E6150EF7F /* CryptoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoRouter.swift; sourceTree = "<group>"; };
+		AB653C21D4BFD23E6150EF7F /* CryptoNewsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsRouter.swift; sourceTree = "<group>"; };
 		AFFC952B1E9A9D330ECA50E6 /* NewsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModels.swift; sourceTree = "<group>"; };
 		BDA8C9253AF43AE33FB8C82E /* News&Crypto.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "News&Crypto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10E9DB785A9829E4252196F /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		C3555E314123727F5C5C41A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE89714C84D9D0930139E417 /* Pods-News&Crypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News&Crypto.release.xcconfig"; path = "Target Support Files/Pods-News&Crypto/Pods-News&Crypto.release.xcconfig"; sourceTree = "<group>"; };
 		CFBB559E3DE90FD3ED15D3FC /* NewsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWorker.swift; sourceTree = "<group>"; };
-		E93844ABE2B83C3DF8323017 /* CryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewController.swift; sourceTree = "<group>"; };
+		E93844ABE2B83C3DF8323017 /* CryptoNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsViewController.swift; sourceTree = "<group>"; };
 		EA86F9ED307664FF9DD33B88 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		EBE139B2453F9C8E051283F8 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		ECD6399D60D6F7E5C6A6D786 /* NewsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAssembly.swift; sourceTree = "<group>"; };
@@ -156,13 +156,13 @@
 		189391D493BE710A50600746 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				0BCE60B6B16AAACC96E45791 /* CryptoAssembly.swift */,
-				8E3393DC3B924EDD5120CAD6 /* CryptoInteractor.swift */,
-				8B698F3BFE0501266C94DB10 /* CryptoPresenter.swift */,
-				177BCAAF751490E39BC02625 /* CryptoModels.swift */,
-				AB653C21D4BFD23E6150EF7F /* CryptoRouter.swift */,
-				E93844ABE2B83C3DF8323017 /* CryptoViewController.swift */,
-				54F8E94D33861B99D5211C8E /* CryptoWorker.swift */,
+				0BCE60B6B16AAACC96E45791 /* CryptoNewsAssembly.swift */,
+				8E3393DC3B924EDD5120CAD6 /* CryptoNewsInteractor.swift */,
+				8B698F3BFE0501266C94DB10 /* CryptoNewsPresenter.swift */,
+				177BCAAF751490E39BC02625 /* CryptoNewsModels.swift */,
+				AB653C21D4BFD23E6150EF7F /* CryptoNewsRouter.swift */,
+				E93844ABE2B83C3DF8323017 /* CryptoNewsViewController.swift */,
+				54F8E94D33861B99D5211C8E /* CryptoNewsWorker.swift */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
@@ -427,13 +427,13 @@
 				D50F5F9AD859196733FB29D0 /* CoinViewController.swift in Sources */,
 				CF3C74A1BF965E083693027F /* CoreDataService.swift in Sources */,
 				E10E585F0E7173131C2A7988 /* CoreDataWorker.swift in Sources */,
-				D2F76CFB06FE3BD2E500E0F5 /* CryptoAssembly.swift in Sources */,
-				91C4CC07310164619997B2B5 /* CryptoInteractor.swift in Sources */,
-				DE6C2B55FEBC9E97B22FF149 /* CryptoModels.swift in Sources */,
-				C11A54F9576BC132D6B5583C /* CryptoPresenter.swift in Sources */,
-				F78AE31246582DD25D26B007 /* CryptoRouter.swift in Sources */,
-				BADAF1FD65A3C1C3216E4132 /* CryptoViewController.swift in Sources */,
-				002B2B7911D8DADB8ACF5F85 /* CryptoWorker.swift in Sources */,
+				D2F76CFB06FE3BD2E500E0F5 /* CryptoNewsAssembly.swift in Sources */,
+				91C4CC07310164619997B2B5 /* CryptoNewsInteractor.swift in Sources */,
+				DE6C2B55FEBC9E97B22FF149 /* CryptoNewsModels.swift in Sources */,
+				C11A54F9576BC132D6B5583C /* CryptoNewsPresenter.swift in Sources */,
+				F78AE31246582DD25D26B007 /* CryptoNewsRouter.swift in Sources */,
+				BADAF1FD65A3C1C3216E4132 /* CryptoNewsViewController.swift in Sources */,
+				002B2B7911D8DADB8ACF5F85 /* CryptoNewsWorker.swift in Sources */,
 				D2BF6A9F3F4C17288346DFA4 /* FileSystem.swift in Sources */,
 				65771216052A52DA4BAA0B77 /* Layout.swift in Sources */,
 				CAC7D458B6F281F8FA569CCD /* Model.swift in Sources */,

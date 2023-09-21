@@ -3,7 +3,7 @@ import UILib
 import NetworkLib
 
 protocol CryptoNewsPresenterProtocol {
-    func presentData(response: CryptoNews.Model.Response.ResponseType)
+    func didFetchCoins(coin: [CoinModel])
 }
 
 final class CryptoNewsPresenter {
@@ -40,23 +40,10 @@ final class CryptoNewsPresenter {
 }
 
 extension CryptoNewsPresenter: CryptoNewsPresenterProtocol {
-    
-    func presentData(response: CryptoNews.Model.Response.ResponseType) {
-        switch response {
-            
-        case .presentCoins(let coins):
-            
-            let cells = coins.map { coinItem in
-                cellViewModel(from: coinItem)
-            }
-            let info = coins.map { coinItem in
-                coinViewModel(from: coinItem)
-            }
-            
-            let cryptoViewModel = CryptoViewModel(models: cells, coinViewModel: info)
-            
-            viewController?.displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData.displayCoins(cryptoViewModel: cryptoViewModel))
-        }
+    func didFetchCoins(coin: [CoinModel]) {
+        let cell = coin.map { cellViewModel(from: $0) }
+        let coin = coin.map { coinViewModel(from: $0) }
+        let cryptoViewModel = CryptoViewModel(models: cell, coinViewModel: coin)
+        self.viewController?.displayCoin(model: cryptoViewModel)
     }
-
 }

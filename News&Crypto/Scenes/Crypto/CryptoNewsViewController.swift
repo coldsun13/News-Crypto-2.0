@@ -4,22 +4,13 @@ import UILib
 import NetworkLib
 
 protocol CryptoNewsViewProtocol: AnyObject {
-    func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData)
+    func displayCoin(model: CryptoViewModel)
 }
 
-final class CryptoNewsViewController: UIViewController, CryptoNewsViewProtocol {
-    func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData) {
-        switch viewModel {
-        case .displayCoins(cryptoViewModel: let cryptoViewModel):
-            self.cryptoViewModel = cryptoViewModel
-        }
-    }
-    
-    
+final class CryptoNewsViewController: UIViewController {
+
     var interactor: CryptoNewsInteractorProtocol?
     var router: (NSObjectProtocol & CryptoNewsRoutingLogic)?
-    let dataFetcher = DataFetcherService()
-//    var coin = Coin()
     
     private var cryptoViewModel = CryptoViewModel(models: [], coinViewModel: []) {
         didSet {
@@ -45,39 +36,19 @@ final class CryptoNewsViewController: UIViewController, CryptoNewsViewProtocol {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        setup()
     }
-    
-    // MARK: Setup
-    
-//    private func setup() {
-//        let viewController        = self
-//        let interactor            = CryptoNewsInteractor()
-//        let presenter             = CryptoNewsPresenter()
-//        let router                = CryptoNewsRouter()
-//        viewController.interactor = interactor
-//        viewController.router     = router
-//        interactor.presenter      = presenter
-//        presenter.viewController  = viewController
-//        router.viewController     = viewController
-//    }
-    
-    // MARK: Routing
-    
-    
-    
+
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         drawSelf()
         setupFloatingPanel()
-        interactor?.makeRequest(request: CryptoNews.Model.Request.RequestType.getCoins)
+        interactor?.fetchCoins()
     }
 }
 
@@ -128,30 +99,13 @@ extension CryptoNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.openCoinController(source: self, viewModel: cryptoViewModel.coinViewModel[indexPath.row])
     }
-    
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-////            CoreDataWorker.saveCoin(coin, coin: cryptoViewModel.coinViewModel[indexPath.row].coinName)
-//            CoreDataWorker.shared.saveCoin(coin: Coin(), symbol: cryptoViewModel.coinViewModel[indexPath.row].coinName)
-//            print("saveCoreData")
-//        }
-    }
 }
 
-//extension CryptoNewsViewProtocol {
-//
-//    func displayData(viewModel: CryptoNews.Model.ViewModel.ViewModelData) {
-//        switch viewModel {
-//
-//            //        case .displayCoins(let cryptoViewModel):
-//            //            self.cryptoViewModel = cryptoViewModel
-//            //        }
-////        case .displayCoins(cryptoViewModel: let cryptoViewModel):
-////            self.cryptoViewModel = cryptoViewModel
-//        case .displayCoins(cryptoViewModel: let cryptoViewModel):
-//        }
-//    }
-//}
+extension CryptoNewsViewController: CryptoNewsViewProtocol {
+    func displayCoin(model: CryptoViewModel) {
+        cryptoViewModel = model
+    }
+    
+    
+}
 
