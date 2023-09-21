@@ -2,7 +2,7 @@ import Foundation
 import NetworkLib
 
 protocol NewsInteractorProtocol {
-    func makeRequest(request: News.Model.Request.RequestType)
+    func fetchNews()
 }
 
 class NewsInteractor {
@@ -10,7 +10,7 @@ class NewsInteractor {
     var presenter: NewsPresenterProtocol?
     
     private var service: NewsService?
-    private var fetcher = DataFetcherService()
+    private var networkService = NetworkService()
     
     init(service: NewsService) {
         self.service = service
@@ -20,19 +20,16 @@ class NewsInteractor {
 
 extension NewsInteractor: NewsInteractorProtocol {
     
-    func makeRequest(request: News.Model.Request.RequestType) {
-        if service == nil {
-            service = NewsService()
-        }
-        
-        switch request {
-            
-        case .getNews:
-            fetcher.getNews { [weak self] newsResponse in
-                guard let newsResponse = newsResponse else { return }
-                self?.presenter?.presentData(response: News.Model.Response.ResponseType.presentNews(news: newsResponse))
+    func fetchNews() {
+            networkService.request(endpoint: NewsEndpoint.news(category: "general",
+                                                               token: "c9m61diad3i9qg80n940")) { [weak self] (result: Result<[NewsModel], NetworkError>) in
+                switch result {
+                    
+                case .success(let newsResponse):
+                    self?.presenter?.didFetchNews(news: newsResponse)
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
-    }
-
 }

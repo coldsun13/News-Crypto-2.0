@@ -2,7 +2,7 @@ import UIKit
 import NetworkLib
 
 protocol NewsPresenterProtocol {
-    func presentData(response: News.Model.Response.ResponseType)
+    func didFetchNews(news: [NewsModel])
 }
 
 class NewsPresenter {
@@ -19,19 +19,10 @@ class NewsPresenter {
 }
 
 extension NewsPresenter: NewsPresenterProtocol {
-    
-    func presentData(response: News.Model.Response.ResponseType) {
-        switch response {
-            
-        case .presentNews(news: let news):
-            let news = news.map { newsItem in
-                cellViewModel(from: newsItem)
-            }
-            
-            let newsViewModel = NewsViewModel(models: news)
-            
-            viewController?.displayData(viewModel: News.Model.ViewModel.ViewModelData.displayNews(newsViewModel: newsViewModel))
-        }
+    func didFetchNews(news: [NewsModel]) {
+        let models = news.map { cellViewModel(from: $0) }
+        let newsViewModel = NewsViewModel(models: models)
+        viewController?.displayNews(viewModel: newsViewModel)
     }
 }
 
