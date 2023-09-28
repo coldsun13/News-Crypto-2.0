@@ -1,8 +1,8 @@
 ## OS X 
-.DS_Store
+
 
 ## Xcode
+.DS_Store
 build/
 Pods/ 
-xcuserdata/
-UserInterfaceState.xcuserstate
+xcuserstate/
