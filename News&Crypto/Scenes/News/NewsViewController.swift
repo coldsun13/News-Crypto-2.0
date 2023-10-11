@@ -3,7 +3,7 @@ import UILib
 import SafariServices
 
 protocol NewsViewProtocol: AnyObject {
-    func displayData(viewModel: News.Model.ViewModel.ViewModelData)
+    func displayNews(viewModel: NewsViewModel)
 }
 
 final class NewsViewController: UIViewController {
@@ -30,7 +30,7 @@ final class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawSelf()
-        interactor?.makeRequest(request: News.Model.Request.RequestType.getNews)
+        interactor?.fetchNews()
     }
 }
 
@@ -96,12 +96,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension NewsViewController: NewsViewProtocol {
-    func displayData(viewModel: News.Model.ViewModel.ViewModelData) {
-        switch viewModel {
-            
-        case .displayNews(newsViewModel: let newsViewModel):
-            self.newsViewModel = newsViewModel
-        }
+    func displayNews(viewModel: NewsViewModel) {
+        newsViewModel = viewModel
     }
 }
 

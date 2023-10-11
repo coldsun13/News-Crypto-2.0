@@ -1,5 +1,4 @@
 import UIKit
-//import UILib
 
 public protocol HeaderViewDelegate: AnyObject {
     func revealAlertController()
@@ -120,4 +119,3 @@ private extension HeaderView {
         delegate?.changePhotoAvatarImage()
     }
 }
-

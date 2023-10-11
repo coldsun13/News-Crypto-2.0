@@ -14,7 +14,7 @@ class ProfileInteractor {
         self.service = service
     }
     
-    private var fetcher = DataFetcherService()
+//    private var fetcher = DataFetcherService()
     
    
 }
@@ -25,13 +25,13 @@ extension ProfileInteractor: ProfileInteractorProtocol {
             service = ProfileService()
         }
         
-        switch request {
+//        switch request {
             
-        case .getCoins:
-            fetcher.getCoins { [weak self] coinResponse in
-                guard let coinResponse = coinResponse else { return }
-                self?.presenter?.presentData(response: Profile.Model.Response.ResponseType.presentCoins(coins: coinResponse))
-            }
-        }
+//        case .getCoins:
+//            fetcher.getCoins { [weak self] coinResponse in
+//                guard let coinResponse = coinResponse else { return }
+//                self?.presenter?.presentData(response: Profile.Model.Response.ResponseType.presentCoins(coins: coinResponse))
+//            }
+//        }
     }
 }

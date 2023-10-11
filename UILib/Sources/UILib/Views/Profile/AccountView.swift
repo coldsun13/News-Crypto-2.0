@@ -172,4 +172,3 @@ private extension AccountView {
         delegate?.transferPhoneNumberString(string: numberNameTextField.text ?? "")
     }
 }
-
