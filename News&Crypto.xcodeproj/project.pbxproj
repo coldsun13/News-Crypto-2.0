@@ -12,10 +12,9 @@
 		1C4DB9A5FCC85E294B13FC39 /* NetworkLib in Frameworks */ = {isa = PBXBuildFile; productRef = F4CC257EC40DDD48C77C363C /* NetworkLib */; };
 		24175D0E066E458FCCBC7736 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A732AD15528E7740F023CC4 /* ProfileViewController.swift */; };
 		2C16BBD62766047EE4D23CDC /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0B32F12D315CB602760BC /* ProfileAssembly.swift */; };
+		3593910C2AE42EA1004BE3F0 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593910B2AE42EA1004BE3F0 /* StorageManager.swift */; };
 		37247A687BA54AFA15DCD6F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CF2B85EDC9B2CBD3FE15ED /* SettingsViewController.swift */; };
 		3BC1342BD08DB19B406E4B3F /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824FD2F580D2363D91260600 /* SettingsInteractor.swift */; };
-		477FF6DF3C7D2C067DECF229 /* +UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7BCB52AB0C33897480F950 /* +UIFont.swift */; };
-		4EC4067199C59719C803D76E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571BCFCD6A6AC0C4B4455A1 /* StorageManager.swift */; };
 		5103AE636A4928207BA9EBDB /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF3ED7ED59D608A10EC620 /* ProfilePresenter.swift */; };
 		52FDD5BAD66F3B2A12C0F1FD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECED127F7DEF41162E43FB7 /* TabbarViewController.swift */; };
 		54BDA0AFE0A35E8E66D624B7 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7F7CA5F6A26A87984BA56E /* NewsRouter.swift */; };
@@ -62,14 +61,13 @@
 		1371E12DAF2757E18C006E4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		177BCAAF751490E39BC02625 /* CryptoNewsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsModels.swift; sourceTree = "<group>"; };
 		1CA5943531313C387AB3690B /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
-		1E7BCB52AB0C33897480F950 /* +UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIFont.swift"; sourceTree = "<group>"; };
 		1EF665784C3D9BADCB5D2E06 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		2000C43212FD3801400D8522 /* NetworkLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NetworkLib; sourceTree = SOURCE_ROOT; };
 		2165C3374052EB7B19CC495B /* UILib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UILib; sourceTree = SOURCE_ROOT; };
 		22BF1E90E7890180E6A057F8 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		2A7F7CA5F6A26A87984BA56E /* NewsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
+		3593910B2AE42EA1004BE3F0 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		3FE0B32F12D315CB602760BC /* ProfileAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
-		4571BCFCD6A6AC0C4B4455A1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		479C8B6C1DFD1D0865619B0D /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		50CF3ED7ED59D608A10EC620 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		54F8E94D33861B99D5211C8E /* CryptoNewsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsWorker.swift; sourceTree = "<group>"; };
@@ -277,11 +275,9 @@
 		D7D8D2C4C3506B6418BF475C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				1E7BCB52AB0C33897480F950 /* +UIFont.swift */,
 				EA86F9ED307664FF9DD33B88 /* CoreDataService.swift */,
 				C10E9DB785A9829E4252196F /* CoreDataWorker.swift */,
 				06AE9AC83329633CA8982468 /* Model.swift */,
-				4571BCFCD6A6AC0C4B4455A1 /* StorageManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -298,6 +294,7 @@
 		EAD31E5F8855D50DF56F29C0 /* FileSystem */ = {
 			isa = PBXGroup;
 			children = (
+				3593910B2AE42EA1004BE3F0 /* StorageManager.swift */,
 			);
 			path = FileSystem;
 			sourceTree = "<group>";
@@ -423,13 +420,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				477FF6DF3C7D2C067DECF229 /* +UIFont.swift in Sources */,
 				D5E6EE54ABF1370D1D634FE2 /* AppDelegate.swift in Sources */,
 				D50F5F9AD859196733FB29D0 /* CoinViewController.swift in Sources */,
 				CF3C74A1BF965E083693027F /* CoreDataService.swift in Sources */,
 				E10E585F0E7173131C2A7988 /* CoreDataWorker.swift in Sources */,
 				D2F76CFB06FE3BD2E500E0F5 /* CryptoNewsAssembly.swift in Sources */,
 				B8398442B6B56016D93E6663 /* CryptoNewsViewController.swift in Sources */,
+				3593910C2AE42EA1004BE3F0 /* StorageManager.swift in Sources */,
 				91C4CC07310164619997B2B5 /* CryptoNewsInteractor.swift in Sources */,
 				DE6C2B55FEBC9E97B22FF149 /* CryptoNewsModels.swift in Sources */,
 				C11A54F9576BC132D6B5583C /* CryptoNewsPresenter.swift in Sources */,
@@ -460,7 +457,6 @@
 				72AA79F8A119A70BCBD357DC /* SettingsRouter.swift in Sources */,
 				37247A687BA54AFA15DCD6F2 /* SettingsViewController.swift in Sources */,
 				A1D1A0C8A227B217CD5DF938 /* SettingsWorker.swift in Sources */,
-				4EC4067199C59719C803D76E /* StorageManager.swift in Sources */,
 				52FDD5BAD66F3B2A12C0F1FD /* TabbarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
