@@ -41,7 +41,6 @@
 		CAC7D458B6F281F8FA569CCD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AE9AC83329633CA8982468 /* Model.swift */; };
 		CE6EF1556072EF71801D6538 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF1E90E7890180E6A057F8 /* NewsViewController.swift */; };
 		CF3C74A1BF965E083693027F /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA86F9ED307664FF9DD33B88 /* CoreDataService.swift */; };
-		D2BF6A9F3F4C17288346DFA4 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8C00CCB52E616682AA4B9 /* FileSystem.swift */; };
 		D2F76CFB06FE3BD2E500E0F5 /* CryptoNewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE60B6B16AAACC96E45791 /* CryptoNewsAssembly.swift */; };
 		D50F5F9AD859196733FB29D0 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA5943531313C387AB3690B /* CoinViewController.swift */; };
 		D5E6EE54ABF1370D1D634FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1371E12DAF2757E18C006E4D /* AppDelegate.swift */; };
@@ -76,7 +75,6 @@
 		54F8E94D33861B99D5211C8E /* CryptoNewsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoNewsWorker.swift; sourceTree = "<group>"; };
 		5842289A4E6FDCA9C8F8CC1F /* NewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
 		5A732AD15528E7740F023CC4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		5CD8C00CCB52E616682AA4B9 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		625EF3908C5A58EF939BEB75 /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
 		6B1B97A59C6E5FC2AB759F5D /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWorker.swift; sourceTree = "<group>"; };
 		6ECED127F7DEF41162E43FB7 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 		EAD31E5F8855D50DF56F29C0 /* FileSystem */ = {
 			isa = PBXGroup;
 			children = (
-				5CD8C00CCB52E616682AA4B9 /* FileSystem.swift */,
 			);
 			path = FileSystem;
 			sourceTree = "<group>";
@@ -438,7 +435,6 @@
 				C11A54F9576BC132D6B5583C /* CryptoNewsPresenter.swift in Sources */,
 				F78AE31246582DD25D26B007 /* CryptoNewsRouter.swift in Sources */,
 				002B2B7911D8DADB8ACF5F85 /* CryptoNewsWorker.swift in Sources */,
-				D2BF6A9F3F4C17288346DFA4 /* FileSystem.swift in Sources */,
 				65771216052A52DA4BAA0B77 /* Layout.swift in Sources */,
 				CAC7D458B6F281F8FA569CCD /* Model.swift in Sources */,
 				74D433D14277B3C80FC7367E /* NewsAssembly.swift in Sources */,
