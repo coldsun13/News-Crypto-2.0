@@ -10,8 +10,8 @@ final class CryptoNewsRouter: NSObject, CryptoNewsRoutingLogic {
     
     // MARK: Routing
     func openCoinController(source: UIViewController, viewModel: CoinControllerViewModel) {
-        let vc = CoinViewController()
-        vc.set(viewModel: viewModel)
+        let vc = CoinAssembly.assemblyCoin()
+        vc.fetch(viewModel: viewModel)
         source.present(UINavigationController(rootViewController: vc), animated: true)
     }
 }

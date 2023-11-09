@@ -1,16 +1,17 @@
 import UIKit
 import UILib
+import Lottie
 
-protocol CoinControllerViewModel {
-    var cryptolineChart: CryptoLineChartView.ChartViewModel { get }
-    var currentPrice: String { get }
-    var priceChangePercantage24h: String { get }
-    var marketCapitalization: String { get }
-    var rank: String { get }
-    var volume: String { get }
-    var marketCapChangePercentage24h: String { get }
-    var coinName: String { get }
-}
+//protocol CoinControllerViewModel {
+//    var cryptolineChart: CryptoLineChartView.ChartViewModel { get }
+//    var currentPrice: String { get }
+//    var priceChangePercantage24h: String { get }
+//    var marketCapitalization: String { get }
+//    var rank: String { get }
+//    var volume: String { get }
+//    var marketCapChangePercentage24h: String { get }
+//    var coinName: String { get }
+//}
 
 final class CoinViewController: UIViewController {
     
@@ -24,6 +25,14 @@ final class CoinViewController: UIViewController {
         
         static let chartViewHeightSize: CGFloat = 250
     }
+    
+    private var lottieView = LottieAnimationView()
+    
+    lazy var walletStackView: UIStackView = {
+        let walletStackView = UIStackView()
+        
+        return walletStackView
+    }()
     
     public lazy var walletButton: UIButton = {
         let walletButton = UIButton()
@@ -85,7 +94,7 @@ final class CoinViewController: UIViewController {
         addSetups()
     }
     
-    func set(viewModel: CoinControllerViewModel) {
+    func fetchData(viewModel: CoinControllerViewModel) {
         let changeMarketColor = Double(viewModel.marketCapChangePercentage24h) ?? 0.0 < 0.0
         capitalizationStackView.setCapitalizationLabel(viewModel.marketCapitalization,
                                                        viewModel.marketCapChangePercentage24h + "%",
@@ -99,6 +108,14 @@ final class CoinViewController: UIViewController {
         title = viewModel.coinName
         chartView.configure(viewModel: viewModel.cryptolineChart)
     }
+    
+    func lottieAnimation(name: String) {
+        view.addSubview(lottieView)
+        lottieView.translatesAutoresizingMaskIntoConstraints = false
+        lottieView.animation = LottieAnimation.named(name)
+        lottieView.loopMode = .playOnce
+        lottieView.contentMode = .scaleAspectFill
+    }
 }
 
 private extension CoinViewController {
@@ -107,10 +124,10 @@ private extension CoinViewController {
         view.addSubviewsAndMask(scrollView)
         scrollView.addSubview(mainStackView)
         mainStackView.addAllArrangedSubviews(chartView,
-                                          overviewAndWalletButtonStackView,
-                                          capitalizationStackView)
+                                             overviewAndWalletButtonStackView,
+                                             capitalizationStackView)
         overviewAndWalletButtonStackView.addAllArrangedSubviews(overviewLabel,
-                                                             walletButton)
+                                                                walletButton)
         
         let scrollViewConstraints = self.setScrollViewConstraints()
         let chartView = self.setChartViewConstraints()
@@ -181,7 +198,7 @@ private extension CoinViewController {
     }
     
     @objc func saveCoin() {
-
+        
     }
 }
 

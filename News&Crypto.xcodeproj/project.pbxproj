@@ -21,6 +21,7 @@
 		359391192AE49DE7004BE3F0 /* CoinAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359391182AE49DE7004BE3F0 /* CoinAssembly.swift */; };
 		3593911B2AE49DEE004BE3F0 /* CoinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593911A2AE49DEE004BE3F0 /* CoinRouter.swift */; };
 		3593911D2AE4A118004BE3F0 /* CoinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593911C2AE4A118004BE3F0 /* CoinWorker.swift */; };
+		35DBFB732AE9812B00DF2DBB /* okblack.json in Resources */ = {isa = PBXBuildFile; fileRef = 35DBFB722AE9812B00DF2DBB /* okblack.json */; };
 		37247A687BA54AFA15DCD6F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CF2B85EDC9B2CBD3FE15ED /* SettingsViewController.swift */; };
 		3BC1342BD08DB19B406E4B3F /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824FD2F580D2363D91260600 /* SettingsInteractor.swift */; };
 		5103AE636A4928207BA9EBDB /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF3ED7ED59D608A10EC620 /* ProfilePresenter.swift */; };
@@ -82,6 +83,7 @@
 		359391182AE49DE7004BE3F0 /* CoinAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAssembly.swift; sourceTree = "<group>"; };
 		3593911A2AE49DEE004BE3F0 /* CoinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRouter.swift; sourceTree = "<group>"; };
 		3593911C2AE4A118004BE3F0 /* CoinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinWorker.swift; sourceTree = "<group>"; };
+		35DBFB722AE9812B00DF2DBB /* okblack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = okblack.json; path = ../../../Downloads/okblack.json; sourceTree = "<group>"; };
 		3FE0B32F12D315CB602760BC /* ProfileAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
 		479C8B6C1DFD1D0865619B0D /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		50CF3ED7ED59D608A10EC620 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		1A85E8C650C42C77D5346057 /* News&Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				35DBFB722AE9812B00DF2DBB /* okblack.json */,
 				CC8E292C15F1466AF50FD034 /* Application */,
 				EAD31E5F8855D50DF56F29C0 /* FileSystem */,
 				915F150F1E2DE5A8397F46F3 /* Scenes */,
@@ -393,6 +396,7 @@
 			files = (
 				8F42B4248AB3EDC3B12EEFB5 /* Assets.xcassets in Resources */,
 				7E9818F2025B2FABED2EFBAE /* LaunchScreen.storyboard in Resources */,
+				35DBFB732AE9812B00DF2DBB /* okblack.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

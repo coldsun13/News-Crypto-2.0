@@ -6,10 +6,9 @@ protocol CoinPresenterProtocol {
 
 final class CoinPresenter: CoinPresenterProtocol {
     
-    var viewController: CoinViewModelProtocol?
+    weak var viewController: CoinViewModelProtocol?
     
     func didTap() {
-        print("презентер")
         viewController?.viewModel()
     }
 }

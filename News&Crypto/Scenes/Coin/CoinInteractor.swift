@@ -1,28 +1,24 @@
-//
-//  CoinInteractor.swift
-//  News&Crypto
-//
-//  Created by Игорь Тимофеев on 22.10.23.
-//
-
 import UIKit
+import NetworkLib
+
 
 protocol CoinInteractorProtocol {
     func fetchTap()
 }
 
-final class CoinInteractor: CoinInteractorProtocol {
+final class CoinInteractor {
     
     var service: CoinWorker?
     var presenter: CoinPresenterProtocol?
     
-    func fetchTap() {
-        print("интерактор")
-        presenter?.didTap()
-    }
-    
-    
     init(service: CoinWorker) {
         self.service = service
+    }
+}
+
+extension CoinInteractor: CoinInteractorProtocol {
+    
+    func fetchTap() {
+        presenter?.didTap()
     }
 }

@@ -1,15 +1,9 @@
-//
-//  CoinAssembly.swift
-//  News&Crypto
-//
-//  Created by Игорь Тимофеев on 22.10.23.
-//
-
 import UIKit
 
 final class CoinAssembly {
     
-    static func assemblyCoin() -> UIViewController {
+    static func assemblyCoin() -> CoinController {
+        
         var view = CoinController()
         var service = CoinWorker()
         var interactor = CoinInteractor(service: service)
