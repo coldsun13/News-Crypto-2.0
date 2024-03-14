@@ -183,7 +183,7 @@ private extension CoinController {
             heightAnchor
         ]
     }
-    
+    // соболезную тому, кто вот это вот ниже всё писал
     @objc func saveCoin() {
         router?.showResultAler(source: self)
     }
@@ -196,6 +196,5 @@ private extension CoinController {
 
 extension CoinController: CoinViewModelProtocol {
     func viewModel() {
-        print("контроллер")
     }
 }
