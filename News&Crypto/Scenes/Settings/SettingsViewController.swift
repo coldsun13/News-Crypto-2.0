@@ -65,7 +65,7 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
     
     private lazy var saveButton: UIButton = {
         let saveButton = UIButton()
-        saveButton.setTitle("НАЖМИ СУКА", for: .normal)
+        saveButton.setTitle("Save", for: .normal)
         saveButton.tintColor = .black
         saveButton.backgroundColor = .black
         saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
@@ -87,11 +87,6 @@ class SettingsViewController: UIViewController, SettingsDisplayLogic {
         super.viewDidLoad()
         addSubviews()
         configureAppearance()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        print(infoData)
-        print("Hello")
     }
     
     func displayData(viewModel: Settings.Model.ViewModel.ViewModelData) {
