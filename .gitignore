@@ -4,5 +4,3 @@
 ## Xcode
 .DS_Store
 build/
-Pods/ 
-xcuserstate/
